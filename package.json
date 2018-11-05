@@ -1,0 +1,57 @@
+{
+  "name": "surveyless",
+  "version": "0.1.0",
+  "description": "Serverless and simple way to build, run and analyze survey results",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chrisrzhou/surveyless"
+  },
+  "author": "Chris Zhou <christopher.r.zhou@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "survey",
+    "serverless",
+    "jamstack",
+    "gatsby",
+    "netlify"
+  ],
+  "scripts": {
+    "clean": "rm -rf public .cache",
+    "lint": "eslint --fix src",
+    "build": "gatsby build",
+    "dev": "gatsby develop"
+  },
+  "dependencies": {
+    "gatsby": "^2.0.19",
+    "gatsby-image": "^2.0.15",
+    "gatsby-plugin-manifest": "^2.0.5",
+    "gatsby-plugin-offline": "^2.0.5",
+    "gatsby-plugin-react-helmet": "^3.0.0",
+    "gatsby-plugin-resolve-src": "^2.0.0-beta.1",
+    "gatsby-plugin-sharp": "^2.0.7",
+    "gatsby-source-filesystem": "^2.0.4",
+    "gatsby-transformer-sharp": "^2.1.4",
+    "keymirror": "^0.1.1",
+    "react": "^16.7.0-alpha",
+    "react-dom": "^16.7.0-alpha",
+    "react-helmet": "^5.2.0",
+    "react-redux": "^5.1.0",
+    "rebass": "^2.3.4",
+    "redux": "^4.0.1",
+    "shortid": "^2.2.14",
+    "styled-components": "^4.0.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.1.0",
+    "eslint-config-fbjs": "^2.0.1",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.10.0",
+    "eslint-plugin-relay": "^0.0.28",
+    "prettier": "^1.14.2"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "extends": ["fbjs", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "relay/graphql-syntax": "ignore",
+    "prettier/prettier": [
+      "error",
+      {
+        "bracketSpacing": false,
+        "jsxBracketSameLine": true,
+        "singleQuote": true,
+        "trailingComma": "all",
+        "useTabs": false
+      }
+    ]
+  }
+}
