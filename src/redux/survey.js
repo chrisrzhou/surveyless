@@ -1,7 +1,7 @@
 import {createAction, createActionTypes, createReducer} from './utils';
 
 import {SURVEY_MODE} from 'enums';
-import surveyData from '_data/survey.json';
+import surveyData from 'survey.json';
 import {validateSurvey} from 'validators';
 
 const actionTypes = createActionTypes('survey', ['INITIALIZE']);

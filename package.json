@@ -36,6 +36,7 @@
     "react-dom": "^16.7.0-alpha",
     "react-helmet": "^5.2.0",
     "react-redux": "^5.1.0",
+    "react-spring": "^6.1.8",
     "rebass": "^2.3.4",
     "redux": "^4.0.1",
     "shortid": "^2.2.14",

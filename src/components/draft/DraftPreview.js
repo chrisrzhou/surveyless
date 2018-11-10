@@ -1,5 +1,7 @@
 import React from 'react';
 
-export default function DraftPreview() {
+function DraftPreview() {
   return <div>preview</div>;
 }
+
+export default DraftPreview;

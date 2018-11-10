@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import DraftPreview from './DraftPreview';
 
-export default function DraftNavBar() {
+function DraftNavBar() {
   const [enablePreview, setIsEnablePreview] = useState(false);
   return (
     <div>
@@ -14,3 +14,5 @@ export default function DraftNavBar() {
     </div>
   );
 }
+
+export default DraftNavBar;

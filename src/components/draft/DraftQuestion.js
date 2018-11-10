@@ -1,5 +1,7 @@
 import React from 'react';
 
-export default function DraftQuestion() {
+function DraftQuestion() {
   return <div>question</div>;
 }
+
+export default DraftQuestion;

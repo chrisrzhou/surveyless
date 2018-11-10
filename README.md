@@ -46,6 +46,35 @@ Support OPTIONAL "Other" option or "Additional Comments" for valid question type
 
 Figure out a way to handle triggers (e.g. answering a certain value in one question triggers displaying/hiding another question). Figure out a way to store metadata or macros (e.g. parametrizing a question based on some input provided)
 
+## TODO: Draft mode
+
+- Navbar (surveymode, previewmode, question scroll-links)
+- Edit/Create questions in draft mode
+- Create choice_sets
+- testmode (prepopulate data for various question types and preview, run validators)
+- save and load from localstorage
+- clear localstorage ('reset')
+- save redux state to `survey.json` after validators pass
+- hookup and merge PR when changes are 'committed' on UI.
+- Find a way to set up and define panel (to measure participation rate or provide filterable dimensions in Results view)
+
+## TODO: Survey mode
+
+- next/back page
+- submit survey
+- save and load from localstorage
+- clear localstorage ('reset')
+- save redux state to `survey.json` after validators pass
+- hookup and merge PR when changes are 'committed' on UI.
+
+## TODO: Landing page
+
+- correctly reads state from `survey.json` to render correct survey info (e.g link to survey or a 'survey closed/pending' message)
+
+## TODO: Results page
+
+- After `responses.json` is merged, render presentation/dashboard of results based on question types.
+
 ## Challenges
 
 - Auto save using browser history. We don't have a server to handle saves, so we want to think how to avoid people losing their work.

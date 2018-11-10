@@ -3,7 +3,7 @@ import DraftQuestion from './DraftQuestion';
 import DraftSurveyInfo from './DraftSurveyInfo';
 import React from 'react';
 
-export default function DraftLayout() {
+function DraftPage() {
   return (
     <>
       <DraftSurveyInfo />
@@ -12,3 +12,5 @@ export default function DraftLayout() {
     </>
   );
 }
+
+export default DraftPage;
