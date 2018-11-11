@@ -1,0 +1,14 @@
+[
+  {
+    "responseId": "R1",
+    "questionId": "Q1",
+    "answerId": "C1",
+    "answerValue": "C1"
+  },
+  {
+    "responseId": "R1",
+    "questionId": "Q2",
+    "answerId": "C1",
+    "answerValue": "C1"
+  }
+]

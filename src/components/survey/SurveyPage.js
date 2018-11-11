@@ -1,17 +1,10 @@
 import PageLayout from 'components/ui/PageLayout';
 import React from 'react';
+import SurveyContent from './SurveyContent';
 import SurveyHeader from './SurveyHeader';
-import SurveyProgress from './SurveyProgress';
-import SurveyQuestion from './SurveyQuestion';
 
-function SurveyPage() {
-  return (
-    <PageLayout
-      header={<SurveyHeader />}
-      main={<SurveyQuestion />}
-      footer={<SurveyProgress />}
-    />
-  );
+function SurveyPage({questions}) {
+  return <PageLayout header={<SurveyHeader />} content={<SurveyContent />} />;
 }
 
 export default SurveyPage;

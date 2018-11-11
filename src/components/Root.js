@@ -2,9 +2,9 @@ import Helmet from 'react-helmet';
 import {Provider} from 'react-redux';
 import React from 'react';
 import {setConfig} from 'react-hot-loader';
-import store from 'redux/store';
+import store from 'store';
 
-// react-hooks bug with react-hot-loader: https://github.com/gatsbyjs/gatsby/issues/9489
+// HACK: react-hooks bug with react-hot-loader: https://github.com/gatsbyjs/gatsby/issues/9489
 setConfig({pureSFC: true});
 
 export default function Root({element}) {

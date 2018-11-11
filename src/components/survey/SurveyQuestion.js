@@ -1,34 +1,17 @@
+import {Flex} from 'rebass';
 import React from 'react';
-import {Spring} from 'react-spring';
 import {connect} from 'react-redux';
+import {getSurveyQuestion} from 'store/selectors';
 
-function SurveyQuestion({question, onSubmitResponse}) {
+function SurveyQuestion({question, onNext}) {
   return (
-    <Spring from={{opacity: 0}} to={{opacity: 1}}>
-      {props => (
-        <form style={props}>
-          {JSON.stringify(question)}
-          <button>aadfdf</button>
-        </form>
-      )}
-    </Spring>
+    <Flex alignItems="center" justifyContent="center">
+      <pre>{JSON.stringify(question, null, 2)}</pre>
+      {onNext && <button onClick={onNext}>next</button>}
+    </Flex>
   );
 }
 
-export default connect(
-  state => ({
-    question: {
-      id: 'adf',
-      type: 'LIKERT',
-      markdown: 'adfadf',
-      choices: [
-        {id: 'a', text: 'adfdf', tooltip: 'adfadfad'},
-        {id: 'b', text: 'bbb', tooltip: 'adfadfad'},
-        {id: 'c', text: 'ccc', tooltip: 'adfadfad'},
-        {id: 'd', text: 'ddd', tooltip: 'adfadfad'},
-        {id: 'e', text: 'eee', tooltip: 'adfadfad'},
-      ],
-    },
-  }),
-  {onSubmitResponse: () => console.log('submitted response')},
-)(SurveyQuestion);
+export default connect((state, {questionId}) => ({
+  question: getSurveyQuestion(state, questionId),
+}))(SurveyQuestion);

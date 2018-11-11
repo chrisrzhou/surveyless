@@ -1,0 +1,193 @@
+{
+  "info": {
+    "title": "Surveyless Survey",
+    "subtitle": "Serverless and simple way to build, run and analyze survey results",
+    "description": "Long markdown description about survey",
+    "logoSrc": "https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png",
+    "mode": "OPEN",
+    "openDate": null,
+    "closeDate": null
+  },
+  "questions": {
+    "byId": {
+      "Q1": {
+        "id": "Q1",
+        "text": "Likert question with 5 choices",
+        "type": "LIKERT",
+        "choiceSetId": "CS1",
+        "optionalCommentsText": null
+      },
+      "Q2": {
+        "id": "Q2",
+        "text": "Likert question with 3 choices and comments",
+        "type": "LIKERT",
+        "choiceSetId": "CS2",
+        "optionalCommentsText": "Additional comments"
+      },
+      "Q3": {
+        "id": "Q3",
+        "text": "Single choice with comments",
+        "type": "SINGLE",
+        "choiceSetId": "CS3",
+        "optionalCommentsText": "Additional comments"
+      },
+      "Q4": {
+        "id": "Q4",
+        "text": "Multiple choice with comments",
+        "type": "MULTI",
+        "choiceSetId": "CS4",
+        "optionalCommentsText": "Additional comments"
+      },
+      "Q5": {
+        "id": "Q5",
+        "text": "Slider question",
+        "type": "SLIDER",
+        "choiceSetId": "CS5",
+        "optionalCommentsText": null
+      },
+      "Q6": {
+        "id": "Q6",
+        "text": "Ranking question",
+        "type": "RANKING",
+        "choiceSetId": "CS4",
+        "optionalCommentsText": null
+      },
+      "Q7": {
+        "id": "Q7",
+        "text": "Matrix question",
+        "type": "MATRIX",
+        "choiceSetId": "CS1",
+        "optionalCommentsText": null,
+        "subQuestions": [
+          {
+            "id": "SQ1",
+            "text": "Sub-question 1"
+          },
+          {
+            "id": "SQ2",
+            "text": "Sub-question 2"
+          }
+        ]
+      }
+    },
+    "allIds": ["Q1", "Q2", "Q3", "Q7", "Q6", "Q4", "Q5"]
+  },
+  "choiceSets": {
+    "CS1": {
+      "id": "CS1",
+      "text": "Likert 5",
+      "choices": [
+        {
+          "id": "C1",
+          "score": 1,
+          "text": "Strongly Disagree"
+        },
+        {
+          "id": "C2",
+          "score": 2,
+          "text": "Disagree"
+        },
+        {
+          "id": "C3",
+          "score": 3,
+          "text": "Neither Agree or Disagree"
+        },
+        {
+          "id": "C4",
+          "score": 4,
+          "text": "Agree"
+        },
+        {
+          "id": "C5",
+          "score": 5,
+          "text": "Strongly Agree"
+        }
+      ]
+    },
+    "CS2": {
+      "id": "CS2",
+      "text": "Likert 3",
+      "choices": [
+        {
+          "id": "C1",
+          "score": 1,
+          "text": "Disagree"
+        },
+        {
+          "id": "C2",
+          "score": 2,
+          "text": "Neither Agree or Disagree"
+        },
+        {
+          "id": "C3",
+          "score": 3,
+          "text": "Agree"
+        }
+      ]
+    },
+    "CS3": {
+      "id": "CS3",
+      "text": "Fruits",
+      "choices": [
+        {
+          "id": "C1",
+          "score": 0,
+          "text": "Apple"
+        },
+        {
+          "id": "C2",
+          "score": 0,
+          "text": "Orange"
+        },
+        {
+          "id": "C3",
+          "score": 0,
+          "text": "Banana"
+        }
+      ]
+    },
+    "CS4": {
+      "id": "CS4",
+      "text": "Weekdays",
+      "choices": [
+        {
+          "id": "C1",
+          "score": 0,
+          "text": "Monday"
+        },
+        {
+          "id": "C2",
+          "score": 0,
+          "text": "Tuesday"
+        },
+        {
+          "id": "C3",
+          "score": 0,
+          "text": "Wednesday"
+        },
+        {
+          "id": "C4",
+          "score": 0,
+          "text": "Thursday"
+        },
+        {
+          "id": "C5",
+          "score": 0,
+          "text": "Friday"
+        }
+      ]
+    },
+    "CS5": {
+      "id": "CS5",
+      "text": "Slider",
+      "choices": [],
+      "sliderConfig": {
+        "valueFormatter": "d",
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "labels": ["Danger Zone", "Neutral", "Great!"]
+      }
+    }
+  }
+}
