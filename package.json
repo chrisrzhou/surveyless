@@ -41,7 +41,7 @@
     "react-helmet": "^5.2.0",
     "react-redux": "^5.1.0",
     "react-spring": "^6.1.8",
-    "rebass": "^2.3.4",
+    "rebass": "^3.0.0-9",
     "redux": "^4.0.1",
     "styled-components": "^4.0.3"
   },

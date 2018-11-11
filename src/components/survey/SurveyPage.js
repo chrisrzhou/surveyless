@@ -3,7 +3,7 @@ import React from 'react';
 import SurveyContent from './SurveyContent';
 import SurveyHeader from './SurveyHeader';
 
-function SurveyPage({questions}) {
+function SurveyPage() {
   return <PageLayout header={<SurveyHeader />} content={<SurveyContent />} />;
 }
 

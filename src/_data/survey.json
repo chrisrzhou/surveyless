@@ -2,6 +2,7 @@
   "info": {
     "title": "Surveyless Survey",
     "subtitle": "Serverless and simple way to build, run and analyze survey results",
+    "info": "# surveyless (WORK wIN PROGRESS)\n\n    Serverless and simple way to build, run and analyze survey results\n\n    ## Overview\n\n    ### Ruthlessly simple\n\n    Skip the unneccessary paid features and complexity in various survey applications, and jump straight to building out a survey with basic features. No accounts, keys, signups or setup is required. Analyze results immediately once survey is closed.\n\n    ### Fast and Reliable\n\n    Surveys are served blazingly fast over Netlify CDNs. There are no server components, and therefore no downtime when collecting responses or visualizing results.\n\n    ### Atomic and automated workflow\n\n    The git repo is the single source of truth for creating surveys, storing responses and analyzing results. Automated builds are triggered when survey is created or closed. Rinse and repeat for future surveys.\n",
     "description": "Long markdown description about survey",
     "logoSrc": "https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png",
     "mode": "OPEN",
@@ -12,30 +13,34 @@
     "byId": {
       "Q1": {
         "id": "Q1",
-        "text": "Likert question with 5 choices",
+        "text": "Likert question with 5 choices (rating)",
         "type": "LIKERT",
         "choiceSetId": "CS1",
+        "choiceSetRenderType": "RATING",
         "optionalCommentsText": null
       },
       "Q2": {
         "id": "Q2",
-        "text": "Likert question with 3 choices and comments",
+        "text": "Likert question with 3 choices and comments (vertical checkbox)",
         "type": "LIKERT",
         "choiceSetId": "CS2",
+        "choiceSetRenderType": "VERTICAL_CHECKBOX",
         "optionalCommentsText": "Additional comments"
       },
       "Q3": {
         "id": "Q3",
-        "text": "Single choice with comments",
-        "type": "SINGLE",
+        "text": "Single choice with comments (horizontal checkbox)",
+        "type": "SINGLE_CHOICE",
         "choiceSetId": "CS3",
+        "choiceSetRenderType": "HORIZONTAL_CHECKBOX",
         "optionalCommentsText": "Additional comments"
       },
       "Q4": {
         "id": "Q4",
         "text": "Multiple choice with comments",
-        "type": "MULTI",
+        "type": "MULTI_CHOICE",
         "choiceSetId": "CS4",
+        "choiceSetRenderType": "VERTICAL_CHECKBOX",
         "optionalCommentsText": "Additional comments"
       },
       "Q5": {
@@ -43,6 +48,7 @@
         "text": "Slider question",
         "type": "SLIDER",
         "choiceSetId": "CS5",
+        "choiceSetRenderType": "SLIDER",
         "optionalCommentsText": null
       },
       "Q6": {
@@ -50,6 +56,7 @@
         "text": "Ranking question",
         "type": "RANKING",
         "choiceSetId": "CS4",
+        "choiceSetRenderType": "RANKING",
         "optionalCommentsText": null
       },
       "Q7": {
@@ -57,6 +64,7 @@
         "text": "Matrix question",
         "type": "MATRIX",
         "choiceSetId": "CS1",
+        "choiceSetRenderType": "HORIZONTAL_CHECKBOX",
         "optionalCommentsText": null,
         "subQuestions": [
           {
@@ -68,14 +76,23 @@
             "text": "Sub-question 2"
           }
         ]
+      },
+      "Q8": {
+        "id": "Q8",
+        "text": "Commment question",
+        "type": "COMMENT",
+        "choiceSetId": null,
+        "choiceSetRenderType": null,
+        "optionalCommentsText": null
       }
     },
-    "allIds": ["Q1", "Q2", "Q3", "Q7", "Q6", "Q4", "Q5"]
+    "allIds": ["Q1", "Q2", "Q3", "Q8", "Q7", "Q6", "Q4", "Q5"]
   },
   "choiceSets": {
     "CS1": {
       "id": "CS1",
       "text": "Likert 5",
+      "type": "default",
       "choices": [
         {
           "id": "C1",
@@ -107,6 +124,7 @@
     "CS2": {
       "id": "CS2",
       "text": "Likert 3",
+      "type": "default",
       "choices": [
         {
           "id": "C1",
@@ -128,6 +146,7 @@
     "CS3": {
       "id": "CS3",
       "text": "Fruits",
+      "type": "default",
       "choices": [
         {
           "id": "C1",
@@ -149,6 +168,7 @@
     "CS4": {
       "id": "CS4",
       "text": "Weekdays",
+      "type": "default",
       "choices": [
         {
           "id": "C1",
@@ -180,8 +200,9 @@
     "CS5": {
       "id": "CS5",
       "text": "Slider",
+      "type": "slider",
       "choices": [],
-      "sliderConfig": {
+      "config": {
         "valueFormatter": "d",
         "min": 0,
         "max": 100,

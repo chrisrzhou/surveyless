@@ -6,6 +6,13 @@ import {Flex} from 'rebass';
 import Progress from 'components/ui/Progress';
 import SurveyQuestion from './SurveyQuestion';
 import {connect} from 'react-redux';
+import {hotkeys} from 'enums';
+import useHotKeys from 'hooks/useHotKeys';
+
+const parallaxOverrideStyle = {
+  height: undefined,
+  position: undefined,
+};
 
 function SurveyContent({progressItems, responseMaxQuestionIndex}) {
   const ref = useRef();
@@ -14,6 +21,12 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
   );
   useEffect(() => {
     ref.current.scrollTo(currentQuestionIndex);
+    return useHotKeys({
+      [hotkeys.UP]: nextQuestion,
+      [hotkeys.RIGHT]: nextQuestion,
+      [hotkeys.DOWN]: nextQuestion,
+      [hotkeys.LEFT]: previousQuestion,
+    });
   });
 
   function setQuestionIndex(index) {
@@ -21,11 +34,25 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
     setCurrentQuestionIndex(index);
   }
 
+  function nextQuestion() {
+    if (currentQuestionIndex < itemCount - 1) {
+      const nextQuestionIndex = currentQuestionIndex + 1;
+      if (!progressItems[nextQuestionIndex].disabled) {
+        setQuestionIndex(nextQuestionIndex);
+      }
+    }
+  }
+  function previousQuestion() {
+    if (currentQuestionIndex > 0) {
+      setQuestionIndex(currentQuestionIndex - 1);
+    }
+  }
+
   const itemCount = progressItems.length;
   return (
     <>
       <Parallax
-        style={{width: '100%', height: '100%'}}
+        style={parallaxOverrideStyle}
         pages={itemCount}
         scrolling={false}
         horizontal
@@ -34,14 +61,9 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
           return (
             <ParallaxLayer key={id} offset={index} speed={0.2}>
               <SurveyQuestion
+                disableNextButton={currentQuestionIndex === itemCount - 1}
+                onNext={() => setQuestionIndex(index + 1)}
                 questionId={id}
-                onNext={
-                  index < itemCount - 1
-                    ? () => {
-                        setQuestionIndex(index + 1);
-                      }
-                    : undefined
-                }
               />
             </ParallaxLayer>
           );
@@ -49,9 +71,15 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
       </Parallax>
       <Flex
         alignItems="center"
-        css={{position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1}}
-        justifyContent="center"
-        p={2}>
+        css={{
+          height: '40px',
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1,
+        }}
+        justifyContent="center">
         <Progress
           currentIndex={currentQuestionIndex}
           items={progressItems}

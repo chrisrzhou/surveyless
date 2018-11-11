@@ -1,15 +1,30 @@
 import keymirror from 'keymirror';
 
-export const SURVEY_MODE = keymirror({
+export const surveyMode = keymirror({
   DRAFT: null,
   OPEN: null,
   CLOSED: null,
 });
 
-export const QUESTION_TYPES = keymirror({
+export const hotkeys = {
+  LEFT: 37,
+  UP: 38,
+  RIGHT: 39,
+  DOWWN: 40,
+};
+
+export const questionTypes = keymirror({
   LIKERT: null,
-  MULTIPLE_CHOICE: null,
+  SINGLE_CHOICE: null,
+  MULTI_CHOICE: null,
   COMMENT: null,
-  STAR_RATING: null,
   RANKING: null,
+  MATRIX: null,
 });
+
+export const routes = {
+  HOME: '/',
+  DRAFT: '/draft',
+  SURVEY: '/survey',
+  RESULTS: '/results',
+};

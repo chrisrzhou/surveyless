@@ -1,7 +1,6 @@
-import {Box, Button} from 'rebass';
+import {Button, Flex} from 'rebass';
 
 import React from 'react';
-import colors from 'styles/colors';
 
 function ProgressItem({
   disabled,
@@ -13,28 +12,39 @@ function ProgressItem({
 }) {
   let color;
   if (isCompleted) {
-    color = colors.active;
+    color = 'active';
   } else {
-    color = colors.gray;
+    color = 'inactive';
   }
   return (
-    <Button
+    <Flex
+      alignItems="center"
       bg={color}
       css={{
-        appearance: 'none',
-        backgroundClip: 'padding-box',
-        borderColor: isActive ? color : 'transparent',
+        height: '16px',
+        width: '16px',
         borderRadius: '9999px',
-        borderStyle: 'solid',
-        borderWidth: '6px',
-        cursor: disabled ? 'not-allowed' : undefined,
-        padding: '6px',
+        opacity: disabled ? 0.3 : 1,
       }}
-      disabled={disabled}
-      m={1}
-      onClick={onClick}
-      title={title}
-    />
+      justifyContent="center"
+      m={1}>
+      <Button
+        bg={isActive ? color : 'white'}
+        css={{
+          appearance: 'none',
+          borderRadius: '9999px',
+          cursor: disabled ? 'not-allowed' : undefined,
+          padding: '4px',
+          ':focus': {
+            opacity: 0.5,
+            outlineWidth: 0,
+          },
+        }}
+        disabled={disabled}
+        onClick={onClick}
+        title={title}
+      />
+    </Flex>
   );
 }
 

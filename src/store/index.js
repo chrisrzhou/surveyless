@@ -1,12 +1,11 @@
 import {combineReducers, createStore} from 'redux';
-import {validateResponses, validateSurvey} from 'validators';
 
 import draft from './draft';
 import responses from './responses';
-import responsesData from '_data/responses.json';
 import results from './results';
 import survey from './survey';
 import surveyData from '_data/survey.json';
+import validateSurvey from 'validators/validateSurvey';
 
 const reducer = combineReducers({
   draft,
@@ -16,7 +15,6 @@ const reducer = combineReducers({
 });
 
 const getPreloadedState = () => ({
-  responses: validateResponses(responsesData),
   survey: validateSurvey(surveyData),
 });
 
