@@ -21,14 +21,14 @@ export default {
     mono: 'Menlo, monospace',
   },
   fontSizes: [
+    '0.8em',
     '1.0em',
-    '1.1em',
     '1.2em',
-    '1.3em',
     '1.4em',
-    '1.5em',
-    '1.75em',
-    '2em',
+    '1.6em',
+    '1.8em',
+    '2.0em',
+    '2.5em',
   ],
   buttons: {
     primary: {

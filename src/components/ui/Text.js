@@ -15,7 +15,7 @@ function Text({heading, children, color, fontSize, isMono, ...otherProps}) {
       color={color}
       as={as}
       fontFamily={fontFamily}
-      fontSize={[finalFontSize - 1, finalFontSize]}
+      fontSize={[finalFontSize - 2, finalFontSize]}
       {...otherProps}>
       {children}
     </RebassText>

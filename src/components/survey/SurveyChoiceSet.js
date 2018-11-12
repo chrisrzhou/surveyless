@@ -41,7 +41,7 @@ function SurveyChoiceSet({
           return (
             <BaseChoiceSet
               answerValue={answerValue}
-              isMulti
+              isMulti={isMulti}
               choices={choices}
               config={config}
               onChange={answerValue => {

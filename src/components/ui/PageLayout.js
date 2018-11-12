@@ -22,7 +22,7 @@ function PageLayout({header, content}) {
         }}
       />
       {header}
-      <Flex css={{flexGrow: 1}}>{content}</Flex>
+      {content}
     </Flex>
   );
 }

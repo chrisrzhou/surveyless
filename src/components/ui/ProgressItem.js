@@ -30,7 +30,8 @@ function ProgressItem({
           width: '16px',
         }}
         justifyContent="center"
-        m={1}>
+        m={1}
+        onClick={() => !disabled && onClick()}>
         <Button
           bg={isActive ? color : 'white'}
           css={{
@@ -44,7 +45,6 @@ function ProgressItem({
             },
           }}
           disabled={disabled}
-          onClick={onClick}
         />
       </Flex>
     </Tooltip>

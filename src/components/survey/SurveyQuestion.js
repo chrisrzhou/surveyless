@@ -1,5 +1,3 @@
-import ContentContainer from 'components/ui/ContentContainer';
-import {Flex} from 'rebass';
 import React from 'react';
 import SurveyChoiceSet from './SurveyChoiceSet';
 import Text from 'components/ui/Text';
@@ -17,20 +15,18 @@ function SurveyQuestion({question}) {
     type,
   } = question;
   return (
-    <ContentContainer mb={100}>
-      <Flex flexDirection="column">
-        <Text heading={2}>{text}</Text>
-        {choiceSetId && (
-          <SurveyChoiceSet
-            id={choiceSetId}
-            config={choiceSetConfig}
-            questionId={id}
-            questionType={type}
-          />
-        )}
-        {optionalCommentsText && <TextInput value={optionalCommentsText} />}
-      </Flex>
-    </ContentContainer>
+    <>
+      <Text heading={2}>{text}</Text>
+      {choiceSetId && (
+        <SurveyChoiceSet
+          id={choiceSetId}
+          config={choiceSetConfig}
+          questionId={id}
+          questionType={type}
+        />
+      )}
+      {optionalCommentsText && <TextInput value={optionalCommentsText} />}
+    </>
   );
 }
 

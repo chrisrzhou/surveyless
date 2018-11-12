@@ -1,11 +1,12 @@
-import {Parallax, ParallaxLayer} from 'react-spring/dist/addons';
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import {Spring, config} from 'react-spring';
 import {
   getResponseMaxQuestionIndex,
   getSurveyProgressItems,
 } from 'store/selectors';
 
 import Button from 'components/ui/Button';
+import ContentContainer from 'components/ui/ContentContainer';
 import {Flex} from 'rebass';
 import Progress from 'components/ui/Progress';
 import SurveyQuestion from './SurveyQuestion';
@@ -14,12 +15,10 @@ import {keyCodes} from 'enums';
 import useHotKeys from 'hooks/useHotKeys';
 
 function SurveyContent({progressItems, responseMaxQuestionIndex}) {
-  const ref = useRef();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(
     responseMaxQuestionIndex,
   );
   useEffect(() => {
-    ref.current.scrollTo(currentQuestionIndex);
     return useHotKeys({
       [keyCodes.UP]: nextQuestion,
       [keyCodes.RIGHT]: nextQuestion,
@@ -29,7 +28,6 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
   });
 
   function setQuestionIndex(index) {
-    ref.current.scrollTo(index);
     setCurrentQuestionIndex(index);
   }
 
@@ -50,44 +48,26 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
   const totalQuestionsCount = progressItems.length;
   const completedQuestionsCount = progressItems.filter(item => item.isCompleted)
     .length;
+  const currentQuestionId = progressItems[currentQuestionIndex].id;
   return (
     <>
-      <Parallax
-        style={{
-          // override buggy styles
-          height: undefined,
-          position: undefined,
-        }}
-        pages={totalQuestionsCount}
-        scrolling={false}
-        horizontal
-        ref={ref}>
-        {progressItems.map(({id}, index) => {
-          return (
-            <ParallaxLayer
-              style={{
-                // this is to prevent tabscrolling to 'hidden' parallax layers
-                display: index !== currentQuestionIndex ? 'none' : undefined,
-              }}
-              key={id}
-              offset={index}
-              speed={0.2}>
-              <SurveyQuestion
-                hideNextButton={
-                  currentQuestionIndex === totalQuestionsCount - 1
-                }
-                onNext={() => setQuestionIndex(index + 1)}
-                questionId={id}
-              />
-            </ParallaxLayer>
-          );
-        })}
-      </Parallax>
+      <ContentContainer>
+        <Spring
+          config={config.slow}
+          key={currentQuestionId}
+          from={{opacity: 0, transform: 'scale(0)'}}
+          to={{opacity: 1, transform: 'scale(1)'}}>
+          {style => (
+            <div style={style}>
+              <SurveyQuestion questionId={currentQuestionId} />
+            </div>
+          )}
+        </Spring>
+      </ContentContainer>
       <Flex
         alignItems="center"
         bg="background"
         css={{
-          height: '80px',
           position: 'fixed',
           bottom: 0,
           left: 0,
@@ -96,8 +76,8 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
         }}
         flexDirection="column"
         justifyContent="center"
-        py={1}>
-        <Flex css={{height: '40px'}}>
+        py={2}>
+        <Flex css={{height: '40px'}} pb={2}>
           {currentQuestionIndex < completedQuestionsCount && (
             <Button label="Next" onClick={nextQuestion} />
           )}
@@ -105,13 +85,11 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
             <Button label="Submit" onClick={() => alert('submitted survey!')} />
           )}
         </Flex>
-        <Flex css={{height: '40px'}}>
-          <Progress
-            currentIndex={currentQuestionIndex}
-            items={progressItems}
-            onItemClick={setQuestionIndex}
-          />
-        </Flex>
+        <Progress
+          currentIndex={currentQuestionIndex}
+          items={progressItems}
+          onItemClick={setQuestionIndex}
+        />
       </Flex>
     </>
   );

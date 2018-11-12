@@ -2,22 +2,18 @@ import {Flex} from 'rebass';
 import {RESPONSIVE_CONTENT_WIDTH} from 'styles/constants';
 import React from 'react';
 
-function ContentContainer({
-  alignItems,
-  children,
-  justifyContent,
-  ...otherProps
-}) {
+function ContentContainer({children}) {
   return (
     <Flex
-      alignItems={alignItems}
-      css={{boxSizing: 'border-box', height: '100%'}}
+      css={{
+        boxSizing: 'border-box',
+        flexShrink: 0,
+      }}
       flexDirection="column"
-      justifyContent={justifyContent}
-      mx="auto"
+      m="auto"
       p={4}
-      width={RESPONSIVE_CONTENT_WIDTH}
-      {...otherProps}>
+      pb="100px"
+      width={RESPONSIVE_CONTENT_WIDTH}>
       {children}
     </Flex>
   );

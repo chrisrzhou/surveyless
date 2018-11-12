@@ -4,7 +4,7 @@ import React from 'react';
 import Row from './Row';
 import {choiceSetLayouts} from 'enums';
 
-function BaseChoiceSet({answerValue, choices, config, onChange}) {
+function BaseChoiceSet({answerValue, choices, config, isMulti, onChange}) {
   console.log(config);
   const content = choices.map((choice, index) => {
     const {id, text} = choice;
