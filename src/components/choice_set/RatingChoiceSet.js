@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
 import {Box} from 'rebass';
-import RatingStar from './RatingStar';
-import Row from './Row';
-import Tooltip from './Tooltip';
+import RatingStar from 'components/ui/RatingStar';
+import Row from 'components/ui/Row';
+import Tooltip from 'components/ui/Tooltip';
 
 function RatingChoiceSet({answerValue, choices, onChange}) {
   let answerIndex;

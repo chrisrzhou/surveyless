@@ -1,10 +1,12 @@
 import {choiceSetStyles, questionTypes} from 'enums';
 import {getResponseAnswerValue, getSurveyChoiceSet} from 'store/selectors';
 
-import BaseChoiceSet from 'components/ui/BaseChoiceSet';
-import RatingChoiceSet from 'components/ui/RatingChoiceSet';
+import ButtonChoiceSet from 'components/choice_set/ButtonChoiceSet';
+import CheckboxChoiceSet from 'components/choice_set/CheckboxChoiceSet';
+import RadioChoiceSet from 'components/choice_set/RadioChoiceSet';
+import RatingChoiceSet from 'components/choice_set/RatingChoiceSet';
 import React from 'react';
-import SliderChoiceSet from 'components/ui/SliderChoiceSet';
+import SliderChoiceSet from 'components/choice_set/SliderChoiceSet';
 import {actions} from 'store/responses';
 import {connect} from 'react-redux';
 
@@ -21,7 +23,6 @@ function SurveyChoiceSet({
   switch (questionType) {
     case questionTypes.LIKERT:
     case questionTypes.SINGLE_CHOICE:
-    case questionTypes.MULTI_CHOICE:
     case questionTypes.MATRIX:
       switch (config.style) {
         case choiceSetStyles.RATING:
@@ -34,12 +35,22 @@ function SurveyChoiceSet({
               }}
             />
           );
-        case choiceSetStyles.RADIO:
         case choiceSetStyles.BUTTON:
-        case choiceSetStyles.CHECKBOX:
+          return (
+            <ButtonChoiceSet
+              answerValue={answerValue}
+              isMulti={isMulti}
+              choices={choices}
+              config={config}
+              onChange={answerValue => {
+                onSetResponse({questionId, answerValue});
+              }}
+            />
+          );
+        case choiceSetStyles.RADIO:
         default:
           return (
-            <BaseChoiceSet
+            <RadioChoiceSet
               answerValue={answerValue}
               isMulti={isMulti}
               choices={choices}
@@ -50,6 +61,34 @@ function SurveyChoiceSet({
             />
           );
       }
+    case questionTypes.MULTI_CHOICE: {
+      switch (config.style) {
+        case choiceSetStyles.BUTTON:
+          return (
+            <ButtonChoiceSet
+              answerValue={answerValue}
+              isMulti={isMulti}
+              choices={choices}
+              config={config}
+              onChange={answerValue => {
+                onSetResponse({questionId, answerValue});
+              }}
+            />
+          );
+        case choiceSetStyles.CHECKBOX:
+        default:
+          return (
+            <CheckboxChoiceSet
+              answerValue={answerValue}
+              choices={choices}
+              config={config}
+              onChange={answerValue => {
+                onSetResponse({questionId, answerValue});
+              }}
+            />
+          );
+      }
+    }
     case questionTypes.SLIDER:
       return (
         <SliderChoiceSet

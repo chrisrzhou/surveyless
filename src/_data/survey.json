@@ -33,11 +33,11 @@
       },
       "Q3": {
         "id": "Q3",
-        "text": "Single choice with horizontal checkbox choices",
-        "type": "SINGLE_CHOICE",
+        "text": "Multiple choice with vertical checkbox",
+        "type": "MULTI_CHOICE",
         "choiceSetId": "CS3",
         "choiceSetConfig": {
-          "layout": "HORIZONTAL",
+          "layout": "VERTICAL",
           "style": "CHECKBOX"
         }
       },
@@ -125,7 +125,7 @@
         "choiceSetConfig": {}
       }
     },
-    "allIds": ["Q1", "Q2", "Q3", "Q7", "Q6", "Q4", "Q5", "Q8", "Q9"]
+    "allIds": ["Q1", "Q2", "Q3", "Q7", "Q4", "Q5", "Q9", "Q8", "Q6"]
   },
   "choiceSets": {
     "CS1": {

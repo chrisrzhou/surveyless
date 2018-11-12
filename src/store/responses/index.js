@@ -15,6 +15,10 @@ const initialState = {
     questionId: 'Q2',
     answerValue: 'C3',
   },
+  Q3: {
+    questionId: 'Q3',
+    answerValue: ['C2'],
+  },
 };
 
 export default createReducer(initialState, {
