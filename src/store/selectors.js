@@ -1,3 +1,7 @@
+export function getResponseIsQuestionCompleted(state, questionId) {
+  return questionId in state.responses;
+}
+
 export function getSurveyInfo(state) {
   return state.survey.info;
 }
@@ -6,14 +10,20 @@ export function getResponseMaxQuestionIndex(state) {
   return Object.keys(state.responses).length;
 }
 
-export function getSurveyQuestion(state, questionId) {
-  const {questions, choiceSets} = state.survey;
-  const question = questions.byId[questionId];
-  question.choiceSet = choiceSets[question.choiceSetId];
-  return question;
+export function getResponseAnswerValue(state, questionId) {
+  const response = state.responses[questionId];
+  return response ? response.answerValue : null;
 }
 
-export function getProgressItems(state) {
+export function getSurveyQuestion(state, questionId) {
+  return state.survey.questions.byId[questionId];
+}
+
+export function getSurveyChoiceSet(state, choiceSetId) {
+  return state.survey.choiceSets[choiceSetId];
+}
+
+export function getSurveyProgressItems(state) {
   const {responses, survey} = state;
   const {allIds, byId} = survey.questions;
   return allIds.map((questionId, index) => {
@@ -23,7 +33,7 @@ export function getProgressItems(state) {
       disabled: index > getResponseMaxQuestionIndex(state) && !isCompleted,
       id: questionId,
       isCompleted,
-      text: question.text,
+      tooltip: question.text,
     };
   });
 }

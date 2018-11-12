@@ -8,16 +8,12 @@ export const actions = {
 
 const initialState = {
   Q1: {
-    responseId: 'R1',
     questionId: 'Q1',
-    answerId: 'C1',
     answerValue: 'C1',
   },
   Q2: {
-    responseId: 'R1',
     questionId: 'Q2',
-    answerId: 'C1',
-    answerValue: 'C1',
+    answerValue: 'C3',
   },
 };
 

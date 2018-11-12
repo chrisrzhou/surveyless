@@ -1,5 +1,3 @@
-import 'styles/index.css';
-
 import {Box, Flex} from 'rebass';
 
 import {RESPONSIVE_APP_WIDTH} from 'styles/constants';

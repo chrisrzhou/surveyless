@@ -6,7 +6,7 @@ function Row({children, spacing}) {
   return (
     <Flex alignItems="center">
       {React.Children.map(children, (child, i) => {
-        return <Box ml={i > 0 ? spacing : undefined}>{child}</Box>;
+        return <Box pl={i > 0 ? spacing : undefined}>{child}</Box>;
       })}
     </Flex>
   );

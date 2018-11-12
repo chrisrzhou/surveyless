@@ -1,6 +1,7 @@
 import {Button, Flex} from 'rebass';
 
 import React from 'react';
+import Tooltip from './Tooltip';
 
 function ProgressItem({
   disabled,
@@ -8,7 +9,7 @@ function ProgressItem({
   isActive,
   isCompleted,
   onClick,
-  title,
+  tooltip,
 }) {
   let color;
   if (isCompleted) {
@@ -17,34 +18,36 @@ function ProgressItem({
     color = 'inactive';
   }
   return (
-    <Flex
-      alignItems="center"
-      bg={color}
-      css={{
-        height: '16px',
-        width: '16px',
-        borderRadius: '9999px',
-        opacity: disabled ? 0.3 : 1,
-      }}
-      justifyContent="center"
-      m={1}>
-      <Button
-        bg={isActive ? color : 'white'}
+    <Tooltip position="top" tooltip={tooltip}>
+      <Flex
+        alignItems="center"
+        bg={color}
         css={{
-          appearance: 'none',
           borderRadius: '9999px',
-          cursor: disabled ? 'not-allowed' : undefined,
-          padding: '4px',
-          ':focus': {
-            opacity: 0.5,
-            outlineWidth: 0,
-          },
+          cursor: disabled ? 'not-allowed' : 'pointer',
+          height: '16px',
+          opacity: disabled ? 0.3 : 1,
+          width: '16px',
         }}
-        disabled={disabled}
-        onClick={onClick}
-        title={title}
-      />
-    </Flex>
+        justifyContent="center"
+        m={1}>
+        <Button
+          bg={isActive ? color : 'white'}
+          css={{
+            appearance: 'none',
+            borderRadius: '9999px',
+            cursor: 'inherit',
+            padding: '4px',
+            ':focus': {
+              opacity: 0.5,
+              outlineWidth: 0,
+            },
+          }}
+          disabled={disabled}
+          onClick={onClick}
+        />
+      </Flex>
+    </Tooltip>
   );
 }
 

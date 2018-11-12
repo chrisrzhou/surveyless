@@ -13,34 +13,38 @@
     "byId": {
       "Q1": {
         "id": "Q1",
-        "text": "Likert question with 5 choices (rating)",
+        "text": "Likert question with 5 choices with vertical radio choices",
         "type": "LIKERT",
         "choiceSetId": "CS1",
-        "choiceSetRenderType": "RATING",
+        "choiceSetLayout": "VERTICAL",
+        "choiceSetStyle": "RADIO",
         "optionalCommentsText": null
       },
       "Q2": {
         "id": "Q2",
-        "text": "Likert question with 3 choices and comments (vertical checkbox)",
+        "text": "Likert question with comments and rating choices",
         "type": "LIKERT",
-        "choiceSetId": "CS2",
-        "choiceSetRenderType": "VERTICAL_CHECKBOX",
+        "choiceSetId": "CS1",
+        "choiceSetLayout": null,
+        "choiceSetStyle": "RATING",
         "optionalCommentsText": "Additional comments"
       },
       "Q3": {
         "id": "Q3",
-        "text": "Single choice with comments (horizontal checkbox)",
+        "text": "Single choice with comments and horizontal checkbox choices",
         "type": "SINGLE_CHOICE",
         "choiceSetId": "CS3",
-        "choiceSetRenderType": "HORIZONTAL_CHECKBOX",
+        "choiceSetLayout": "HORIZONTAL",
+        "choiceSetStyle": "CHECKBOX",
         "optionalCommentsText": "Additional comments"
       },
       "Q4": {
         "id": "Q4",
-        "text": "Multiple choice with comments",
+        "text": "Multiple choice with comments and wrapped button choices",
         "type": "MULTI_CHOICE",
         "choiceSetId": "CS4",
-        "choiceSetRenderType": "VERTICAL_CHECKBOX",
+        "choiceSetLayout": "WRAP",
+        "choiceSetStyle": "BUTTON",
         "optionalCommentsText": "Additional comments"
       },
       "Q5": {
@@ -48,7 +52,8 @@
         "text": "Slider question",
         "type": "SLIDER",
         "choiceSetId": "CS5",
-        "choiceSetRenderType": "SLIDER",
+        "choiceSetLayout": null,
+        "choiceSetStyle": null,
         "optionalCommentsText": null
       },
       "Q6": {
@@ -56,15 +61,17 @@
         "text": "Ranking question",
         "type": "RANKING",
         "choiceSetId": "CS4",
-        "choiceSetRenderType": "RANKING",
+        "choiceSetLayout": null,
+        "choiceSetStyle": null,
         "optionalCommentsText": null
       },
       "Q7": {
         "id": "Q7",
-        "text": "Matrix question",
+        "text": "Matrix question with horizontal radio choices",
         "type": "MATRIX",
         "choiceSetId": "CS1",
-        "choiceSetRenderType": "HORIZONTAL_CHECKBOX",
+        "choiceSetLayout": "HORIZONTAL",
+        "choiceSetStyle": "RADIO",
         "optionalCommentsText": null,
         "subQuestions": [
           {
@@ -74,6 +81,33 @@
           {
             "id": "SQ2",
             "text": "Sub-question 2"
+          },
+          {
+            "id": "SQ3",
+            "text": "Sub-question 3"
+          }
+        ]
+      },
+      "Q9": {
+        "id": "Q9",
+        "text": "Matrix question with rating choices",
+        "type": "MATRIX",
+        "choiceSetId": "CS1",
+        "choiceSetLayout": "RATING",
+        "choiceSetStyle": "RATING",
+        "optionalCommentsText": null,
+        "subQuestions": [
+          {
+            "id": "SQ1",
+            "text": "Sub-question 1"
+          },
+          {
+            "id": "SQ2",
+            "text": "Sub-question 2"
+          },
+          {
+            "id": "SQ3",
+            "text": "Sub-question 3"
           }
         ]
       },
@@ -82,41 +116,35 @@
         "text": "Commment question",
         "type": "COMMENT",
         "choiceSetId": null,
-        "choiceSetRenderType": null,
+        "choiceSetLayout": null,
         "optionalCommentsText": null
       }
     },
-    "allIds": ["Q1", "Q2", "Q3", "Q8", "Q7", "Q6", "Q4", "Q5"]
+    "allIds": ["Q1", "Q2", "Q3", "Q8", "Q7", "Q6", "Q4", "Q5", "Q9"]
   },
   "choiceSets": {
     "CS1": {
       "id": "CS1",
       "text": "Likert 5",
-      "type": "default",
       "choices": [
         {
           "id": "C1",
-          "score": 1,
           "text": "Strongly Disagree"
         },
         {
           "id": "C2",
-          "score": 2,
           "text": "Disagree"
         },
         {
           "id": "C3",
-          "score": 3,
           "text": "Neither Agree or Disagree"
         },
         {
           "id": "C4",
-          "score": 4,
           "text": "Agree"
         },
         {
           "id": "C5",
-          "score": 5,
           "text": "Strongly Agree"
         }
       ]
@@ -124,21 +152,17 @@
     "CS2": {
       "id": "CS2",
       "text": "Likert 3",
-      "type": "default",
       "choices": [
         {
           "id": "C1",
-          "score": 1,
           "text": "Disagree"
         },
         {
           "id": "C2",
-          "score": 2,
           "text": "Neither Agree or Disagree"
         },
         {
           "id": "C3",
-          "score": 3,
           "text": "Agree"
         }
       ]
@@ -146,21 +170,17 @@
     "CS3": {
       "id": "CS3",
       "text": "Fruits",
-      "type": "default",
       "choices": [
         {
           "id": "C1",
-          "score": 0,
           "text": "Apple"
         },
         {
           "id": "C2",
-          "score": 0,
           "text": "Orange"
         },
         {
           "id": "C3",
-          "score": 0,
           "text": "Banana"
         }
       ]
@@ -168,31 +188,25 @@
     "CS4": {
       "id": "CS4",
       "text": "Weekdays",
-      "type": "default",
       "choices": [
         {
           "id": "C1",
-          "score": 0,
           "text": "Monday"
         },
         {
           "id": "C2",
-          "score": 0,
           "text": "Tuesday"
         },
         {
           "id": "C3",
-          "score": 0,
           "text": "Wednesday"
         },
         {
           "id": "C4",
-          "score": 0,
           "text": "Thursday"
         },
         {
           "id": "C5",
-          "score": 0,
           "text": "Friday"
         }
       ]
@@ -200,7 +214,6 @@
     "CS5": {
       "id": "CS5",
       "text": "Slider",
-      "type": "slider",
       "choices": [],
       "config": {
         "valueFormatter": "d",

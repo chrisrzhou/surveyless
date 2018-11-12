@@ -1,3 +1,5 @@
+import 'styles/index.css';
+
 import Helmet from 'react-helmet';
 import {Provider} from 'react-redux';
 import React from 'react';

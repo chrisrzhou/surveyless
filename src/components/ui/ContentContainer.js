@@ -11,9 +11,11 @@ function ContentContainer({
   return (
     <Flex
       alignItems={alignItems}
+      css={{boxSizing: 'border-box', height: '100%'}}
       flexDirection="column"
       justifyContent={justifyContent}
       mx="auto"
+      p={4}
       width={RESPONSIVE_CONTENT_WIDTH}
       {...otherProps}>
       {children}

@@ -1,21 +1,21 @@
 import React from 'react';
 import {Text as RebassText} from 'rebass';
 
-function Text({heading, children, color, isMono, ...otherProps}) {
+function Text({heading, children, color, fontSize, isMono, ...otherProps}) {
   const as = heading ? `h${heading}` : undefined;
-  let fontFamily;
+  let fontFamily = 'regular';
   if (isMono) {
     fontFamily = 'mono';
   } else if (heading) {
     fontFamily = 'heading';
   }
-  const fontSize = heading ? 7 - heading : 1;
+  const finalFontSize = fontSize || heading ? 7 - heading : 1;
   return (
     <RebassText
       color={color}
       as={as}
       fontFamily={fontFamily}
-      fontSize={[fontSize - 1, fontSize]}
+      fontSize={[finalFontSize - 1, finalFontSize]}
       {...otherProps}>
       {children}
     </RebassText>

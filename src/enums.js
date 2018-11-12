@@ -1,16 +1,23 @@
 import keymirror from 'keymirror';
 
-export const surveyMode = keymirror({
+export const routes = {
+  HOME: '/',
+  DRAFT: '/draft',
+  SURVEY: '/survey',
+  RESULTS: '/results',
+};
+
+export const surveyModes = keymirror({
   DRAFT: null,
   OPEN: null,
   CLOSED: null,
 });
 
-export const hotkeys = {
+export const keyCodes = {
   LEFT: 37,
   UP: 38,
   RIGHT: 39,
-  DOWWN: 40,
+  DOWN: 40,
 };
 
 export const questionTypes = keymirror({
@@ -18,13 +25,20 @@ export const questionTypes = keymirror({
   SINGLE_CHOICE: null,
   MULTI_CHOICE: null,
   COMMENT: null,
+  SLIDER: null,
   RANKING: null,
   MATRIX: null,
 });
 
-export const routes = {
-  HOME: '/',
-  DRAFT: '/draft',
-  SURVEY: '/survey',
-  RESULTS: '/results',
-};
+export const choiceSetStyles = keymirror({
+  BUTTON: null,
+  CHECKBOX: null,
+  RADIO: null,
+  RATING: null,
+});
+
+export const choiceSetLayouts = keymirror({
+  HORIZONTAL: null,
+  VERTICAL: null,
+  WRAP: null,
+});

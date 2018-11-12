@@ -1,12 +1,15 @@
 import {Parallax, ParallaxLayer} from 'react-spring/dist/addons';
 import React, {useEffect, useRef, useState} from 'react';
-import {getProgressItems, getResponseMaxQuestionIndex} from 'store/selectors';
+import {
+  getResponseMaxQuestionIndex,
+  getSurveyProgressItems,
+} from 'store/selectors';
 
 import {Flex} from 'rebass';
 import Progress from 'components/ui/Progress';
 import SurveyQuestion from './SurveyQuestion';
 import {connect} from 'react-redux';
-import {hotkeys} from 'enums';
+import {keyCodes} from 'enums';
 import useHotKeys from 'hooks/useHotKeys';
 
 const parallaxOverrideStyle = {
@@ -22,10 +25,10 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
   useEffect(() => {
     ref.current.scrollTo(currentQuestionIndex);
     return useHotKeys({
-      [hotkeys.UP]: nextQuestion,
-      [hotkeys.RIGHT]: nextQuestion,
-      [hotkeys.DOWN]: nextQuestion,
-      [hotkeys.LEFT]: previousQuestion,
+      [keyCodes.UP]: nextQuestion,
+      [keyCodes.RIGHT]: nextQuestion,
+      [keyCodes.DOWN]: previousQuestion,
+      [keyCodes.LEFT]: previousQuestion,
     });
   });
 
@@ -61,7 +64,7 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
           return (
             <ParallaxLayer key={id} offset={index} speed={0.2}>
               <SurveyQuestion
-                disableNextButton={currentQuestionIndex === itemCount - 1}
+                hideNextButton={currentQuestionIndex === itemCount - 1}
                 onNext={() => setQuestionIndex(index + 1)}
                 questionId={id}
               />
@@ -91,6 +94,6 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
 }
 
 export default connect(state => ({
-  progressItems: getProgressItems(state),
+  progressItems: getSurveyProgressItems(state),
   responseMaxQuestionIndex: getResponseMaxQuestionIndex(state),
 }))(SurveyContent);

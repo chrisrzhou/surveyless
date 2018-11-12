@@ -5,7 +5,7 @@ import Row from './Row';
 function Progress({currentIndex, items, onItemClick}) {
   return (
     <Row>
-      {items.map(({disabled, id, isCompleted, title}, index) => {
+      {items.map(({disabled, id, isCompleted, tooltip}, index) => {
         return (
           <ProgressItem
             disabled={disabled}
@@ -14,7 +14,7 @@ function Progress({currentIndex, items, onItemClick}) {
             isCompleted={isCompleted}
             key={id}
             onClick={() => onItemClick(index)}
-            title={title}
+            tooltip={tooltip}
           />
         );
       })}
