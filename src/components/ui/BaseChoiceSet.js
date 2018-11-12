@@ -4,12 +4,13 @@ import React from 'react';
 import Row from './Row';
 import {choiceSetLayouts} from 'enums';
 
-function BaseChoiceSet({answerValue, choices, choiceSetLayout, onChange}) {
+function BaseChoiceSet({answerValue, choices, config, onChange}) {
+  console.log(config);
   const content = choices.map((choice, index) => {
     const {id, text} = choice;
     return <Box onClick={() => onChange(id)}>{text}</Box>;
   });
-  switch (choiceSetLayout) {
+  switch (config.layout) {
     case choiceSetLayouts.VERTICAL:
       return <Column>{content}</Column>;
     case choiceSetLayouts.WRAP:

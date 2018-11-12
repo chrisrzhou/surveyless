@@ -5,17 +5,13 @@ import {
   getSurveyProgressItems,
 } from 'store/selectors';
 
+import Button from 'components/ui/Button';
 import {Flex} from 'rebass';
 import Progress from 'components/ui/Progress';
 import SurveyQuestion from './SurveyQuestion';
 import {connect} from 'react-redux';
 import {keyCodes} from 'enums';
 import useHotKeys from 'hooks/useHotKeys';
-
-const parallaxOverrideStyle = {
-  height: undefined,
-  position: undefined,
-};
 
 function SurveyContent({progressItems, responseMaxQuestionIndex}) {
   const ref = useRef();
@@ -38,7 +34,7 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
   }
 
   function nextQuestion() {
-    if (currentQuestionIndex < itemCount - 1) {
+    if (currentQuestionIndex < totalQuestionsCount - 1) {
       const nextQuestionIndex = currentQuestionIndex + 1;
       if (!progressItems[nextQuestionIndex].disabled) {
         setQuestionIndex(nextQuestionIndex);
@@ -51,20 +47,35 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
     }
   }
 
-  const itemCount = progressItems.length;
+  const totalQuestionsCount = progressItems.length;
+  const completedQuestionsCount = progressItems.filter(item => item.isCompleted)
+    .length;
   return (
     <>
       <Parallax
-        style={parallaxOverrideStyle}
-        pages={itemCount}
+        style={{
+          // override buggy styles
+          height: undefined,
+          position: undefined,
+        }}
+        pages={totalQuestionsCount}
         scrolling={false}
         horizontal
         ref={ref}>
         {progressItems.map(({id}, index) => {
           return (
-            <ParallaxLayer key={id} offset={index} speed={0.2}>
+            <ParallaxLayer
+              style={{
+                // this is to prevent tabscrolling to 'hidden' parallax layers
+                display: index !== currentQuestionIndex ? 'none' : undefined,
+              }}
+              key={id}
+              offset={index}
+              speed={0.2}>
               <SurveyQuestion
-                hideNextButton={currentQuestionIndex === itemCount - 1}
+                hideNextButton={
+                  currentQuestionIndex === totalQuestionsCount - 1
+                }
                 onNext={() => setQuestionIndex(index + 1)}
                 questionId={id}
               />
@@ -74,20 +85,33 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
       </Parallax>
       <Flex
         alignItems="center"
+        bg="background"
         css={{
-          height: '40px',
+          height: '80px',
           position: 'fixed',
           bottom: 0,
           left: 0,
           right: 0,
           zIndex: 1,
         }}
-        justifyContent="center">
-        <Progress
-          currentIndex={currentQuestionIndex}
-          items={progressItems}
-          onItemClick={setQuestionIndex}
-        />
+        flexDirection="column"
+        justifyContent="center"
+        py={1}>
+        <Flex css={{height: '40px'}}>
+          {currentQuestionIndex < completedQuestionsCount && (
+            <Button label="Next" onClick={nextQuestion} />
+          )}
+          {completedQuestionsCount === totalQuestionsCount && (
+            <Button label="Submit" onClick={() => alert('submitted survey!')} />
+          )}
+        </Flex>
+        <Flex css={{height: '40px'}}>
+          <Progress
+            currentIndex={currentQuestionIndex}
+            items={progressItems}
+            onItemClick={setQuestionIndex}
+          />
+        </Flex>
       </Flex>
     </>
   );

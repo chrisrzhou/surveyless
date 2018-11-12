@@ -5,14 +5,7 @@ import {getSurveyInfo} from 'store/selectors';
 
 function SurveyHeader({surveyInfo}) {
   const {logoSrc, subtitle, title} = surveyInfo;
-  return (
-    <Header
-      logoSrc={logoSrc}
-      rightContent={<div>submit survey button</div>}
-      subtitle={subtitle}
-      title={title}
-    />
-  );
+  return <Header logoSrc={logoSrc} subtitle={subtitle} title={title} />;
 }
 
 export default connect(state => ({

@@ -11,8 +11,7 @@ import {connect} from 'react-redux';
 function SurveyChoiceSet({
   answerValue,
   choiceSet,
-  choiceSetLayout,
-  choiceSetStyle,
+  config,
   onSetResponse,
   questionId,
   questionType,
@@ -24,7 +23,7 @@ function SurveyChoiceSet({
     case questionTypes.SINGLE_CHOICE:
     case questionTypes.MULTI_CHOICE:
     case questionTypes.MATRIX:
-      switch (choiceSetStyle) {
+      switch (config.style) {
         case choiceSetStyles.RATING:
           return (
             <RatingChoiceSet
@@ -44,8 +43,7 @@ function SurveyChoiceSet({
               answerValue={answerValue}
               isMulti
               choices={choices}
-              choiceSetLayout={choiceSetLayout}
-              choiceSetStyle={choiceSetStyle}
+              config={config}
               onChange={answerValue => {
                 onSetResponse({questionId, answerValue});
               }}
@@ -69,8 +67,8 @@ function SurveyChoiceSet({
 }
 
 export default connect(
-  (state, {choiceSetId, questionId}) => ({
-    choiceSet: getSurveyChoiceSet(state, choiceSetId),
+  (state, {id, questionId}) => ({
+    choiceSet: getSurveyChoiceSet(state, id),
     answerValue: getResponseAnswerValue(state, questionId),
   }),
   {

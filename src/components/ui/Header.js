@@ -7,7 +7,7 @@ import Text from './Text';
 
 function Header({logoSrc, rightContent, subtitle, title}) {
   return (
-    <Flex flexDirection="column" width="100%">
+    <Flex css={{flexShrink: 0}} flexDirection="column" px={4} py={2}>
       <Flex alignItems="center" justifyContent="space-between">
         <Link style={{textDecoration: 'none'}} to="/">
           <Row spacing={2}>

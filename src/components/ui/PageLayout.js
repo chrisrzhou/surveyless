@@ -21,7 +21,7 @@ function PageLayout({header, content}) {
           zIndex: -1,
         }}
       />
-      <Box p={2}>{header}</Box>
+      {header}
       <Flex css={{flexGrow: 1}}>{content}</Flex>
     </Flex>
   );
