@@ -5,6 +5,7 @@ function Button({disabled, label, onClick, variant, ...otherProps}) {
   return (
     <RebassButton
       css={{
+        cursor: 'pointer',
         ':disabled': {
           cursor: 'not-allowed',
           opacity: 0.3,

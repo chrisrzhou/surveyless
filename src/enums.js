@@ -14,6 +14,8 @@ export const surveyModes = keymirror({
 });
 
 export const keyCodes = {
+  ENTER: 13,
+  SPACE: 32,
   LEFT: 37,
   UP: 38,
   RIGHT: 39,
@@ -40,5 +42,4 @@ export const choiceSetStyles = keymirror({
 export const choiceSetLayouts = keymirror({
   HORIZONTAL: null,
   VERTICAL: null,
-  WRAP: null,
 });

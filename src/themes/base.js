@@ -1,42 +1,30 @@
 // https://rebassjs.org/theming
 
-const active = '#519EF7';
-const black = '#000000';
-const white = '#FFFFFF';
+const brand = '#519EF7';
+const background = '#FFFFFF';
 
 export default {
-  space: [0, 4, 8, 16, 32, 64, 128, 256],
+  space: [2, 4, 8, 16, 32, 64, 128, 256],
   colors: {
-    active,
+    active: brand,
     inactive: '#A2A9AF',
     primaryText: '#4F565D',
     secondaryText: '#a0afba',
-    background: white,
-    tooltipText: white,
-    tooltipBackground: black,
+    background,
   },
   fonts: {
     heading: 'system-ui, sans-serif',
     regular: 'system-ui, sans-serif',
     mono: 'Menlo, monospace',
   },
-  fontSizes: [
-    '0.8em',
-    '1.0em',
-    '1.2em',
-    '1.4em',
-    '1.6em',
-    '1.8em',
-    '2.0em',
-    '2.5em',
-  ],
+  fontSizes: [10, 12, 14, 16, 18, 20, 22, 24],
   buttons: {
     primary: {
-      color: white,
-      backgroundColor: active,
+      color: background,
+      backgroundColor: brand,
     },
     outline: {
-      color: active,
+      color: brand,
       backgroundColor: 'transparent',
       boxShadow: 'inset 0 0 0 2px',
     },

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import {Box} from 'rebass';
 import RatingStar from 'components/ui/RatingStar';
-import Row from 'components/ui/Row';
+import List from 'components/ui/List';
 import Tooltip from 'components/ui/Tooltip';
 
 function RatingChoiceSet({answerValue, choices, onChange}) {
@@ -14,7 +14,7 @@ function RatingChoiceSet({answerValue, choices, onChange}) {
   });
   const [activeIndex, setActiveIndex] = useState(-1);
   return (
-    <Row>
+    <List>
       {choices.map((choice, index) => {
         const {id, text} = choice;
         return (
@@ -36,7 +36,7 @@ function RatingChoiceSet({answerValue, choices, onChange}) {
           </Tooltip>
         );
       })}
-    </Row>
+    </List>
   );
 }
 

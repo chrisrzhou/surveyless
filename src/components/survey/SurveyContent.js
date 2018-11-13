@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Spring, config} from 'react-spring';
+import {Spring, animated, config} from 'react-spring';
 import {
   getResponseMaxQuestionIndex,
   getSurveyProgressItems,
@@ -53,14 +53,15 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
     <>
       <ContentContainer>
         <Spring
+          native
           config={config.slow}
           key={currentQuestionId}
-          from={{opacity: 0, transform: 'scale(0)'}}
-          to={{opacity: 1, transform: 'scale(1)'}}>
+          from={{opacity: 0, transform: 'translate3d(0, -100%, 0)'}}
+          to={{opacity: 1, transform: 'translate3d(0, 0, 0)'}}>
           {style => (
-            <div style={style}>
+            <animated.div style={style}>
               <SurveyQuestion questionId={currentQuestionId} />
-            </div>
+            </animated.div>
           )}
         </Spring>
       </ContentContainer>

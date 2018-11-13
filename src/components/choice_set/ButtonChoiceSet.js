@@ -1,4 +1,4 @@
-import CheckboxInput from 'components/ui/CheckboxInput';
+import Button from 'components/ui/Button';
 import ChoiceSetLayout from './ChoiceSetLayout';
 import React from 'react';
 
@@ -8,18 +8,25 @@ function ButtonChoiceSet({answerValue, choices, config, isMulti, onChange}) {
     <ChoiceSetLayout layout={config.layout}>
       {choices.map((choice, index) => {
         const {id, text} = choice;
+        const isActive = isMulti
+          ? answerValues.includes(id)
+          : answerValue === id;
         return (
-          <CheckboxInput
+          <Button
             key={id}
-            checked={answerValues.includes(id)}
-            labelValue={text}
-            onChange={checked => {
-              if (checked && !answerValues.includes(id)) {
-                onChange([...answerValues, id]);
+            label={text}
+            onClick={() => {
+              if (isMulti) {
+                if (answerValues.includes(id)) {
+                  onChange(answerValues.filter(a => a !== id));
+                } else {
+                  onChange([...answerValues, id]);
+                }
               } else {
-                onChange(answerValues.filter(a => a !== id));
+                onChange(id);
               }
             }}
+            variant={isActive ? 'primary' : 'outline'}
           />
         );
       })}

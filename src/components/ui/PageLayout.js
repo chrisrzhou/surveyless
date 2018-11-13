@@ -6,7 +6,7 @@ import React from 'react';
 function PageLayout({header, content}) {
   return (
     <Flex
-      css={{height: '100vh'}}
+      css={{height: '100vh', overflowX: 'hidden'}}
       flexDirection="column"
       mx="auto"
       width={RESPONSIVE_APP_WIDTH}>

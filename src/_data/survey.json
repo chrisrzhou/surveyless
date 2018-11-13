@@ -43,26 +43,25 @@
       },
       "Q4": {
         "id": "Q4",
-        "text": "Multiple choice with comments and wrapped button choices",
+        "text": "Multiple choice with comments and horizontal button choices",
         "type": "MULTI_CHOICE",
         "choiceSetId": "CS4",
         "choiceSetConfig": {
-          "layout": "WRAP",
+          "layout": "HORIZONTAL",
           "style": "BUTTON"
         },
         "optionalCommentsText": "Additional comments"
       },
       "Q5": {
         "id": "Q5",
-        "text": "Slider question",
-        "type": "SLIDER",
+        "text": "Single choice with vertical button choices",
+        "type": "SINGLE_CHOICE",
+        "choiceSetId": "CS4",
         "choiceSetConfig": {
-          "valueFormatter": "d",
-          "min": 0,
-          "max": 100,
-          "step": 10,
-          "labels": ["Danger Zone", "Neutral", "Great!"]
-        }
+          "layout": "VERTICAL",
+          "style": "BUTTON"
+        },
+        "optionalCommentsText": "Additional comments"
       },
       "Q6": {
         "id": "Q6",
@@ -123,9 +122,21 @@
         "text": "Commment question",
         "type": "COMMENT",
         "choiceSetConfig": {}
+      },
+      "Q10": {
+        "id": "Q5",
+        "text": "Slider question",
+        "type": "SLIDER",
+        "choiceSetConfig": {
+          "valueFormatter": "d",
+          "min": 0,
+          "max": 100,
+          "step": 10,
+          "labels": ["Danger Zone", "Neutral", "Great!"]
+        }
       }
     },
-    "allIds": ["Q1", "Q2", "Q3", "Q7", "Q4", "Q5", "Q9", "Q8", "Q6"]
+    "allIds": ["Q1", "Q2", "Q3", "Q7", "Q4", "Q5", "Q9", "Q10", "Q8", "Q6"]
   },
   "choiceSets": {
     "CS1": {

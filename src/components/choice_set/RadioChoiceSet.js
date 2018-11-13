@@ -1,24 +1,19 @@
-import CheckboxInput from 'components/ui/CheckboxInput';
 import ChoiceSetLayout from './ChoiceSetLayout';
+import RadioInput from 'components/ui/RadioInput';
 import React from 'react';
 
-function RadioChoiceSet({answerValue, choices, config, isMulti, onChange}) {
-  const answerValues = answerValue === null ? [] : answerValue;
+function RadioChoiceSet({answerValue, choices, config, onChange}) {
   return (
     <ChoiceSetLayout layout={config.layout}>
       {choices.map((choice, index) => {
         const {id, text} = choice;
         return (
-          <CheckboxInput
+          <RadioInput
             key={id}
-            checked={answerValues.includes(id)}
+            checked={answerValue === id}
             labelValue={text}
-            onChange={checked => {
-              if (checked && !answerValues.includes(id)) {
-                onChange([...answerValues, id]);
-              } else {
-                onChange(answerValues.filter(a => a !== id));
-              }
+            onChange={() => {
+              onChange(id);
             }}
           />
         );

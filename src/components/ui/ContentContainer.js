@@ -11,8 +11,8 @@ function ContentContainer({children}) {
       }}
       flexDirection="column"
       m="auto"
-      p={4}
-      pb="100px"
+      p={3}
+      pb="200px"
       width={RESPONSIVE_CONTENT_WIDTH}>
       {children}
     </Flex>

@@ -2,7 +2,7 @@ import CheckboxInput from 'components/ui/CheckboxInput';
 import ChoiceSetLayout from './ChoiceSetLayout';
 import React from 'react';
 
-function CheckboxChoiceSet({answerValue, choices, config, isMulti, onChange}) {
+function CheckboxChoiceSet({answerValue, choices, config, onChange}) {
   const answerValues = answerValue === null ? [] : answerValue;
   return (
     <ChoiceSetLayout layout={config.layout}>

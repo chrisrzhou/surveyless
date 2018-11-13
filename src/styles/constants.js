@@ -1,2 +1,2 @@
-export const RESPONSIVE_CONTENT_WIDTH = ['100%', 800];
-export const RESPONSIVE_APP_WIDTH = ['100vw', 1200];
+export const RESPONSIVE_CONTENT_WIDTH = ['100%', 400, 760, 800];
+export const RESPONSIVE_APP_WIDTH = ['100vw', 400, 760, 1200];

@@ -1,7 +1,7 @@
 import Header from 'components/ui/Header';
 import {Link} from 'gatsby';
 import React from 'react';
-import Row from 'components/ui/Row';
+import List from 'components/ui/List';
 import {connect} from 'react-redux';
 import {getSurveyInfo} from 'store/selectors';
 import {routes} from 'enums';
@@ -12,10 +12,10 @@ function LandingHeader({surveyInfo}) {
     <Header
       logoSrc={logoSrc}
       rightContent={
-        <Row>
+        <List>
           <Link to={routes.DRAFT}>Draft</Link>
           <Link to={routes.RESULTS}>Results</Link>
-        </Row>
+        </List>
       }
       subtitle={subtitle}
       title={title}

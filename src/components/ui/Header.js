@@ -1,16 +1,20 @@
 import {Box, Flex} from 'rebass';
 
 import {Link} from 'gatsby';
+import List from './List';
 import React from 'react';
-import Row from './Row';
 import Text from './Text';
 
 function Header({logoSrc, rightContent, subtitle, title}) {
   return (
-    <Flex css={{flexShrink: 0}} flexDirection="column" px={4} py={2}>
+    <Flex
+      bg="background"
+      css={{flexShrink: 0, zIndex: 1}}
+      flexDirection="column"
+      px={3}>
       <Flex alignItems="center" justifyContent="space-between">
         <Link style={{textDecoration: 'none'}} to="/">
-          <Row spacing={2}>
+          <List spacing={2}>
             <Box
               css={{
                 height: '40px',
@@ -20,7 +24,7 @@ function Header({logoSrc, rightContent, subtitle, title}) {
               }}
             />
             <Text heading={1}>{title}</Text>
-          </Row>
+          </List>
         </Link>
         {rightContent}
       </Flex>

@@ -19,7 +19,7 @@ function SurveyChoiceSet({
   questionType,
 }) {
   const {choices} = choiceSet;
-  const isMulti = questionTypes.MULTI_CHOICE;
+  const isMulti = questionType === questionTypes.MULTI_CHOICE;
   switch (questionType) {
     case questionTypes.LIKERT:
     case questionTypes.SINGLE_CHOICE:
