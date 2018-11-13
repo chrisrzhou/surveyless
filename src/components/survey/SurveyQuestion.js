@@ -21,15 +21,17 @@ function SurveyQuestion({question}) {
       <Card>
         <Text heading={2}>{text}</Text>
         {choiceSetId && (
-          <SurveyChoiceSet
-            id={choiceSetId}
-            config={choiceSetConfig}
-            questionId={id}
-            questionType={type}
-          />
+          <Box py={2}>
+            <SurveyChoiceSet
+              id={choiceSetId}
+              config={choiceSetConfig}
+              questionId={id}
+              questionType={type}
+            />
+          </Box>
         )}
         {optionalCommentsText && (
-          <Box py={4}>
+          <Box pt={5}>
             <TextArea label={optionalCommentsText} placeholder="" />
           </Box>
         )}

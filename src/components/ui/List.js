@@ -25,17 +25,18 @@ function List({children, isCentered, isMobileVertical, isVertical, spacing}) {
               ? 'center'
               : 'flex-start'
       }
-      flexWrap="wrap">
+      flexWrap="wrap"
+      mx={-spacing}
+      my={-spacing}>
       <Trail
-        config={{...config.gentle, precision: 0.6}}
-        from={{transform: 'translate3d(0,-100%, 0)'}}
+        from={{opacity: 0, transform: 'scale(0)'}}
         items={React.Children.map(children, child => child)}
         keys={item => item.key}
         native
-        to={{transform: 'translate3d(0,0,0)'}}>
+        to={{opacity: 1, transform: 'scale(1)'}}>
         {item => style => (
           <animated.div style={style}>
-            <Box p={spacing}>{item}</Box>
+            <Box m={spacing}>{item}</Box>
           </animated.div>
         )}
       </Trail>

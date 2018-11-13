@@ -29,4 +29,26 @@ export default {
       boxShadow: 'inset 0 0 0 2px',
     },
   },
+  Button: {
+    cursor: 'pointer',
+    ':hover': {
+      opacity: 0.7,
+    },
+    ':focus': {
+      opacity: 0.7,
+      outline: 'none',
+    },
+    ':disabled': {
+      cursor: 'not-allowed',
+      opacity: 0.3,
+    },
+  },
+  // input/textarea
+  Card: {
+    ':focus': {
+      borderColor: brand,
+      opacity: 0.7,
+      outline: 'none',
+    },
+  },
 };
