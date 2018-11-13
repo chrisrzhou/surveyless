@@ -18,6 +18,7 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(
     responseMaxQuestionIndex,
   );
+
   useEffect(() => {
     return useHotKeys({
       [keyCodes.UP]: nextQuestion,
@@ -39,6 +40,7 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
       }
     }
   }
+
   function previousQuestion() {
     if (currentQuestionIndex > 0) {
       setQuestionIndex(currentQuestionIndex - 1);

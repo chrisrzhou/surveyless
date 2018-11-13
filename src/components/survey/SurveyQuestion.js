@@ -1,7 +1,9 @@
+import {Box} from 'rebass';
+import Card from 'components/ui/Card';
 import React from 'react';
 import SurveyChoiceSet from './SurveyChoiceSet';
 import Text from 'components/ui/Text';
-import TextInput from 'components/ui/TextInput';
+import TextArea from 'components/ui/TextArea';
 import {connect} from 'react-redux';
 import {getSurveyQuestion} from 'store/selectors';
 
@@ -15,18 +17,24 @@ function SurveyQuestion({question}) {
     type,
   } = question;
   return (
-    <>
-      <Text heading={2}>{text}</Text>
-      {choiceSetId && (
-        <SurveyChoiceSet
-          id={choiceSetId}
-          config={choiceSetConfig}
-          questionId={id}
-          questionType={type}
-        />
-      )}
-      {optionalCommentsText && <TextInput value={optionalCommentsText} />}
-    </>
+    <Box mb="100px">
+      <Card>
+        <Text heading={2}>{text}</Text>
+        {choiceSetId && (
+          <SurveyChoiceSet
+            id={choiceSetId}
+            config={choiceSetConfig}
+            questionId={id}
+            questionType={type}
+          />
+        )}
+        {optionalCommentsText && (
+          <Box py={4}>
+            <TextArea label={optionalCommentsText} placeholder="" />
+          </Box>
+        )}
+      </Card>
+    </Box>
   );
 }
 

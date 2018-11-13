@@ -1,4 +1,5 @@
 import Button from 'components/ui/Button';
+import Card from 'components/ui/Card';
 import ContentContainer from 'components/ui/ContentContainer';
 import {Link} from 'gatsby';
 import React from 'react';
@@ -9,10 +10,12 @@ import {routes} from 'enums';
 
 function LandingContent({surveyInfo}) {
   return (
-    <ContentContainer>
-      <Text>{surveyInfo.info}</Text>
+    <ContentContainer alignItems="center">
+      <Card>
+        <Text>{surveyInfo.info}</Text>
+      </Card>
       <Link to={routes.SURVEY}>
-        <Button label="Begin Survey" />
+        <Button label="Begin Survey" mt={4} />
       </Link>
     </ContentContainer>
   );

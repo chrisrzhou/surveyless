@@ -33,7 +33,7 @@ function ProgressItem({
         m={1}
         onClick={() => !disabled && onClick()}>
         <Button
-          bg={isActive ? color : 'white'}
+          bg={isActive ? color : 'background'}
           css={{
             appearance: 'none',
             borderRadius: '9999px',

@@ -1,10 +1,12 @@
 import {Box, Flex} from 'rebass';
 
+import {DEFAULT_HOVER_COLOR} from 'styles/constants';
 import React from 'react';
 import Text from './Text';
 import {keyCodes} from 'enums';
 
-function RadioInput({checked, labelValue, onChange}) {
+function CheckboxRadioInput({checked, labelValue, role, onChange}) {
+  const hoverBackground = checked ? undefined : DEFAULT_HOVER_COLOR;
   return (
     <Flex alignItems="center">
       <Box
@@ -12,13 +14,17 @@ function RadioInput({checked, labelValue, onChange}) {
         bg={checked ? 'active' : 'background'}
         css={{
           border: '1px solid black',
-          borderRadius: '9999px',
+          borderRadius: role === 'radio' ? '9999px' : undefined,
           flexShrink: 0,
           cursor: 'pointer',
           height: '16px',
           width: '16px',
           ':hover': {
-            background: checked ? undefined : '#efefef',
+            background: hoverBackground,
+          },
+          ':focus': {
+            background: hoverBackground,
+            outline: 'none',
           },
         }}
         onClick={e => onChange(!checked)}
@@ -28,7 +34,7 @@ function RadioInput({checked, labelValue, onChange}) {
           }
         }}
         mr={1}
-        role="radio"
+        role={role}
         tabIndex="0"
       />
       <Text pl={1}>
@@ -38,4 +44,4 @@ function RadioInput({checked, labelValue, onChange}) {
   );
 }
 
-export default RadioInput;
+export default CheckboxRadioInput;

@@ -1,4 +1,4 @@
-import CheckboxInput from 'components/ui/CheckboxInput';
+import CheckboxRadioInput from 'components/ui/CheckboxRadioInput';
 import ChoiceSetLayout from './ChoiceSetLayout';
 import React from 'react';
 
@@ -9,7 +9,7 @@ function CheckboxChoiceSet({answerValue, choices, config, onChange}) {
       {choices.map((choice, index) => {
         const {id, text} = choice;
         return (
-          <CheckboxInput
+          <CheckboxRadioInput
             key={id}
             checked={answerValues.includes(id)}
             labelValue={text}
@@ -20,6 +20,7 @@ function CheckboxChoiceSet({answerValue, choices, config, onChange}) {
                 onChange(answerValues.filter(a => a !== id));
               }
             }}
+            role="checkbox"
           />
         );
       })}
