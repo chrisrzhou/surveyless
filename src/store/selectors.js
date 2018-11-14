@@ -2,10 +2,6 @@ export function getResponseIsQuestionCompleted(state, questionId) {
   return questionId in state.responses;
 }
 
-export function getSurveyInfo(state) {
-  return state.survey.info;
-}
-
 export function getResponseMaxQuestionIndex(state) {
   return Object.keys(state.responses).length;
 }

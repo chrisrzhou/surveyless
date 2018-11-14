@@ -1,5 +1,5 @@
 import {Box, Flex} from 'rebass';
-import {Trail, animated, config} from 'react-spring';
+import {Trail, animated} from 'react-spring';
 
 import React from 'react';
 

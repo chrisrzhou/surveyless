@@ -1,8 +1,7 @@
-import 'styles/index.css';
-
+import GlobalStyle from 'styles/globalStyle';
 import Helmet from 'react-helmet';
-import {Provider} from 'react-redux';
 import React from 'react';
+import {Provider as StoreProvider} from 'react-redux';
 import {ThemeProvider} from 'styled-components';
 import base from 'themes/base';
 import {setConfig} from 'react-hot-loader';
@@ -13,27 +12,28 @@ setConfig({pureSFC: true});
 
 export default function Root({element}) {
   return (
-    <Provider store={store}>
+    <StoreProvider store={store}>
       <ThemeProvider theme={base}>
         <div>
           <Helmet
-            title="Surveyless"
+            title="surveyless"
             meta={[
               {
                 name: 'description',
-                content:
-                  'Serverless and simple way to build, run and analyze surveys',
+                content: 'Build, run, and analyze simple serverless surveys.',
               },
               {
                 name: 'keywords',
-                content: 'survey, serverless, jamstack, gatsby, netlify',
+                content:
+                  'survey, serverless, jamstack, gatsby, netlify, react, redux, visualization, data',
               },
             ]}>
             <html lang="en" />
           </Helmet>
           {element}
+          <GlobalStyle />
         </div>
       </ThemeProvider>
-    </Provider>
+    </StoreProvider>
   );
 }

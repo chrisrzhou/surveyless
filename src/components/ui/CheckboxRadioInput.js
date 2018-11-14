@@ -8,7 +8,10 @@ import {keyCodes} from 'enums';
 function CheckboxRadioInput({checked, labelValue, role, onChange}) {
   const hoverBackground = checked ? undefined : DEFAULT_HOVER_COLOR;
   return (
-    <Flex alignItems="center">
+    <Flex
+      alignItems="center"
+      css={{cursor: 'pointer'}}
+      onClick={e => onChange(!checked)}>
       <Box
         ariaChecked={checked}
         bg={checked ? 'active' : 'background'}
@@ -16,7 +19,6 @@ function CheckboxRadioInput({checked, labelValue, role, onChange}) {
           border: '1px solid black',
           borderRadius: role === 'radio' ? '9999px' : undefined,
           flexShrink: 0,
-          cursor: 'pointer',
           height: '16px',
           width: '16px',
           ':hover': {
@@ -27,7 +29,6 @@ function CheckboxRadioInput({checked, labelValue, role, onChange}) {
             outline: 'none',
           },
         }}
-        onClick={e => onChange(!checked)}
         onKeyDown={e => {
           if ([keyCodes.SPACE, keyCodes.ENTER].includes(e.keyCode)) {
             onChange(!checked);
@@ -37,9 +38,7 @@ function CheckboxRadioInput({checked, labelValue, role, onChange}) {
         role={role}
         tabIndex="0"
       />
-      <Text pl={1}>
-        <label>{labelValue}</label>
-      </Text>
+      <Text pl={1}>{labelValue}</Text>
     </Flex>
   );
 }

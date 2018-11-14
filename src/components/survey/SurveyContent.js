@@ -1,3 +1,4 @@
+import {Box, Flex} from 'rebass';
 import React, {useEffect, useState} from 'react';
 import {Spring, animated, config} from 'react-spring';
 import {
@@ -7,7 +8,6 @@ import {
 
 import Button from 'components/ui/Button';
 import ContentContainer from 'components/ui/ContentContainer';
-import {Flex} from 'rebass';
 import Progress from 'components/ui/Progress';
 import SurveyQuestion from './SurveyQuestion';
 import {connect} from 'react-redux';
@@ -80,14 +80,14 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
         flexDirection="column"
         justifyContent="center"
         py={2}>
-        <Flex css={{height: '40px'}} pb={2}>
+        <Box pb={2}>
           {currentQuestionIndex < completedQuestionsCount && (
             <Button label="Next" onClick={nextQuestion} />
           )}
           {completedQuestionsCount === totalQuestionsCount && (
             <Button label="Submit" onClick={() => alert('submitted survey!')} />
           )}
-        </Flex>
+        </Box>
         <Progress
           currentIndex={currentQuestionIndex}
           items={progressItems}

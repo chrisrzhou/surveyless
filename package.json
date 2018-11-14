@@ -1,7 +1,7 @@
 {
   "name": "surveyless",
   "version": "0.1.0",
-  "description": "Serverless and simple way to build, run and analyze survey results",
+  "description": "Build, run and analyze simple serverless surveys",
   "repository": {
     "type": "git",
     "url": "https://github.com/chrisrzhou/surveyless"
@@ -33,14 +33,18 @@
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-resolve-src": "^2.0.0-beta.1",
     "gatsby-plugin-sharp": "^2.0.7",
+    "gatsby-remark-images": "^2.0.6",
     "gatsby-source-filesystem": "^2.0.4",
+    "gatsby-transformer-remark": "^2.1.12",
     "gatsby-transformer-sharp": "^2.1.4",
     "keymirror": "^0.1.1",
     "react": "^16.7.0-alpha",
     "react-dom": "^16.7.0-alpha",
     "react-helmet": "^5.2.0",
+    "react-markdown": "^4.0.3",
     "react-redux": "^5.1.0",
     "react-spring": "^6.1.8",
+    "react-syntax-highlighter": "^10.0.1",
     "rebass": "^3.0.0-9",
     "redux": "^4.0.1",
     "styled-components": "^4.0.3"

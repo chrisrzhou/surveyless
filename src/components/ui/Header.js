@@ -1,10 +1,12 @@
 import {Box, Flex} from 'rebass';
 
+import Heading from './Heading';
 import {Link} from 'gatsby';
 import React from 'react';
 import Text from './Text';
+import src from 'images/logo.png';
 
-function Header({logoSrc, subtitle, title}) {
+function Header({logo, subtitle, title}) {
   return (
     <Flex
       bg="background"
@@ -13,16 +15,8 @@ function Header({logoSrc, subtitle, title}) {
       px={3}>
       <Link style={{textDecoration: 'none'}} to="/">
         <Flex alignItems="center">
-          <Box
-            css={{
-              height: '40px',
-              width: '40px',
-              background: `url(${logoSrc}) center center no-repeat`,
-              backgroundSize: 'cover',
-            }}
-            mr={2}
-          />
-          <Text heading={1}>{title}</Text>
+          <Box as="img" mr={2} src={src} width={40} />
+          <Heading level={1}>{title}</Heading>
         </Flex>
       </Link>
       <Text color="secondaryText">{subtitle}</Text>

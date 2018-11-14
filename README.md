@@ -1,12 +1,36 @@
-# surveyless (WORK IN PROGRESS)
+---
+title: surveyless
+subtitle: Build, run, and analyze simple serverless surveys
+mode: OPEN
+---
 
-Serverless and simple way to build, run and analyze survey results
+# surveyless
+
+https://surveyless.chrisrzhou.io
+
+Build, run, and analyze simple serverless surveys.
+
+Less servers.
+
+Less setup.
+
+Less costs.
+
+Less complexity.
+
+Less headaches.
+
+## TODO
+
+- hookup markdown images
+- render question text as markdown
+- work on tooltip
 
 ## Overview
 
 ### Ruthlessly simple
 
-Skip the unneccessary paid features and complexity in various survey applications, and jump straight to building out a survey with basic features. No accounts, keys, signups or setup is required. Analyze results immediately once survey is closed.
+Skip the unneccessary paid features and complexity in various survey applications, and jump straight to building out a survey with basic features. **No accounts**, _keys_, ~~signups~~ or setup is required. Analyze results immediately once survey is closed.
 
 ### Fast and Reliable
 
@@ -79,4 +103,73 @@ Figure out a way to handle triggers (e.g. answering a certain value in one quest
 
 - Auto save using browser history. We don't have a server to handle saves, so we want to think how to avoid people losing their work.
 - In `Setup 4.`, It is easy to have anyone take the survey, but we want to think of how closed group of people can take the survey. Unique survey URLs with authorized hashes could be an option, but the code to check for these hashes have to be made private. We could simply turn the repo into a private repo and that could solve the problem, but ideally we should find a way to do this without the need to make the repo private.
-- Netlify functions allow 1000 free calls, so this limits the 'free' JAMStack service to realistically less than 1000 responses (we need some netlify function calls for creating/maintaining the survey).
+
+-
+
+## Testing Markdown
+
+# This is an <h1> tag
+
+## This is an <h2> tag
+
+###### This is an <h6> tag
+
+_This text will be italic_
+_This will also be italic_
+
+**This text will be bold**
+**This will also be bold**
+
+_You **can** combine them_
+
+- Item 1
+- Item 2
+  - Item 2a
+  - Item 2b
+
+1.  Item 1
+1.  Item 2
+1.  Item 3
+1.  Item 3a
+1.  Item 3b
+
+![Logo](./src/images/logo.png)
+Format: ![Alt Text](url)
+
+http://github.com - automatic!
+
+[GitHub](http://github.com)
+
+As Kanye West said:
+
+> We're living the future so
+> the present is our past.
+
+I think you should use an
+`<addr>` element here instead.
+
+```javascript
+function fancyAlert(arg) {
+  if (arg) {
+    $.facebox({div: '#foo'});
+  }
+}
+```
+
+- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
+- [x] list syntax required (any unordered or ordered list supported)
+- [x] this is a complete item
+- [ ] this is an incomplete item
+
+| First Header                | Second Header                |
+| --------------------------- | ---------------------------- |
+| Content from cell 1         | Content from cell 2          |
+| Content in the first column | Content in the second column |
+
+16c999e8c71134401a78d4d46435517b2271d6ac
+mojombo@16c999e8c71134401a78d4d46435517b2271d6ac
+mojombo/github-flavored-markdown@16c999e8c71134401a78d4d46435517b2271d6ac
+
+#1
+mojombo#1
+mojombo/github-flavored-markdown#1 Netlify functions allow 1000 free calls, so this limits the 'free' JAMStack service to realistically less than 1000 responses (we need some netlify function calls for creating/maintaining the survey).

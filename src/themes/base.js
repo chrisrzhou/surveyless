@@ -10,6 +10,7 @@ export default {
     inactive: '#A2A9AF',
     primaryText: '#4F565D',
     secondaryText: '#a0afba',
+    wash: '#F0F0F0',
     background,
   },
   fonts: {
@@ -17,7 +18,7 @@ export default {
     regular: 'system-ui, sans-serif',
     mono: 'Menlo, monospace',
   },
-  fontSizes: [10, 12, 14, 16, 18, 20, 22, 24],
+  fontSizes: [10, 12, 14, 16, 18, 20, 24, 32],
   buttons: {
     primary: {
       color: background,

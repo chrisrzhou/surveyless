@@ -1,6 +1,6 @@
 import React from 'react';
 
-function DraftSurveyInfo({surveyInfo}) {
+function DraftSurveyInfo() {
   return (
     <div>
       <h1>title</h1>

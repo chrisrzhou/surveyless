@@ -1,1 +1,10 @@
-export {default} from 'components/results/ResultsPage';
+import PageLayout from 'components/ui/PageLayout';
+import React from 'react';
+import ResultsContent from 'components/results/ResultsContent';
+import SurveyHeader from 'components/SurveyHeader';
+
+function ResultsPage({data}) {
+  return <PageLayout header={<SurveyHeader />} content={<ResultsContent />} />;
+}
+
+export default ResultsPage;

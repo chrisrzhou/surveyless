@@ -1,8 +1,8 @@
 import {Box} from 'rebass';
 import Card from 'components/ui/Card';
+import Heading from 'components/ui/Heading';
 import React from 'react';
 import SurveyChoiceSet from './SurveyChoiceSet';
-import Text from 'components/ui/Text';
 import TextArea from 'components/ui/TextArea';
 import {connect} from 'react-redux';
 import {getSurveyQuestion} from 'store/selectors';
@@ -19,7 +19,9 @@ function SurveyQuestion({question}) {
   return (
     <Box mb="100px">
       <Card>
-        <Text heading={2}>{text}</Text>
+        <Heading level={2} py={3}>
+          {text}
+        </Heading>
         {choiceSetId && (
           <Box py={2}>
             <SurveyChoiceSet
