@@ -5,6 +5,7 @@
         "id": "Q1",
         "text": "Likert question with 5 choices with vertical radio choices",
         "type": "LIKERT",
+        "description": "\n# :v: surveyless\n\nhttps://surveyless.chrisrzhou.io\n\nBuild, run, and analyze simple serverless surveys.\n\nLess servers.\n\nLess setup.\n\nLess costs.\n\nLess complexity.\n\nLess headaches.\n\n![Logo](Octocat.png)\nFormat: ![Alt Text](url)\n\n## TODO\n\n- explore markdown rendering for question description\n- render question text as markdown\n- work on tooltip",
         "choiceSetId": "CS1",
         "choiceSetConfig": {
           "layout": "VERTICAL",

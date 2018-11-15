@@ -5,10 +5,11 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Text from './Text';
 
-function Markdown({markdown}) {
+function Markdown({html}) {
   return (
     <ReactMarkdown
-      source={markdown}
+      escapeHtml={false}
+      source={html}
       renderers={{
         code: CodeBlock,
         inlineCode: props => <Text isMono {...props} />,

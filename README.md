@@ -4,7 +4,7 @@ subtitle: Build, run, and analyze simple serverless surveys
 mode: OPEN
 ---
 
-# surveyless
+# :v: surveyless
 
 https://surveyless.chrisrzhou.io
 
@@ -20,11 +20,15 @@ Less complexity.
 
 Less headaches.
 
+![Logo](./src/images/Octocat.png)
+Format: ![Alt Text](url)
+
 ## TODO
 
-- hookup markdown images
+- explore markdown rendering for question description
 - render question text as markdown
 - work on tooltip
+- local storage and hydrate state and reset browser cache
 
 ## Overview
 
@@ -133,9 +137,6 @@ _You **can** combine them_
 1.  Item 3a
 1.  Item 3b
 
-![Logo](./src/images/logo.png)
-Format: ![Alt Text](url)
-
 http://github.com - automatic!
 
 [GitHub](http://github.com)
@@ -166,10 +167,9 @@ function fancyAlert(arg) {
 | Content from cell 1         | Content from cell 2          |
 | Content in the first column | Content in the second column |
 
-16c999e8c71134401a78d4d46435517b2271d6ac
-mojombo@16c999e8c71134401a78d4d46435517b2271d6ac
-mojombo/github-flavored-markdown@16c999e8c71134401a78d4d46435517b2271d6ac
-
-#1
-mojombo#1
-mojombo/github-flavored-markdown#1 Netlify functions allow 1000 free calls, so this limits the 'free' JAMStack service to realistically less than 1000 responses (we need some netlify function calls for creating/maintaining the survey).
+<iframe
+  width="640"
+  height="390"
+  src="http://www.youtube.com/embed/SB-qEYVdvXA"
+  frameborder="0"
+/>

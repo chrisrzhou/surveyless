@@ -21,23 +21,47 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
+          'gatsby-remark-responsive-iframe',
+          {
+            resolve: 'gatsby-remark-emojis',
+            options: {
+              active: true,
+              class: 'emoji-icon',
+              styles: {
+                display: 'inline',
+                margin: '0',
+                'margin-top': '1px',
+                position: 'relative',
+                top: '5px',
+                width: '25px',
+              },
+            },
+          },
           {
             resolve: 'gatsby-remark-images',
             options: {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 590,
+              maxWidth: 600,
             },
           },
         ],
       },
-    }, // source files
+    },
+    // source files
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
         path: './src/images',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: './src/content',
+        name: 'content',
       },
     },
     {
@@ -52,13 +76,6 @@ module.exports = {
       options: {
         path: 'README.md',
         name: 'surveyInfo',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: 'confirmation.md',
-        name: 'confirmation',
       },
     },
   ],

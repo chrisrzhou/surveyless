@@ -7,11 +7,11 @@ import SurveyHeader from 'components/SurveyHeader';
 import {graphql} from 'gatsby';
 
 function ConfirmationPage({data}) {
-  const {rawMarkdownBody} = data.allMarkdownRemark.edges[0].node;
+  const {html} = data.allMarkdownRemark.edges[0].node;
   const content = (
     <ContentContainer alignItems="center">
       <Card>
-        <Markdown markdown={rawMarkdownBody} />
+        <Markdown html={html} />
       </Card>
     </ContentContainer>
   );
@@ -27,7 +27,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          rawMarkdownBody
+          html
         }
       }
     }

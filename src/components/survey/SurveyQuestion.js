@@ -1,6 +1,7 @@
 import {Box} from 'rebass';
 import Card from 'components/ui/Card';
 import Heading from 'components/ui/Heading';
+import Markdown from 'components/ui/Markdown';
 import React from 'react';
 import SurveyChoiceSet from './SurveyChoiceSet';
 import TextArea from 'components/ui/TextArea';
@@ -11,6 +12,7 @@ function SurveyQuestion({question}) {
   const {
     choiceSetId,
     choiceSetConfig,
+    description,
     id,
     optionalCommentsText,
     text,
@@ -22,6 +24,7 @@ function SurveyQuestion({question}) {
         <Heading level={2} py={3}>
           {text}
         </Heading>
+        <Markdown html={description} />
         {choiceSetId && (
           <Box py={2}>
             <SurveyChoiceSet

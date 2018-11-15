@@ -4,21 +4,22 @@ import Heading from './Heading';
 import {Link} from 'gatsby';
 import React from 'react';
 import Text from './Text';
-import src from 'images/logo.png';
 
-function Header({logo, subtitle, title}) {
+function Header({src, subtitle, title}) {
   return (
     <Flex
       bg="background"
       css={{flexShrink: 0, zIndex: 1}}
       flexDirection="column"
       px={3}>
-      <Link style={{textDecoration: 'none'}} to="/">
-        <Flex alignItems="center">
+      <Flex alignItems="center">
+        <Link style={{textDecoration: 'none'}} to="/">
           <Box as="img" mr={2} src={src} width={40} />
+        </Link>
+        <Link style={{textDecoration: 'none'}} to="/">
           <Heading level={1}>{title}</Heading>
-        </Flex>
-      </Link>
+        </Link>
+      </Flex>
       <Text color="secondaryText">{subtitle}</Text>
     </Flex>
   );

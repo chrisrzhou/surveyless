@@ -11,11 +11,11 @@ import {graphql} from 'gatsby';
 import {routes} from 'enums';
 
 function LandingPage({data}) {
-  const {rawMarkdownBody} = data.allMarkdownRemark.edges[0].node;
+  const {html} = data.allMarkdownRemark.edges[0].node;
   const content = (
     <ContentContainer>
       <Card>
-        <Markdown markdown={rawMarkdownBody} />
+        <Markdown html={html} />
       </Card>
       <Flex justifyContent="center">
         <Link to={routes.SURVEY}>
@@ -34,7 +34,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/README.md/"}}) {
       edges {
         node {
-          rawMarkdownBody
+          html
         }
       }
     }
