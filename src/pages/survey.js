@@ -12,7 +12,7 @@ function SurveyPage({data, onHydrate}) {
     const byId = {};
     const allIds = [];
     data.allMarkdownRemark.edges.forEach(({node}) => {
-      const {frontmatter, html, parent} = node;
+      const {frontmatter, rawMarkdownBody, parent} = node;
       const id = parent.name;
       const {
         text,
@@ -27,7 +27,7 @@ function SurveyPage({data, onHydrate}) {
         questionType,
         choices,
         choiceType,
-        description: html,
+        description: rawMarkdownBody,
         additionalComments,
       };
       allIds.push(id);
@@ -44,7 +44,6 @@ export default connect(
   },
 )(SurveyPage);
 
-// hydrate redux state with this
 export const pageQuery = graphql`
   {
     allMarkdownRemark(
@@ -65,7 +64,7 @@ export const pageQuery = graphql`
             choiceType
             additionalComments
           }
-          html
+          rawMarkdownBody
         }
       }
     }

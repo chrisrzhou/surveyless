@@ -1,15 +1,18 @@
-import DraftNavBar from './DraftNavBar';
-import DraftQuestion from './DraftQuestion';
-import DraftSurveyInfo from './DraftSurveyInfo';
+import Button from 'components/ui/Button';
+import Card from 'components/ui/Card';
+import ContentContainer from 'components/ui/ContentContainer';
+import {Link} from 'gatsby';
 import React from 'react';
+import {routes} from 'enums';
 
 function DraftContent() {
   return (
-    <>
-      <DraftSurveyInfo />
-      <DraftNavBar />
-      <DraftQuestion />
-    </>
+    <ContentContainer alignItems="center">
+      <Card>TODO (DRAFT)</Card>
+      <Link to={routes.HOME}>
+        <Button label="Back to home" mt={4} />
+      </Link>
+    </ContentContainer>
   );
 }
 

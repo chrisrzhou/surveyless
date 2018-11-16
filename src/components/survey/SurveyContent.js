@@ -16,7 +16,8 @@ import useHotKeys from 'hooks/useHotKeys';
 
 function SurveyContent({progressItems, responseMaxQuestionIndex}) {
   if (progressItems.length === 0) {
-    return <div>No questions to display</div>;
+    // TODO improve UI for this
+    return <div>:( No questions to display</div>;
   }
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(
     responseMaxQuestionIndex,
@@ -31,29 +32,35 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
     });
   });
 
-  function setQuestionIndex(index) {
-    setCurrentQuestionIndex(index);
-  }
+  const totalQuestionsCount = progressItems.length;
+  const completedQuestionsCount = progressItems.filter(item => item.isCompleted)
+    .length;
+  const currentQuestionId = progressItems[currentQuestionIndex].id;
 
   function nextQuestion() {
     if (currentQuestionIndex < totalQuestionsCount - 1) {
       const nextQuestionIndex = currentQuestionIndex + 1;
       if (!progressItems[nextQuestionIndex].disabled) {
-        setQuestionIndex(nextQuestionIndex);
+        setCurrentQuestionIndex(nextQuestionIndex);
       }
     }
   }
 
   function previousQuestion() {
     if (currentQuestionIndex > 0) {
-      setQuestionIndex(currentQuestionIndex - 1);
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
   }
 
-  const totalQuestionsCount = progressItems.length;
-  const completedQuestionsCount = progressItems.filter(item => item.isCompleted)
-    .length;
-  const currentQuestionId = progressItems[currentQuestionIndex].id;
+  let button;
+  if (currentQuestionIndex < completedQuestionsCount) {
+    button =
+      completedQuestionsCount === totalQuestionsCount ? (
+        <Button label="Submit" onClick={() => alert('submitted survey!')} />
+      ) : (
+        <Button label="Next" onClick={nextQuestion} />
+      );
+  }
   return (
     <>
       <ContentContainer>
@@ -83,18 +90,11 @@ function SurveyContent({progressItems, responseMaxQuestionIndex}) {
         flexDirection="column"
         justifyContent="center"
         py={2}>
-        <Box pb={2}>
-          {currentQuestionIndex < completedQuestionsCount && (
-            <Button label="Next" onClick={nextQuestion} />
-          )}
-          {completedQuestionsCount === totalQuestionsCount && (
-            <Button label="Submit" onClick={() => alert('submitted survey!')} />
-          )}
-        </Box>
+        <Box pb={2}>{button}</Box>
         <Progress
           currentIndex={currentQuestionIndex}
           items={progressItems}
-          onItemClick={setQuestionIndex}
+          onItemClick={setCurrentQuestionIndex}
         />
       </Flex>
     </>

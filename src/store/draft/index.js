@@ -1,6 +1,6 @@
 import {createAction, createActionTypes, createReducer} from 'store/utils';
 
-const actionTypes = createActionTypes('admin', ['SET_PREVIEW_MODE']);
+const actionTypes = createActionTypes('draft', ['SET_PREVIEW_MODE']);
 
 const initialState = {
   isPreviewMode: false,

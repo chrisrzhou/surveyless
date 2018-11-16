@@ -19,6 +19,9 @@ function SurveyChoiceSet({
   questionId,
   questionType,
 }) {
+  function onChange(answerValue) {
+    onSetResponse({questionId, answerValue});
+  }
   switch (questionType) {
     case questionTypes.LIKERT:
     case questionTypes.SINGLE_CHOICE:
@@ -29,9 +32,7 @@ function SurveyChoiceSet({
             <RatingChoiceSet
               answerValue={answerValue}
               choices={choices}
-              onChange={answerValue => {
-                onSetResponse({questionId, answerValue});
-              }}
+              onChange={onChange}
             />
           );
         case choiceTypes.HORIZONTAL_BUTTON:
@@ -42,9 +43,7 @@ function SurveyChoiceSet({
               choices={choices}
               isMulti={false}
               isVertical={choiceType === choiceTypes.VERTICAL_BUTTON}
-              onChange={answerValue => {
-                onSetResponse({questionId, answerValue});
-              }}
+              onChange={onChange}
             />
           );
         case choiceTypes.HORIZONTAL_RADIO:
@@ -56,9 +55,7 @@ function SurveyChoiceSet({
               choices={choices}
               isMulti={false}
               isVertical={choiceType === choiceTypes.VERTICAL_RADIO}
-              onChange={answerValue => {
-                onSetResponse({questionId, answerValue});
-              }}
+              onChange={onChange}
             />
           );
       }
@@ -72,9 +69,7 @@ function SurveyChoiceSet({
               choices={choices}
               isMulti
               isVertical={choiceType === choiceTypes.VERTICAL_BUTTON}
-              onChange={answerValue => {
-                onSetResponse({questionId, answerValue});
-              }}
+              onChange={onChange}
             />
           );
         case choiceTypes.HORIZONTAL_CHECKBOX:
@@ -85,21 +80,13 @@ function SurveyChoiceSet({
               answerValue={answerValue}
               choices={choices}
               isVertical={choiceType === choiceTypes.VERTICAL_CHECKBOX}
-              onChange={answerValue => {
-                onSetResponse({questionId, answerValue});
-              }}
+              onChange={onChange}
             />
           );
       }
     }
     case questionTypes.SLIDER:
-      return (
-        <SliderChoiceSet
-          onChange={answerValue => {
-            onSetResponse({questionId, answerValue});
-          }}
-        />
-      );
+      return <SliderChoiceSet onChange={onChange} />;
     case questionTypes.RANKING:
     case questionTypes.COMMENT:
     default:

@@ -24,7 +24,7 @@ function SurveyQuestion({question}) {
         <Heading level={2} py={3}>
           {text}
         </Heading>
-        <Markdown html={description} />
+        <Markdown source={description} />
         {choices.length && (
           <Box py={2}>
             <SurveyChoiceSet

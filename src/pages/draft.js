@@ -3,7 +3,7 @@ import PageLayout from 'components/ui/PageLayout';
 import React from 'react';
 import SurveyHeader from 'components/SurveyHeader';
 
-function DraftPage({data}) {
+function DraftPage() {
   return <PageLayout header={<SurveyHeader />} content={<DraftContent />} />;
 }
 

@@ -10,12 +10,12 @@ import SurveyHeader from 'components/SurveyHeader';
 import {graphql} from 'gatsby';
 import {routes} from 'enums';
 
-function LandingPage({data}) {
-  const {html} = data.allMarkdownRemark.edges[0].node;
+function HomePage({data}) {
+  const {rawMarkdownBody} = data.allMarkdownRemark.edges[0].node;
   const content = (
     <ContentContainer>
       <Card>
-        <Markdown html={html} />
+        <Markdown source={rawMarkdownBody} />
       </Card>
       <Flex justifyContent="center">
         <Link to={routes.SURVEY}>
@@ -27,14 +27,14 @@ function LandingPage({data}) {
   return <PageLayout header={<SurveyHeader />} content={content} />;
 }
 
-export default LandingPage;
+export default HomePage;
 
 export const pageQuery = graphql`
   {
     allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/README.md/"}}) {
       edges {
         node {
-          html
+          rawMarkdownBody
         }
       }
     }

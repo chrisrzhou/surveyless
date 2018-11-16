@@ -5,6 +5,7 @@ export const routes = {
   DRAFT: '/draft',
   SURVEY: '/survey',
   RESULTS: '/results',
+  THANKYOU: '/thankyou',
 };
 
 export const surveyModes = keymirror({
@@ -33,11 +34,11 @@ export const questionTypes = keymirror({
 });
 
 export const choiceTypes = keymirror({
-  HORIZONTAL_CHECKBOX: null,
   HORIZONTAL_BUTTON: null,
+  HORIZONTAL_CHECKBOX: null,
   HORIZONTAL_RADIO: null,
   RATING: null,
-  VERTICAL_CHECKBOX: null,
   VERTICAL_BUTTON: null,
+  VERTICAL_CHECKBOX: null,
   VERTICAL_RADIO: null,
 });

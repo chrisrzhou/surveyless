@@ -2,7 +2,7 @@ import {createAction, createActionTypes, createReducer} from 'store/utils';
 
 import {combineReducers} from 'redux';
 
-export const actionTypes = createActionTypes('survey', ['HYDRATE']);
+export const actionTypes = createActionTypes('survey/questions', ['HYDRATE']);
 
 export const actions = {
   hydrate: createAction(actionTypes.HYDRATE),

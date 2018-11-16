@@ -18,12 +18,12 @@ export function getSurveyQuestion(state, questionId) {
 export function getSurveyProgressItems(state) {
   const {responses, survey} = state;
   const {allIds, byId} = survey.questions;
-  return allIds.map((questionId, index) => {
-    const question = byId[questionId];
-    const isCompleted = questionId in responses;
+  return allIds.map((id, index) => {
+    const question = byId[id];
+    const isCompleted = id in responses;
     return {
       disabled: index > getResponseMaxQuestionIndex(state) && !isCompleted,
-      id: questionId,
+      id,
       isCompleted,
       tooltip: question.text,
     };

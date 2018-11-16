@@ -20,15 +20,19 @@ Less complexity.
 
 Less headaches.
 
-![Logo](/src/images/Octocat.png)
+![Logo](/static/images/octocat.png)
 Format: ![Alt Text](url)
 
 ## TODO
 
-- explore markdown rendering for question description
-- render question text as markdown
 - work on tooltip
 - local storage and hydrate state and reset browser cache
+- Write out README and survey/questions/QUESTION.md content
+- build out /docs folder
+- netlify-functions to submit response (figure out generating uuids and simple auth with JWT)
+- fix bug where we can't use Link/Blockquote for react-markdown renderer
+- theme editor
+- results page
 
 ## Overview
 

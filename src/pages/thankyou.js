@@ -6,28 +6,26 @@ import React from 'react';
 import SurveyHeader from 'components/SurveyHeader';
 import {graphql} from 'gatsby';
 
-function ConfirmationPage({data}) {
-  const {html} = data.allMarkdownRemark.edges[0].node;
+function ThankyouPage({data}) {
+  const {rawMarkdownBody} = data.allMarkdownRemark.edges[0].node;
   const content = (
     <ContentContainer alignItems="center">
       <Card>
-        <Markdown html={html} />
+        <Markdown source={rawMarkdownBody} />
       </Card>
     </ContentContainer>
   );
   return <PageLayout header={<SurveyHeader />} content={content} />;
 }
 
-export default ConfirmationPage;
+export default ThankyouPage;
 
 export const pageQuery = graphql`
   {
-    allMarkdownRemark(
-      filter: {fileAbsolutePath: {regex: "/confirmation.md/"}}
-    ) {
+    allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/thankyou.md/"}}) {
       edges {
         node {
-          html
+          rawMarkdownBody
         }
       }
     }

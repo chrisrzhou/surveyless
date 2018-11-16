@@ -25,7 +25,7 @@ export default function Root({element}) {
               {
                 name: 'keywords',
                 content:
-                  'survey, serverless, jamstack, gatsby, netlify, react, redux, visualization, data',
+                  'survey, serverless, jamstack, gatsby, netlify, react, redux, markdown, visualization, data',
               },
             ]}>
             <html lang="en" />

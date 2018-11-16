@@ -8,7 +8,7 @@ import {routes} from 'enums';
 function ResultsContent() {
   return (
     <ContentContainer alignItems="center">
-      <Card>TODO</Card>
+      <Card>TODO (RESULTS)</Card>
       <Link to={routes.HOME}>
         <Button label="Back to home" mt={4} />
       </Link>

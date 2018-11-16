@@ -1,8 +1,7 @@
-import {StaticQuery, graphql} from 'gatsby';
+import {StaticQuery, graphql, withPrefix} from 'gatsby';
 
 import Header from 'components/ui/Header';
 import React from 'react';
-import logo from 'images/logo.png';
 
 function SurveyHeader() {
   return (
@@ -27,7 +26,13 @@ function SurveyHeader() {
       render={data => {
         const {frontmatter} = data.allMarkdownRemark.edges[0].node;
         const {subtitle, title} = frontmatter;
-        return <Header src={logo} subtitle={subtitle} title={title} />;
+        return (
+          <Header
+            src={withPrefix('/images/logo.png')}
+            subtitle={subtitle}
+            title={title}
+          />
+        );
       }}
     />
   );

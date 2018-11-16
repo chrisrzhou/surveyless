@@ -16,7 +16,7 @@ choices:
 
 It usually uses a 5-point or 7-point scale with a neutral option, and is organized from negative to positive (left to right). The most common way of structuring a likert question is to ask a question of the form:
 
-> How POSITIVE or NEGATIVE are you with TOPIC?
+> `How POSITIVE or NEGATIVE are you with TOPIC?`
 
 And now, let's answer this question:
 

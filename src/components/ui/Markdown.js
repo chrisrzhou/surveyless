@@ -1,21 +1,31 @@
+import Blockquote from './Blockquote';
 import CodeBlock from './CodeBlock';
 import Heading from './Heading';
+import Image from './Image';
 import Link from './Link';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Text from './Text';
+import emoji from 'emoji-dictionary';
 
-function Markdown({html}) {
+function EnhancedTextRenderer(text) {
+  return text.value.replace(/:\w+:/gi, name => emoji.getUnicode(name));
+}
+
+function Markdown({source}) {
   return (
     <ReactMarkdown
       escapeHtml={false}
-      source={html}
+      source={source}
       renderers={{
-        link: Link,
+        blockquote: Blockquote,
         code: CodeBlock,
-        inlineCode: props => <Text isMono {...props} />,
-        root: Text,
         heading: Heading,
+        image: Image,
+        inlineCode: props => <Text isMono {...props} />,
+        link: Link,
+        root: Text,
+        text: EnhancedTextRenderer,
       }}
     />
   );

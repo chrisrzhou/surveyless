@@ -1,6 +1,6 @@
-import {Box, Flex} from 'rebass';
-
+import {Flex} from 'rebass';
 import Heading from './Heading';
+import Image from './Image';
 import {Link} from 'gatsby';
 import React from 'react';
 import Text from './Text';
@@ -14,7 +14,7 @@ function Header({src, subtitle, title}) {
       px={3}>
       <Flex alignItems="center">
         <Link style={{textDecoration: 'none'}} to="/">
-          <Box as="img" mr={2} src={src} width={40} />
+          <Image mr={2} src={src} width={40} />
         </Link>
         <Link style={{textDecoration: 'none'}} to="/">
           <Heading level={1}>{title}</Heading>
