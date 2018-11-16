@@ -1,24 +1,17 @@
 import React, {useState} from 'react';
 
 import {Box} from 'rebass';
-import RatingStar from 'components/ui/RatingStar';
 import List from 'components/ui/List';
+import RatingStar from 'components/ui/RatingStar';
 import Tooltip from 'components/ui/Tooltip';
 
 function RatingChoiceSet({answerValue, choices, onChange}) {
-  let answerIndex;
-  choices.forEach((choice, index) => {
-    if (choice.id === answerValue) {
-      answerIndex = index;
-    }
-  });
   const [activeIndex, setActiveIndex] = useState(-1);
   return (
     <List>
       {choices.map((choice, index) => {
-        const {id, text} = choice;
         return (
-          <Tooltip key={id} tooltip={text}>
+          <Tooltip key={choice} tooltip={choice}>
             <Box
               onMouseOver={() => setActiveIndex(index)}
               onMouseLeave={() => setActiveIndex(-1)}
@@ -26,11 +19,11 @@ function RatingChoiceSet({answerValue, choices, onChange}) {
               <RatingStar
                 isActive={
                   activeIndex === -1
-                    ? index <= answerIndex
+                    ? index <= answerValue
                     : index <= activeIndex
                 }
                 isHovered={activeIndex !== -1 && index <= activeIndex}
-                onClick={() => onChange(id)}
+                onClick={() => onChange(index)}
               />
             </Box>
           </Tooltip>

@@ -15,10 +15,6 @@ export function getSurveyQuestion(state, questionId) {
   return state.survey.questions.byId[questionId];
 }
 
-export function getSurveyChoiceSet(state, choiceSetId) {
-  return state.survey.choiceSets[choiceSetId];
-}
-
 export function getSurveyProgressItems(state) {
   const {responses, survey} = state;
   const {allIds, byId} = survey.questions;

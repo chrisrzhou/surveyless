@@ -10,8 +10,8 @@ function List({children, isCentered, isMobileVertical, isVertical, spacing}) {
         isVertical
           ? 'flex-start'
           : isMobileVertical
-            ? ['flex-start', 'center']
-            : 'center'
+          ? ['flex-start', 'center']
+          : 'center'
       }
       flexDirection={
         isVertical ? 'column' : isMobileVertical ? ['column', 'row'] : 'row'
@@ -20,10 +20,10 @@ function List({children, isCentered, isMobileVertical, isVertical, spacing}) {
         isVertical
           ? 'center'
           : isMobileVertical
-            ? ['center', 'flex-start']
-            : isCentered
-              ? 'center'
-              : 'flex-start'
+          ? ['center', 'flex-start']
+          : isCentered
+          ? 'center'
+          : 'flex-start'
       }
       flexWrap="wrap"
       mx={-spacing}

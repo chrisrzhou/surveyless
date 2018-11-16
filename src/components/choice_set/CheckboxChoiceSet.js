@@ -2,22 +2,21 @@ import CheckboxRadioInput from 'components/ui/CheckboxRadioInput';
 import ChoiceSetLayout from './ChoiceSetLayout';
 import React from 'react';
 
-function CheckboxChoiceSet({answerValue, choices, config, onChange}) {
+function CheckboxChoiceSet({answerValue, choices, isVertical, onChange}) {
   const answerValues = answerValue === null ? [] : answerValue;
   return (
-    <ChoiceSetLayout layout={config.layout}>
+    <ChoiceSetLayout isVertical={isVertical}>
       {choices.map((choice, index) => {
-        const {id, text} = choice;
         return (
           <CheckboxRadioInput
-            key={id}
-            checked={answerValues.includes(id)}
-            labelValue={text}
+            key={choice}
+            checked={answerValues.includes(index)}
+            labelValue={choice}
             onChange={checked => {
-              if (checked && !answerValues.includes(id)) {
-                onChange([...answerValues, id]);
+              if (checked && !answerValues.includes(index)) {
+                onChange([...answerValues, index]);
               } else {
-                onChange(answerValues.filter(a => a !== id));
+                onChange(answerValues.filter(a => a !== index));
               }
             }}
             role="checkbox"

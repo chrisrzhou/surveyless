@@ -20,7 +20,7 @@ Less complexity.
 
 Less headaches.
 
-![Logo](./src/images/Octocat.png)
+![Logo](/src/images/Octocat.png)
 Format: ![Alt Text](url)
 
 ## TODO

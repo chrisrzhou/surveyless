@@ -1,9 +1,27 @@
+import {createAction, createActionTypes, createReducer} from 'store/utils';
+
 import {combineReducers} from 'redux';
-import {createReducer} from 'store/utils';
 
-const byId = createReducer({}, {});
+export const actionTypes = createActionTypes('survey', ['HYDRATE']);
 
-const allIds = createReducer([], {});
+export const actions = {
+  hydrate: createAction(actionTypes.HYDRATE),
+};
+
+const byId = createReducer(
+  {},
+  {
+    [actionTypes.HYDRATE]: (state, {payload}) => {
+      return payload.byId;
+    },
+  },
+);
+
+const allIds = createReducer([], {
+  [actionTypes.HYDRATE]: (state, {payload}) => {
+    return payload.allIds;
+  },
+});
 
 export default combineReducers({
   allIds,

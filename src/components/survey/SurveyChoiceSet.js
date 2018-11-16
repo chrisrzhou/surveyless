@@ -1,5 +1,4 @@
-import {choiceSetStyles, questionTypes} from 'enums';
-import {getResponseAnswerValue, getSurveyChoiceSet} from 'store/selectors';
+import {choiceTypes, questionTypes} from 'enums';
 
 import ButtonChoiceSet from 'components/choice_set/ButtonChoiceSet';
 import CheckboxChoiceSet from 'components/choice_set/CheckboxChoiceSet';
@@ -9,23 +8,23 @@ import React from 'react';
 import SliderChoiceSet from 'components/choice_set/SliderChoiceSet';
 import {actions} from 'store/responses';
 import {connect} from 'react-redux';
+import {getResponseAnswerValue} from 'store/selectors';
 
+// This component controls the combination of valid questionTypes and choiceTypes and provides a common wrapper to set responses
 function SurveyChoiceSet({
   answerValue,
-  choiceSet,
-  config,
+  choiceType,
+  choices,
   onSetResponse,
   questionId,
   questionType,
 }) {
-  const {choices} = choiceSet;
-  const isMulti = questionType === questionTypes.MULTI_CHOICE;
   switch (questionType) {
     case questionTypes.LIKERT:
     case questionTypes.SINGLE_CHOICE:
     case questionTypes.MATRIX:
-      switch (config.style) {
-        case choiceSetStyles.RATING:
+      switch (choiceType) {
+        case choiceTypes.RATING:
           return (
             <RatingChoiceSet
               answerValue={answerValue}
@@ -35,26 +34,28 @@ function SurveyChoiceSet({
               }}
             />
           );
-        case choiceSetStyles.BUTTON:
+        case choiceTypes.HORIZONTAL_BUTTON:
+        case choiceTypes.VERTICAL_BUTTON:
           return (
             <ButtonChoiceSet
               answerValue={answerValue}
-              isMulti={isMulti}
               choices={choices}
-              config={config}
+              isMulti={false}
+              isVertical={choiceType === choiceTypes.VERTICAL_BUTTON}
               onChange={answerValue => {
                 onSetResponse({questionId, answerValue});
               }}
             />
           );
-        case choiceSetStyles.RADIO:
+        case choiceTypes.HORIZONTAL_RADIO:
+        case choiceTypes.VERTICAL_RADIO:
         default:
           return (
             <RadioChoiceSet
               answerValue={answerValue}
-              isMulti={isMulti}
               choices={choices}
-              config={config}
+              isMulti={false}
+              isVertical={choiceType === choiceTypes.VERTICAL_RADIO}
               onChange={answerValue => {
                 onSetResponse({questionId, answerValue});
               }}
@@ -62,26 +63,28 @@ function SurveyChoiceSet({
           );
       }
     case questionTypes.MULTI_CHOICE: {
-      switch (config.style) {
-        case choiceSetStyles.BUTTON:
+      switch (choiceType) {
+        case choiceTypes.HORIZONTAL_BUTTON:
+        case choiceTypes.VERTICAL_BUTTON:
           return (
             <ButtonChoiceSet
               answerValue={answerValue}
-              isMulti={isMulti}
               choices={choices}
-              config={config}
+              isMulti
+              isVertical={choiceType === choiceTypes.VERTICAL_BUTTON}
               onChange={answerValue => {
                 onSetResponse({questionId, answerValue});
               }}
             />
           );
-        case choiceSetStyles.CHECKBOX:
+        case choiceTypes.HORIZONTAL_CHECKBOX:
+        case choiceTypes.VERTICAL_CHECKBOX:
         default:
           return (
             <CheckboxChoiceSet
               answerValue={answerValue}
               choices={choices}
-              config={config}
+              isVertical={choiceType === choiceTypes.VERTICAL_CHECKBOX}
               onChange={answerValue => {
                 onSetResponse({questionId, answerValue});
               }}
@@ -92,7 +95,6 @@ function SurveyChoiceSet({
     case questionTypes.SLIDER:
       return (
         <SliderChoiceSet
-          choiceSet={choiceSet}
           onChange={answerValue => {
             onSetResponse({questionId, answerValue});
           }}
@@ -107,7 +109,6 @@ function SurveyChoiceSet({
 
 export default connect(
   (state, {id, questionId}) => ({
-    choiceSet: getSurveyChoiceSet(state, id),
     answerValue: getResponseAnswerValue(state, questionId),
   }),
   {

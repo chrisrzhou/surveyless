@@ -10,13 +10,13 @@ import {getSurveyQuestion} from 'store/selectors';
 
 function SurveyQuestion({question}) {
   const {
-    choiceSetId,
-    choiceSetConfig,
-    description,
     id,
-    optionalCommentsText,
     text,
-    type,
+    questionType,
+    choiceType,
+    choices,
+    description,
+    additionalComments,
   } = question;
   return (
     <Box mb="100px">
@@ -25,19 +25,19 @@ function SurveyQuestion({question}) {
           {text}
         </Heading>
         <Markdown html={description} />
-        {choiceSetId && (
+        {choices.length && (
           <Box py={2}>
             <SurveyChoiceSet
-              id={choiceSetId}
-              config={choiceSetConfig}
+              choices={choices}
+              choiceType={choiceType}
               questionId={id}
-              questionType={type}
+              questionType={questionType}
             />
           </Box>
         )}
-        {optionalCommentsText && (
+        {additionalComments && (
           <Box pt={5}>
-            <TextArea label={optionalCommentsText} placeholder="" />
+            <TextArea label="Additional Comments" placeholder="" />
           </Box>
         )}
       </Card>

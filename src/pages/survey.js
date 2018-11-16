@@ -1,24 +1,70 @@
-import Markdown from 'components/ui/Markdown';
+import React, {useEffect} from 'react';
+
 import PageLayout from 'components/ui/PageLayout';
-import React from 'react';
 import SurveyContent from 'components/survey/SurveyContent';
 import SurveyHeader from 'components/SurveyHeader';
+import {actions} from 'store/survey/questions';
+import {connect} from 'react-redux';
 import {graphql} from 'gatsby';
 
-function SurveyPage({data}) {
+function SurveyPage({data, onHydrate}) {
+  useEffect(() => {
+    const byId = {};
+    const allIds = [];
+    data.allMarkdownRemark.edges.forEach(({node}) => {
+      const {frontmatter, html, parent} = node;
+      const id = parent.name;
+      const {
+        text,
+        questionType,
+        choices,
+        choiceType,
+        additionalComments,
+      } = frontmatter;
+      byId[id] = {
+        id,
+        text,
+        questionType,
+        choices,
+        choiceType,
+        description: html,
+        additionalComments,
+      };
+      allIds.push(id);
+    });
+    onHydrate({byId, allIds});
+  });
   return <PageLayout header={<SurveyHeader />} content={<SurveyContent />} />;
 }
 
-export default SurveyPage;
+export default connect(
+  null,
+  {
+    onHydrate: actions.hydrate,
+  },
+)(SurveyPage);
 
 // hydrate redux state with this
 export const pageQuery = graphql`
   {
     allMarkdownRemark(
       filter: {fileAbsolutePath: {regex: "//questions/.*.md/"}}
+      sort: {order: ASC, fields: [fileAbsolutePath]}
     ) {
       edges {
         node {
+          parent {
+            ... on File {
+              name
+            }
+          }
+          frontmatter {
+            text
+            questionType
+            choices
+            choiceType
+            additionalComments
+          }
           html
         }
       }

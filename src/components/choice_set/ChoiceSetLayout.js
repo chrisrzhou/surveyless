@@ -1,13 +1,9 @@
 import List from 'components/ui/List';
 import React from 'react';
-import {choiceSetLayouts} from 'enums';
 
-function ChoiceSetLayout({children, layout}) {
+function ChoiceSetLayout({children, isVertical}) {
   return (
-    <List
-      spacing={3}
-      isMobileVertical={layout === choiceSetLayouts.HORIZONTAL}
-      isVertical={layout === choiceSetLayouts.VERTICAL}>
+    <List spacing={3} isMobileVertical={!isVertical} isVertical={isVertical}>
       {children}
     </List>
   );

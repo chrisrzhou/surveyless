@@ -11,11 +11,11 @@ function Markdown({html}) {
       escapeHtml={false}
       source={html}
       renderers={{
+        link: Link,
         code: CodeBlock,
         inlineCode: props => <Text isMono {...props} />,
         root: Text,
         heading: Heading,
-        link: Link,
       }}
     />
   );

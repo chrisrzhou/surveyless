@@ -15,6 +15,9 @@ import {keyCodes} from 'enums';
 import useHotKeys from 'hooks/useHotKeys';
 
 function SurveyContent({progressItems, responseMaxQuestionIndex}) {
+  if (progressItems.length === 0) {
+    return <div>No questions to display</div>;
+  }
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(
     responseMaxQuestionIndex,
   );

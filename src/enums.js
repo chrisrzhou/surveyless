@@ -32,14 +32,12 @@ export const questionTypes = keymirror({
   MATRIX: null,
 });
 
-export const choiceSetStyles = keymirror({
-  BUTTON: null,
-  CHECKBOX: null,
-  RADIO: null,
+export const choiceTypes = keymirror({
+  HORIZONTAL_CHECKBOX: null,
+  HORIZONTAL_BUTTON: null,
+  HORIZONTAL_RADIO: null,
   RATING: null,
-});
-
-export const choiceSetLayouts = keymirror({
-  HORIZONTAL: null,
-  VERTICAL: null,
+  VERTICAL_CHECKBOX: null,
+  VERTICAL_BUTTON: null,
+  VERTICAL_RADIO: null,
 });

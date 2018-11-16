@@ -2,28 +2,33 @@ import Button from 'components/ui/Button';
 import ChoiceSetLayout from './ChoiceSetLayout';
 import React from 'react';
 
-function ButtonChoiceSet({answerValue, choices, config, isMulti, onChange}) {
+function ButtonChoiceSet({
+  answerValue,
+  choices,
+  isMulti,
+  isVertical,
+  onChange,
+}) {
   const answerValues = answerValue === null ? [] : answerValue;
   return (
-    <ChoiceSetLayout layout={config.layout}>
+    <ChoiceSetLayout isVertical={isVertical}>
       {choices.map((choice, index) => {
-        const {id, text} = choice;
         const isActive = isMulti
-          ? answerValues.includes(id)
-          : answerValue === id;
+          ? answerValues.includes(index)
+          : answerValue === index;
         return (
           <Button
-            key={id}
-            label={text}
+            key={choice}
+            label={choice}
             onClick={() => {
               if (isMulti) {
-                if (answerValues.includes(id)) {
-                  onChange(answerValues.filter(a => a !== id));
+                if (answerValues.includes(index)) {
+                  onChange(answerValues.filter(a => a !== index));
                 } else {
-                  onChange([...answerValues, id]);
+                  onChange([...answerValues, index]);
                 }
               } else {
-                onChange(id);
+                onChange(index);
               }
             }}
             variant={isActive ? 'primary' : 'outline'}
