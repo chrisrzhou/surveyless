@@ -14,7 +14,7 @@ module.exports = {
         icon: 'static/images/logo.png',
       },
     },
-    'gatsby-transformer-remark',
+    'gatsby-plugin-styled-components',
     // source files
     {
       resolve: 'gatsby-source-filesystem',

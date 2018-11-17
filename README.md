@@ -33,6 +33,14 @@ Format: ![Alt Text](url)
 - fix bug where we can't use Link/Blockquote for react-markdown renderer
 - theme editor
 - results page
+- more animations
+
+<iframe
+  src="http://www.youtube.com/embed/SB-qEYVdvXA"
+  height="300px"
+  width="100%"
+  scrolling="yes">
+</iframe>
 
 ## Overview
 
@@ -111,69 +119,3 @@ Figure out a way to handle triggers (e.g. answering a certain value in one quest
 
 - Auto save using browser history. We don't have a server to handle saves, so we want to think how to avoid people losing their work.
 - In `Setup 4.`, It is easy to have anyone take the survey, but we want to think of how closed group of people can take the survey. Unique survey URLs with authorized hashes could be an option, but the code to check for these hashes have to be made private. We could simply turn the repo into a private repo and that could solve the problem, but ideally we should find a way to do this without the need to make the repo private.
-
--
-
-## Testing Markdown
-
-# This is an <h1> tag
-
-## This is an <h2> tag
-
-###### This is an <h6> tag
-
-_This text will be italic_
-_This will also be italic_
-
-**This text will be bold**
-**This will also be bold**
-
-_You **can** combine them_
-
-- Item 1
-- Item 2
-  - Item 2a
-  - Item 2b
-
-1.  Item 1
-1.  Item 2
-1.  Item 3
-1.  Item 3a
-1.  Item 3b
-
-http://github.com - automatic!
-
-[GitHub](http://github.com)
-
-As Kanye West said:
-
-> We're living the future so
-> the present is our past.
-
-I think you should use an
-`<addr>` element here instead.
-
-```javascript
-function fancyAlert(arg) {
-  if (arg) {
-    $.facebox({div: '#foo'});
-  }
-}
-```
-
-- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
-- [x] list syntax required (any unordered or ordered list supported)
-- [x] this is a complete item
-- [ ] this is an incomplete item
-
-| First Header                | Second Header                |
-| --------------------------- | ---------------------------- |
-| Content from cell 1         | Content from cell 2          |
-| Content in the first column | Content in the second column |
-
-<iframe
-  width="640"
-  height="390"
-  src="http://www.youtube.com/embed/SB-qEYVdvXA"
-  frameborder="0"
-/>

@@ -1,4 +1,5 @@
-import GlobalStyle from 'styles/globalStyle';
+import 'styles/index.css';
+
 import Helmet from 'react-helmet';
 import React from 'react';
 import {Provider as StoreProvider} from 'react-redux';
@@ -31,7 +32,6 @@ export default function Root({element}) {
             <html lang="en" />
           </Helmet>
           {element}
-          <GlobalStyle />
         </div>
       </ThemeProvider>
     </StoreProvider>

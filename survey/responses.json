@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "response_id": "a",
+    "question_id": 1,
+    "answer_id": 2
+  },
+  {
+    "response_id": "a",
+    "question_id": 2,
+    "answer_id": 3
+  }
+]

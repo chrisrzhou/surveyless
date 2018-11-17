@@ -4886,6 +4886,13 @@ gatsby-plugin-resolve-src@^2.0.0-beta.1:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-resolve-src/-/gatsby-plugin-resolve-src-2.0.0-beta.1.tgz#a45cb60d191d67f284c0529c1f06803855c801c5"
   integrity sha512-uyiRSiTKxpKqw6kfqp3FyxItJYPPx6O2Sx5rpG3O6Q+bAkWxaRyAbw/fbU01jxzCcd4nV4OKTTxlt2crawC0mQ==
 
+gatsby-plugin-styled-components@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-styled-components/-/gatsby-plugin-styled-components-3.0.2.tgz#10daa2295e518aeecff257ea6716ea205c1cff9e"
+  integrity sha512-+oPA5yqJTv1ej+bNJutazC8hE056P6DSbeKDKn2Ug96BU4rHw6jb5Pb/XH4QE8npd8OHnXurRwhifSdBrtbaoQ==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+
 gatsby-react-router-scroll@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/gatsby-react-router-scroll/-/gatsby-react-router-scroll-2.0.1.tgz#32f5883803abd918f2b770e6ce4f552da783a588"

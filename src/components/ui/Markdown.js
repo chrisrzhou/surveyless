@@ -1,8 +1,8 @@
 import Blockquote from './Blockquote';
 import CodeBlock from './CodeBlock';
 import Heading from './Heading';
-import Image from './Image';
 import Link from './Link';
+import MarkdownImageRenderer from './MarkdownImageRenderer';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Text from './Text';
@@ -21,7 +21,7 @@ function Markdown({source}) {
         blockquote: Blockquote,
         code: CodeBlock,
         heading: Heading,
-        image: Image,
+        image: MarkdownImageRenderer,
         inlineCode: props => <Text isMono {...props} />,
         link: Link,
         root: Text,
