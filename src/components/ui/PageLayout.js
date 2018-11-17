@@ -5,11 +5,7 @@ import React from 'react';
 
 function PageLayout({header, content}) {
   return (
-    <Flex
-      css={{height: '100vh', overflowX: 'hidden'}}
-      flexDirection="column"
-      mx="auto"
-      width={RESPONSIVE_APP_WIDTH}>
+    <Flex flexDirection="column" mx="auto" width={RESPONSIVE_APP_WIDTH}>
       <Box
         bg="background"
         css={{

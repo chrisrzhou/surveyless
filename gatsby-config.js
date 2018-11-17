@@ -15,6 +15,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-styled-components',
+    'gatsby-transformer-remark',
     // source files
     {
       resolve: 'gatsby-source-filesystem',

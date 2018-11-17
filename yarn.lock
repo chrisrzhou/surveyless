@@ -3192,7 +3192,7 @@ cssnano-preset-default@^4.0.5:
     postcss-minify-font-values "^4.0.2"
     postcss-minify-gradients "^4.0.1"
     postcss-minify-params "^4.0.1"
-    postcss-minify-selectors "^4.0.1"
+    postcss-minify-surveySelectors "^4.0.1"
     postcss-normalize-charset "^4.0.1"
     postcss-normalize-display-values "^4.0.1"
     postcss-normalize-positions "^4.0.1"
@@ -3206,7 +3206,7 @@ cssnano-preset-default@^4.0.5:
     postcss-reduce-initial "^4.0.2"
     postcss-reduce-transforms "^4.0.1"
     postcss-svgo "^4.0.1"
-    postcss-unique-selectors "^4.0.1"
+    postcss-unique-surveySelectors "^4.0.1"
 
 cssnano-util-get-arguments@^4.0.0:
   version "4.0.0"
@@ -8250,9 +8250,9 @@ postcss-minify-params@^4.0.1:
     postcss-value-parser "^3.0.0"
     uniqs "^2.0.0"
 
-postcss-minify-selectors@^4.0.1:
+postcss-minify-surveySelectors@^4.0.1:
   version "4.0.1"
-  resolved "https://registry.yarnpkg.com/postcss-minify-selectors/-/postcss-minify-selectors-4.0.1.tgz#a891c197977cc37abf60b3ea06b84248b1c1e9cd"
+  resolved "https://registry.yarnpkg.com/postcss-minify-surveySelectors/-/postcss-minify-surveySelectors-4.0.1.tgz#a891c197977cc37abf60b3ea06b84248b1c1e9cd"
   integrity sha512-8+plQkomve3G+CodLCgbhAKrb5lekAnLYuL1d7Nz+/7RANpBEVdgBkPNwljfSKvZ9xkkZTZITd04KP+zeJTJqg==
   dependencies:
     alphanum-sort "^1.0.0"
@@ -8429,9 +8429,9 @@ postcss-svgo@^4.0.1:
     postcss-value-parser "^3.0.0"
     svgo "^1.0.0"
 
-postcss-unique-selectors@^4.0.1:
+postcss-unique-surveySelectors@^4.0.1:
   version "4.0.1"
-  resolved "https://registry.yarnpkg.com/postcss-unique-selectors/-/postcss-unique-selectors-4.0.1.tgz#9446911f3289bfd64c6d680f073c03b1f9ee4bac"
+  resolved "https://registry.yarnpkg.com/postcss-unique-surveySelectors/-/postcss-unique-surveySelectors-4.0.1.tgz#9446911f3289bfd64c6d680f073c03b1f9ee4bac"
   integrity sha512-+JanVaryLo9QwZjKrmJgkI4Fn8SBgRO6WXQBJi7KiAVPlmxikB5Jzc4EvXMT2H0/m0RjrVVm9rGNhZddm/8Spg==
   dependencies:
     alphanum-sort "^1.0.0"

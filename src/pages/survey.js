@@ -7,14 +7,13 @@ import {actions} from 'store/survey/questions';
 import {connect} from 'react-redux';
 import {graphql} from 'gatsby';
 
-function SurveyPage({data, onHydrate}) {
+function SurveyPage({data, onInitialize}) {
   useEffect(() => {
     const byId = {};
-    const allIds = [];
     data.allMarkdownRemark.edges.forEach(({node}) => {
-      const {frontmatter, rawMarkdownBody, parent} = node;
-      const id = parent.name;
+      const {frontmatter, rawMarkdownBody} = node;
       const {
+        id,
         text,
         questionType,
         choices,
@@ -30,9 +29,8 @@ function SurveyPage({data, onHydrate}) {
         description: rawMarkdownBody,
         additionalComments,
       };
-      allIds.push(id);
     });
-    onHydrate({byId, allIds});
+    onInitialize({byId, allIds: Object.keys(byId)});
   });
   return <PageLayout header={<SurveyHeader />} content={<SurveyContent />} />;
 }
@@ -40,7 +38,7 @@ function SurveyPage({data, onHydrate}) {
 export default connect(
   null,
   {
-    onHydrate: actions.hydrate,
+    onInitialize: actions.initialize,
   },
 )(SurveyPage);
 
@@ -48,16 +46,12 @@ export const pageQuery = graphql`
   {
     allMarkdownRemark(
       filter: {fileAbsolutePath: {regex: "//questions/.*.md/"}}
-      sort: {order: ASC, fields: [fileAbsolutePath]}
+      sort: {order: ASC, fields: [frontmatter___id]}
     ) {
       edges {
         node {
-          parent {
-            ... on File {
-              name
-            }
-          }
           frontmatter {
+            id
             text
             questionType
             choices

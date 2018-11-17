@@ -25,7 +25,7 @@ Format: ![Alt Text](url)
 
 ## TODO
 
-- work on tooltip
+- work on tooltip, page spinner
 - local storage and hydrate state and reset browser cache
 - Write out README and survey/questions/QUESTION.md content
 - build out /docs folder
@@ -37,9 +37,8 @@ Format: ![Alt Text](url)
 
 <iframe
   src="http://www.youtube.com/embed/SB-qEYVdvXA"
-  height="300px"
-  width="100%"
-  scrolling="yes">
+  height="400px"
+  width="100%">
 </iframe>
 
 ## Overview

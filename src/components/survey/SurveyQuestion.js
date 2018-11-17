@@ -1,14 +1,17 @@
-import {Box} from 'rebass';
+import {Box, Flex} from 'rebass';
+import {getAnswer, getQuestion} from 'store/surveySelectors';
+
 import Card from 'components/ui/Card';
 import Heading from 'components/ui/Heading';
 import Markdown from 'components/ui/Markdown';
 import React from 'react';
 import SurveyChoiceSet from './SurveyChoiceSet';
+import Text from 'components/ui/Text';
 import TextArea from 'components/ui/TextArea';
+import {actions} from 'store/survey/responses';
 import {connect} from 'react-redux';
-import {getSurveyQuestion} from 'store/selectors';
 
-function SurveyQuestion({question}) {
+function SurveyQuestion({answer, onSetResponse, question}) {
   const {
     id,
     text,
@@ -21,30 +24,50 @@ function SurveyQuestion({question}) {
   return (
     <Box mb="100px">
       <Card>
-        <Heading level={2} py={3}>
-          {text}
-        </Heading>
-        <Markdown source={description} />
+        <Heading level={2}>{text}</Heading>
+        <Box py={3}>
+          <Markdown source={description} />
+        </Box>
         {choices.length && (
-          <Box py={2}>
-            <SurveyChoiceSet
-              choices={choices}
-              choiceType={choiceType}
-              questionId={id}
-              questionType={questionType}
-            />
-          </Box>
+          <SurveyChoiceSet
+            answerValue={answer.answerValue}
+            choices={choices}
+            choiceType={choiceType}
+            questionId={id}
+            questionType={questionType}
+            onChoiceChange={answerValue => {
+              onSetResponse({questionId: id, answerValue});
+            }}
+          />
         )}
         {additionalComments && (
-          <Box pt={5}>
-            <TextArea label="Additional Comments" placeholder="" />
-          </Box>
+          <Flex flexDirection="column" pt={5}>
+            <Text as="label" color="secondaryText" py={1}>
+              Additional Comments
+            </Text>
+            <TextArea
+              onChange={value => {
+                onSetResponse({
+                  questionId: id,
+                  additionalComments: value,
+                });
+              }}
+              placeholder="Please provide any additional comments here"
+              value={answer.additionalComments}
+            />
+          </Flex>
         )}
       </Card>
     </Box>
   );
 }
 
-export default connect((state, {questionId}) => ({
-  question: getSurveyQuestion(state, questionId),
-}))(SurveyQuestion);
+export default connect(
+  (state, {questionId}) => ({
+    answer: getAnswer(state, questionId),
+    question: getQuestion(state, questionId),
+  }),
+  {
+    onSetResponse: actions.setResponse,
+  },
+)(SurveyQuestion);

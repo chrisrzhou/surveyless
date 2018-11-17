@@ -17,7 +17,7 @@ additionalComments: true
 
 https://surveyless.chrisrzhou.io
 
-![Logo](/static/images/octocat.png)
+![Logo](./../images/octocat.png)
 
 ```javascript
 const demo = () => {

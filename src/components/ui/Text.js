@@ -12,6 +12,7 @@ function Text({children, color, isMono, ...otherProps}) {
         wordWrap: 'break-word',
       }}
       fontFamily={isMono ? 'mono' : 'regular'}
+      fontSize={1}
       px={isMono ? 1 : undefined}
       {...otherProps}>
       {children}

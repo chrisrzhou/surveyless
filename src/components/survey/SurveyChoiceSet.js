@@ -6,22 +6,15 @@ import RadioChoiceSet from 'components/choice_set/RadioChoiceSet';
 import RatingChoiceSet from 'components/choice_set/RatingChoiceSet';
 import React from 'react';
 import SliderChoiceSet from 'components/choice_set/SliderChoiceSet';
-import {actions} from 'store/responses';
-import {connect} from 'react-redux';
-import {getResponseAnswerValue} from 'store/selectors';
 
 // This component controls the combination of valid questionTypes and choiceTypes and provides a common wrapper to set responses
 function SurveyChoiceSet({
   answerValue,
   choiceType,
   choices,
-  onSetResponse,
-  questionId,
+  onChoiceChange,
   questionType,
 }) {
-  function onChange(answerValue) {
-    onSetResponse({questionId, answerValue});
-  }
   switch (questionType) {
     case questionTypes.LIKERT:
     case questionTypes.SINGLE_CHOICE:
@@ -32,7 +25,7 @@ function SurveyChoiceSet({
             <RatingChoiceSet
               answerValue={answerValue}
               choices={choices}
-              onChange={onChange}
+              onChange={onChoiceChange}
             />
           );
         case choiceTypes.HORIZONTAL_BUTTON:
@@ -43,7 +36,7 @@ function SurveyChoiceSet({
               choices={choices}
               isMulti={false}
               isVertical={choiceType === choiceTypes.VERTICAL_BUTTON}
-              onChange={onChange}
+              onChange={onChoiceChange}
             />
           );
         case choiceTypes.HORIZONTAL_RADIO:
@@ -55,7 +48,7 @@ function SurveyChoiceSet({
               choices={choices}
               isMulti={false}
               isVertical={choiceType === choiceTypes.VERTICAL_RADIO}
-              onChange={onChange}
+              onChange={onChoiceChange}
             />
           );
       }
@@ -69,7 +62,7 @@ function SurveyChoiceSet({
               choices={choices}
               isMulti
               isVertical={choiceType === choiceTypes.VERTICAL_BUTTON}
-              onChange={onChange}
+              onChange={onChoiceChange}
             />
           );
         case choiceTypes.HORIZONTAL_CHECKBOX:
@@ -80,13 +73,13 @@ function SurveyChoiceSet({
               answerValue={answerValue}
               choices={choices}
               isVertical={choiceType === choiceTypes.VERTICAL_CHECKBOX}
-              onChange={onChange}
+              onChange={onChoiceChange}
             />
           );
       }
     }
     case questionTypes.SLIDER:
-      return <SliderChoiceSet onChange={onChange} />;
+      return <SliderChoiceSet onChange={onChoiceChange} />;
     case questionTypes.RANKING:
     case questionTypes.COMMENT:
     default:
@@ -94,11 +87,4 @@ function SurveyChoiceSet({
   }
 }
 
-export default connect(
-  (state, {id, questionId}) => ({
-    answerValue: getResponseAnswerValue(state, questionId),
-  }),
-  {
-    onSetResponse: actions.setResponse,
-  },
-)(SurveyChoiceSet);
+export default SurveyChoiceSet;

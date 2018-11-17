@@ -4,9 +4,9 @@ import Helmet from 'react-helmet';
 import React from 'react';
 import {Provider as StoreProvider} from 'react-redux';
 import {ThemeProvider} from 'styled-components';
-import base from 'themes/base';
 import {setConfig} from 'react-hot-loader';
 import store from 'store';
+import theme from './../../survey/theme.json';
 
 // HACK: react-hooks bug with react-hot-loader: https://github.com/gatsbyjs/gatsby/issues/9489
 setConfig({pureSFC: true});
@@ -14,7 +14,7 @@ setConfig({pureSFC: true});
 export default function Root({element}) {
   return (
     <StoreProvider store={store}>
-      <ThemeProvider theme={base}>
+      <ThemeProvider theme={theme}>
         <div>
           <Helmet
             title="surveyless"

@@ -1,13 +1,11 @@
 import {combineReducers, createStore} from 'redux';
 
 import draft from './draft';
-import responses from './responses';
 import results from './results';
 import survey from './survey';
 
 const reducer = combineReducers({
   draft,
-  responses,
   results,
   survey,
 });
