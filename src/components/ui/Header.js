@@ -14,7 +14,7 @@ function Header({src, subtitle, title}) {
       p={3}>
       <Link style={{textDecoration: 'none'}} to="/">
         <Flex alignItems="center">
-          <Image mr={2} src={src} width={40} />
+          <Image mr={2} src={src} height={30} />
           <Heading color="brand" level={1} my={1}>
             {title}
           </Heading>

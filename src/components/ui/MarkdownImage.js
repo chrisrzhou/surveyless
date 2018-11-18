@@ -1,7 +1,6 @@
 import {Spring, config} from 'react-spring';
 
 import Image from './Image';
-import {MAX_IMAGE_WIDTH} from 'styles/constants';
 import React from 'react';
 
 function MarkdownImage({src, ...otherProps}) {
@@ -16,14 +15,11 @@ function MarkdownImage({src, ...otherProps}) {
           css={{
             boxSizing: 'border-box',
             display: 'block',
-            maxWidth: MAX_IMAGE_WIDTH,
-            width: '80%',
+            maxWidth: '80%',
             ...style,
           }}
           mx="auto"
-          p={3}
           src={src.replace(/^\/static\//, '/')}
-          width="100%"
           {...otherProps}
         />
       )}

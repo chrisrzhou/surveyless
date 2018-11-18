@@ -3,7 +3,7 @@ import ChoiceSetLayout from './ChoiceSetLayout';
 import React from 'react';
 
 function CheckboxChoiceSet({answerValue, choices, isVertical, onChange}) {
-  const answerValues = answerValue === null ? [] : answerValue;
+  const answerValues = answerValue == null ? [] : answerValue;
   return (
     <ChoiceSetLayout isVertical={isVertical}>
       {choices.map((choice, index) => {

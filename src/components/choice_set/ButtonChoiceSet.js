@@ -9,7 +9,7 @@ function ButtonChoiceSet({
   isVertical,
   onChange,
 }) {
-  const answerValues = answerValue === null ? [] : answerValue;
+  const answerValues = answerValue == null ? [] : answerValue;
   return (
     <ChoiceSetLayout isVertical={isVertical}>
       {choices.map((choice, index) => {

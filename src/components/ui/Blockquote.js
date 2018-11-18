@@ -15,9 +15,6 @@ function Blockquote({children}) {
           line-height: 0.1em;
           vertical-align: -0.4em;
         }
-        p {
-          display: inline;
-        }
       `}
       mx={2}
       my={3}

@@ -7,7 +7,7 @@ function Button({disabled, label, onClick, variant, ...otherProps}) {
   return (
     <Card
       as="button"
-      borderColor={isPrimary ? undefined : 'brand'}
+      borderColor="brand"
       borderRadius={0}
       bg={isPrimary ? 'brand' : 'transparent'}
       css={{
@@ -37,7 +37,7 @@ function Button({disabled, label, onClick, variant, ...otherProps}) {
 }
 
 Button.defaultProps = {
-  variant: 'outline',
+  variant: 'primary',
 };
 
 export default Button;

@@ -1,8 +1,10 @@
-# Thank you for checking out `surveyless`!
+# Thank you for checking out `surveyless`! ❤️
 
-Please star and clone the repo to set up your own serverless surveys! :star:
+We hope that this live survey demo has been helpful. Here are some recommended next steps on what to check out!
 
-Or watch some cat videos :cat:
+- 📖 Read the [/docs](https://github.com/chrisrzhou/surveyless/docs)
+- 💻 [Clone the repo](https://github.com/chrisrzhou/surveyless) or [deploy an instance](https://app.netlify.com/start/deploy?repository=https://github.com/chrisrzhou/surveyless) on Netlify
+- 😸 Watch some cat videos
 
 <iframe
   src="http://www.youtube.com/embed/SB-qEYVdvXA"

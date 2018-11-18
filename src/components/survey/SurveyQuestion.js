@@ -24,11 +24,11 @@ function SurveyQuestion({answer, onSetResponse, question}) {
   return (
     <Box mb="100px">
       <Card>
-        <Heading level={2}>{text}</Heading>
         <Box py={3}>
           <Markdown source={description} />
         </Box>
-        {choices.length && (
+        <Heading level={2}>{text}</Heading>
+        {choiceType !== null && choices.length && (
           <SurveyChoiceSet
             answerValue={answer.answerValue}
             choices={choices}
