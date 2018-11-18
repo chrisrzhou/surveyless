@@ -1,12 +1,11 @@
 import {Box, Flex} from 'rebass';
 
-import {DEFAULT_HOVER_COLOR} from 'styles/constants';
+import {SURVEYLESS_LIGHT_GRAY} from 'styles/constants';
 import React from 'react';
-import Text from './Text';
 import {keyCodes} from 'enums';
 
 function CheckboxRadioInput({checked, labelValue, role, onChange}) {
-  const hoverBackground = checked ? undefined : DEFAULT_HOVER_COLOR;
+  const hoverBackground = checked ? undefined : SURVEYLESS_LIGHT_GRAY;
   return (
     <Flex
       alignItems="center"
@@ -14,7 +13,7 @@ function CheckboxRadioInput({checked, labelValue, role, onChange}) {
       onClick={e => onChange(!checked)}>
       <Box
         ariaChecked={checked}
-        bg={checked ? 'active' : 'background'}
+        bg={checked ? 'brand' : 'background'}
         css={{
           border: '1px solid black',
           borderRadius: role === 'radio' ? '9999px' : undefined,
@@ -38,7 +37,7 @@ function CheckboxRadioInput({checked, labelValue, role, onChange}) {
         role={role}
         tabIndex="0"
       />
-      <Text pl={1}>{labelValue}</Text>
+      {labelValue}
     </Flex>
   );
 }

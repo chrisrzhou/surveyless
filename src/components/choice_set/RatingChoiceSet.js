@@ -11,7 +11,7 @@ function RatingChoiceSet({answerValue, choices, onChange}) {
     <List>
       {choices.map((choice, index) => {
         return (
-          <Tooltip key={choice} tooltip={choice}>
+          <Tooltip key={choice} content={choice}>
             <Box
               onMouseOver={() => setActiveIndex(index)}
               onMouseLeave={() => setActiveIndex(-1)}

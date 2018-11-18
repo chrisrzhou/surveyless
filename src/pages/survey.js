@@ -1,13 +1,12 @@
 import React, {useEffect} from 'react';
 
-import PageLayout from 'components/ui/PageLayout';
 import SurveyContent from 'components/survey/SurveyContent';
-import SurveyHeader from 'components/SurveyHeader';
+import SurveyPageLayout from 'components/survey/SurveyPageLayout';
 import {actions} from 'store/survey/questions';
 import {connect} from 'react-redux';
 import {graphql} from 'gatsby';
 
-function SurveyPage({data, onInitialize}) {
+function SurveyPage({data, isCompleted, onInitialize}) {
   useEffect(() => {
     const byId = {};
     data.allMarkdownRemark.edges.forEach(({node}) => {
@@ -31,8 +30,12 @@ function SurveyPage({data, onInitialize}) {
       };
     });
     onInitialize({byId, allIds: Object.keys(byId)});
-  });
-  return <PageLayout header={<SurveyHeader />} content={<SurveyContent />} />;
+  }, []);
+  return (
+    <SurveyPageLayout>
+      <SurveyContent />
+    </SurveyPageLayout>
+  );
 }
 
 export default connect(

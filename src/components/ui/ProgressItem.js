@@ -13,12 +13,12 @@ function ProgressItem({
 }) {
   let color;
   if (isCompleted) {
-    color = 'active';
+    color = 'brand';
   } else {
-    color = 'inactive';
+    color = 'disabled';
   }
   return (
-    <Tooltip position="top" tooltip={tooltip}>
+    <Tooltip position="top" content={tooltip}>
       <Flex
         alignItems="center"
         bg={color}

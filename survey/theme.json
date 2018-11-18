@@ -1,49 +1,38 @@
 {
   "space": [2, 4, 8, 16, 32, 64, 128, 256],
   "colors": {
-    "active": "#519EF7",
-    "inactive": "#A2A9AF",
+    "brand": "#4b98e5",
+    "headerText": "#1d3b59",
     "primaryText": "#4F565D",
-    "secondaryText": "#a0afba",
+    "secondaryText": "#a3b8cc",
+    "disabled": "#A2A9AF",
     "wash": "#F0F0F0",
-    "background": "#FFFFFF"
+    "background": "#FFFFFF",
+    "dark": "#3a4856"
   },
-  "fonts": {
-    "heading": "system-ui, sans-serif",
-    "regular": "system-ui, sans-serif",
-    "mono": "Menlo, monospace"
-  },
-  "fontSizes": [10, 14, 16, 18, 20, 22, 24, 32],
-  "buttons": {
-    "primary": {
-      "color": "#FFFFFF",
-      "backgroundColor": "#519EF7"
-    },
-    "outline": {
-      "color": "#519EF7",
-      "backgroundColor": "transparent",
-      "boxShadow": "inset 0 0 0 2px"
-    }
-  },
-  "Button": {
-    "cursor": "pointer",
-    ":hover": {
-      "opacity": 0.7
-    },
-    ":focus": {
-      "opacity": 0.7,
-      "outline": "none"
-    },
-    ":disabled": {
-      "cursor": "not-allowed",
-      "opacity": 0.3
-    }
-  },
-  "Card": {
-    ":focus": {
-      "borderColor": "#519EF7",
-      "opacity": 0.7,
-      "outline": "none"
-    }
+  "typography": {
+    "baseFontSize": "14px",
+    "baseLineHeight": 1.5,
+    "scaleRatio": 2,
+    "headerFontFamily": [
+      "Work Sans",
+      "system-ui",
+      "Helvetica Neue",
+      "Segoe UI",
+      "Helvetica",
+      "Arial",
+      "sans-serif"
+    ],
+    "bodyFontFamily": ["Quattrocento Sans", "system-ui", "sans-serif"],
+    "googleFonts": [
+      {
+        "name": "Work Sans",
+        "styles": ["700"]
+      },
+      {
+        "name": "Quattrocento Sans",
+        "styles": ["400", "400i", "700", "700i"]
+      }
+    ]
   }
 }

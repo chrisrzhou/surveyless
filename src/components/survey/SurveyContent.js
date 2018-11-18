@@ -5,7 +5,6 @@ import {
   getProgressItems,
   getSession,
 } from 'store/surveySelectors';
-import {keyCodes, routes} from 'enums';
 
 import Button from 'components/ui/Button';
 import ContentContainer from 'components/ui/ContentContainer';
@@ -15,7 +14,7 @@ import Progress from 'components/ui/Progress';
 import SurveyQuestion from './SurveyQuestion';
 import {actions} from 'store/survey/session';
 import {connect} from 'react-redux';
-import {navigate} from 'gatsby';
+import {keyCodes} from 'enums';
 import useHotKeys from 'hooks/useHotKeys';
 
 function SurveyContent({
@@ -30,13 +29,11 @@ function SurveyContent({
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [mockSubmitTimeout, setMockSubmitTimeout] = useState();
 
-  useEffect(() => {
-    return useHotKeys({
-      [keyCodes.UP]: nextQuestion,
-      [keyCodes.RIGHT]: nextQuestion,
-      [keyCodes.DOWN]: previousQuestion,
-      [keyCodes.LEFT]: previousQuestion,
-    });
+  useHotKeys({
+    [keyCodes.UP]: nextQuestion,
+    [keyCodes.RIGHT]: nextQuestion,
+    [keyCodes.DOWN]: previousQuestion,
+    [keyCodes.LEFT]: previousQuestion,
   });
 
   useEffect(
@@ -89,7 +86,6 @@ function SurveyContent({
       setTimeout(() => {
         setIsLoading(false);
         onSetIsCompleted(true);
-        navigate(routes.THANKYOU);
       }, 2000),
     );
     setHasSubmitted(true);
@@ -98,14 +94,9 @@ function SurveyContent({
   let button;
   if (completedQuestionsCount === totalQuestionsCount) {
     if (isCompleted) {
-      button = (
-        <Button
-          label="Survey completed"
-          onClick={() => navigate(routes.THANKYOU)}
-        />
-      );
+      button = <Button label="Survey completed" />;
     } else {
-      button = <Button label="Submit Results" onClick={submit} />;
+      button = <Button label="Submit results" onClick={submit} />;
     }
   } else if (currentQuestionIndex < completedQuestionsCount) {
     button = (

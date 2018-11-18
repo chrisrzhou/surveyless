@@ -42,9 +42,7 @@ function SurveyQuestion({answer, onSetResponse, question}) {
         )}
         {additionalComments && (
           <Flex flexDirection="column" pt={5}>
-            <Text as="label" color="secondaryText" py={1}>
-              Additional Comments
-            </Text>
+            <Text color="secondaryText">Additional Comments</Text>
             <TextArea
               onChange={value => {
                 onSetResponse({

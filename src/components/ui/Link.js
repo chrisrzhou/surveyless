@@ -4,7 +4,7 @@ import {Link as RebassLink} from 'rebass';
 function Link({children, href, isExternal}) {
   return (
     <RebassLink
-      color="active"
+      color="brand"
       href={href}
       target={isExternal ? '_blank' : undefined}>
       {children}

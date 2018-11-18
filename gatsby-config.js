@@ -14,6 +14,12 @@ module.exports = {
         icon: 'static/images/logo.png',
       },
     },
+    {
+      resolve: 'gatsby-plugin-typography',
+      options: {
+        pathToConfigModule: 'src/styles/typography',
+      },
+    },
     'gatsby-plugin-styled-components',
     'gatsby-transformer-remark',
     // source files

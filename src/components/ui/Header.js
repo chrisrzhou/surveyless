@@ -11,15 +11,15 @@ function Header({src, subtitle, title}) {
       bg="background"
       css={{flexShrink: 0, zIndex: 1}}
       flexDirection="column"
-      px={3}>
-      <Flex alignItems="center">
-        <Link style={{textDecoration: 'none'}} to="/">
+      p={3}>
+      <Link style={{textDecoration: 'none'}} to="/">
+        <Flex alignItems="center">
           <Image mr={2} src={src} width={40} />
-        </Link>
-        <Link style={{textDecoration: 'none'}} to="/">
-          <Heading level={1}>{title}</Heading>
-        </Link>
-      </Flex>
+          <Heading color="brand" level={1} my={1}>
+            {title}
+          </Heading>
+        </Flex>
+      </Link>
       <Text color="secondaryText">{subtitle}</Text>
     </Flex>
   );

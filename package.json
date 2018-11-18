@@ -32,10 +32,12 @@
     "gatsby-plugin-manifest": "^2.0.5",
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-resolve-src": "^2.0.0-beta.1",
-    "gatsby-plugin-styled-components": "^3.0.2",
+    "gatsby-plugin-styled-components": "^3.0.0-rc.5",
+    "gatsby-plugin-typography": "^2.2.1",
     "gatsby-source-filesystem": "^2.0.4",
     "gatsby-transformer-remark": "^2.1.12",
     "keymirror": "^0.1.1",
+    "prop-types": "^15.6.2",
     "react": "^16.7.0-alpha",
     "react-dom": "^16.7.0-alpha",
     "react-helmet": "^5.2.0",
@@ -43,14 +45,19 @@
     "react-redux": "^5.1.0",
     "react-spring": "^6.1.8",
     "react-syntax-highlighter": "^10.0.1",
+    "react-tooltip-lite": "^1.7.1",
+    "react-typography": "^0.16.13",
     "rebass": "^3.0.0-9",
     "redux": "^4.0.1",
-    "styled-components": "^4.0.3"
+    "redux-persist": "^5.10.0",
+    "styled-components": "^4.0.3",
+    "typography": "^0.16.17"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^9.0.0",
+    "babel-plugin-styled-components": "^1.8.0",
     "eslint": "^5.1.0",
-    "eslint-config-fbjs": "^2.0.1",
+    "eslint-config-fbjs": "^2.1.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-flowtype": "^2.50.0",
@@ -58,6 +65,7 @@
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.10.0",
     "eslint-plugin-relay": "^0.0.28",
-    "prettier": "^1.14.2"
+    "prettier": "^1.14.2",
+    "redux-devtools-extension": "^2.13.5"
   }
 }

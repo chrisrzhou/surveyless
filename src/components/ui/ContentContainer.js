@@ -6,11 +6,7 @@ import React from 'react';
 
 function ContentContainer({children}) {
   return (
-    <Spring
-      native
-      config={config.slow}
-      from={{opacity: 0, transform: 'translate3d(0, -100%, 0)'}}
-      to={{opacity: 1, transform: 'translate3d(0, 0, 0)'}}>
+    <Spring native config={config.slow} from={{opacity: 0}} to={{opacity: 1}}>
       {style => (
         <animated.div style={style}>
           <Flex

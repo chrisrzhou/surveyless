@@ -1,18 +1,15 @@
 import React from 'react';
 import {Text as RebassText} from 'rebass';
 
-function Text({children, color, isMono, ...otherProps}) {
+function Text({children, isMono, ...otherProps}) {
   return (
     <RebassText
       as="span"
       bg={isMono ? 'wash' : undefined}
-      color={color}
       css={{
         display: 'inline',
         wordWrap: 'break-word',
       }}
-      fontFamily={isMono ? 'mono' : 'regular'}
-      fontSize={1}
       px={isMono ? 1 : undefined}
       {...otherProps}>
       {children}
@@ -21,7 +18,6 @@ function Text({children, color, isMono, ...otherProps}) {
 }
 
 Text.defaultProps = {
-  color: 'primaryText',
   isMono: false,
 };
 

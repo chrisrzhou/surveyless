@@ -6,6 +6,22 @@ mode: OPEN
 
 # :v: surveyless
 
+# h1
+
+## h2
+
+### h3
+
+#### h4
+
+##### h5
+
+###### h6
+
+> This is a Blockquote
+
+Some **bold** and _italitcs_ and `code` formatting
+
 https://surveyless.chrisrzhou.io
 
 Build, run, and analyze simple serverless surveys.
@@ -25,12 +41,9 @@ Format: ![Alt Text](url)
 
 ## TODO
 
-- work on tooltip, page spinner
-- local storage and hydrate state and reset browser cache
 - Write out README and survey/questions/QUESTION.md content
 - build out /docs folder
 - netlify-functions to submit response (figure out generating uuids and simple auth with JWT)
-- fix bug where we can't use Link/Blockquote for react-markdown renderer
 - theme editor
 - results page
 - more animations

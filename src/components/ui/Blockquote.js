@@ -1,9 +1,9 @@
+import {Box} from 'rebass';
 import React from 'react';
-import Text from './Text';
 
 function Blockquote({children}) {
   return (
-    <Text
+    <Box
       as="blockquote"
       bg="wash"
       css={`
@@ -21,9 +21,10 @@ function Blockquote({children}) {
       `}
       mx={2}
       my={3}
-      p={2}>
+      p={2}
+      pb={1}>
       {children}
-    </Text>
+    </Box>
   );
 }
 

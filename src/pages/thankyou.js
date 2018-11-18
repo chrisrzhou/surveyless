@@ -1,21 +1,21 @@
 import Card from 'components/ui/Card';
 import ContentContainer from 'components/ui/ContentContainer';
 import Markdown from 'components/ui/Markdown';
-import PageLayout from 'components/ui/PageLayout';
 import React from 'react';
-import SurveyHeader from 'components/SurveyHeader';
+import SurveyPageLayout from 'components/survey/SurveyPageLayout';
 import {graphql} from 'gatsby';
 
 function ThankyouPage({data}) {
   const {rawMarkdownBody} = data.allMarkdownRemark.edges[0].node;
-  const content = (
-    <ContentContainer alignItems="center">
-      <Card>
-        <Markdown source={rawMarkdownBody} />
-      </Card>
-    </ContentContainer>
+  return (
+    <SurveyPageLayout>
+      <ContentContainer alignItems="center">
+        <Card>
+          <Markdown source={rawMarkdownBody} />
+        </Card>
+      </ContentContainer>
+    </SurveyPageLayout>
   );
-  return <PageLayout header={<SurveyHeader />} content={content} />;
 }
 
 export default ThankyouPage;

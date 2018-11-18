@@ -8,7 +8,7 @@ function Card({children}) {
       borderRadius={8}
       boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
       my={3}
-      p={[3, 5]}>
+      p={[3, 4]}>
       {children}
     </RebassCard>
   );

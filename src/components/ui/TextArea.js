@@ -1,5 +1,5 @@
 import {Card} from 'rebass';
-import {DEFAULT_HOVER_COLOR} from 'styles/constants';
+import {SURVEYLESS_LIGHT_GRAY} from 'styles/constants';
 import React from 'react';
 
 const BASE_HEIGHT = 40;
@@ -9,15 +9,15 @@ function TextArea({onChange, placeholder, value}) {
     <Card
       as="textarea"
       bg="background"
-      borderColor="disabled"
       borderRadius={4}
-      boxShadow="0 2px 2px rgba(0, 0, 0, 0.25)"
       css={{
         height: `${BASE_HEIGHT}px`,
-        border: `2px solid ${DEFAULT_HOVER_COLOR}`,
+        border: `2px solid ${SURVEYLESS_LIGHT_GRAY}`,
         transition: '0.2s ease-in',
         ':focus': {
           height: `${2 * BASE_HEIGHT}px`,
+          borderColor: '#519EF7',
+          outline: 'none',
         },
       }}
       my={1}

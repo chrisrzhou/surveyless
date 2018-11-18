@@ -3,7 +3,7 @@ import {Box, Flex} from 'rebass';
 import {RESPONSIVE_APP_WIDTH} from 'styles/constants';
 import React from 'react';
 
-function PageLayout({header, content}) {
+function PageLayout({header, children}) {
   return (
     <Flex flexDirection="column" mx="auto" width={RESPONSIVE_APP_WIDTH}>
       <Box
@@ -18,7 +18,7 @@ function PageLayout({header, content}) {
         }}
       />
       {header}
-      {content}
+      {children}
     </Flex>
   );
 }

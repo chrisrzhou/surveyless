@@ -24,7 +24,6 @@ function Markdown({source}) {
         image: MarkdownImage,
         inlineCode: props => <Text isMono {...props} />,
         link: Link,
-        root: Text,
         text: EnhancedTextRenderer,
       }}
     />
