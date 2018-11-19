@@ -117,10 +117,12 @@ TODO: will be updated
 
 ## TODO
 
+- split `SurveyContent` component and move `SurveyProgress` (progressItems and button) into its own component.
+- work on slider, ranking and matrix questions
 - improve redux-persist flow (allow clearing storage)
 - mention credits in README or thankyou.md (mdx-deck, netlify, gatsby)
 - hotkey for continue + add hotkey helper icon/modal
-- Write out README and survey/questions/QUESTION.md content
+- go over questions content to make sure it reads/flows well
 - build out /docs folder showcasing examples and detailed guide on question types and other APIs
 - netlify-functions to submit response (figure out generating uuids and simple auth with JWT)
 - theme editor

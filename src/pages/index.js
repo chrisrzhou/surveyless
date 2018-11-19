@@ -1,6 +1,6 @@
 import Button from 'components/ui/Button';
 import Card from 'components/ui/Card';
-import ContentContainer from 'components/ui/ContentContainer';
+import Container from 'components/ui/Container';
 import {Flex} from 'rebass';
 import {Link} from 'gatsby';
 import Markdown from 'components/ui/Markdown';
@@ -13,7 +13,7 @@ function HomePage({data}) {
   const {rawMarkdownBody} = data.allMarkdownRemark.edges[0].node;
   return (
     <SurveyPageLayout>
-      <ContentContainer>
+      <Container>
         <Card>
           <Markdown source={rawMarkdownBody} />
         </Card>
@@ -22,7 +22,7 @@ function HomePage({data}) {
             <Button label="Begin survey" mt={4} />
           </Link>
         </Flex>
-      </ContentContainer>
+      </Container>
     </SurveyPageLayout>
   );
 }

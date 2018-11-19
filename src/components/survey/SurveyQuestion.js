@@ -22,41 +22,39 @@ function SurveyQuestion({answer, onSetResponse, question}) {
     additionalComments,
   } = question;
   return (
-    <Box mb="100px">
-      <Card>
-        <Box py={3}>
-          <Markdown source={description} />
-        </Box>
-        <Heading level={2}>{text}</Heading>
-        {choiceType !== null && choices.length && (
-          <SurveyChoiceSet
-            answerValue={answer.answerValue}
-            choices={choices}
-            choiceType={choiceType}
-            questionId={id}
-            questionType={questionType}
-            onChoiceChange={answerValue => {
-              onSetResponse({questionId: id, answerValue});
+    <Card>
+      <Box py={3}>
+        <Markdown source={description} />
+      </Box>
+      <Heading level={2}>{text}</Heading>
+      {choiceType !== null && choices.length && (
+        <SurveyChoiceSet
+          answerValue={answer.answerValue}
+          choices={choices}
+          choiceType={choiceType}
+          questionId={id}
+          questionType={questionType}
+          onChoiceChange={answerValue => {
+            onSetResponse({questionId: id, answerValue});
+          }}
+        />
+      )}
+      {additionalComments && (
+        <Flex flexDirection="column" pt={5}>
+          <Text color="secondaryText">Additional Comments</Text>
+          <TextArea
+            onChange={value => {
+              onSetResponse({
+                questionId: id,
+                additionalComments: value,
+              });
             }}
+            placeholder="Please provide any additional comments here"
+            value={answer.additionalComments}
           />
-        )}
-        {additionalComments && (
-          <Flex flexDirection="column" pt={5}>
-            <Text color="secondaryText">Additional Comments</Text>
-            <TextArea
-              onChange={value => {
-                onSetResponse({
-                  questionId: id,
-                  additionalComments: value,
-                });
-              }}
-              placeholder="Please provide any additional comments here"
-              value={answer.additionalComments}
-            />
-          </Flex>
-        )}
-      </Card>
-    </Box>
+        </Flex>
+      )}
+    </Card>
   );
 }
 

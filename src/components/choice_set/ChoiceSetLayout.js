@@ -3,7 +3,7 @@ import React from 'react';
 
 function ChoiceSetLayout({children, isVertical}) {
   return (
-    <List spacing={3} isMobileVertical={!isVertical} isVertical={isVertical}>
+    <List spacing={2} isMobileVertical={!isVertical} isVertical={isVertical}>
       {children}
     </List>
   );

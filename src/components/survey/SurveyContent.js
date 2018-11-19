@@ -7,7 +7,7 @@ import {
 } from 'store/surveySelectors';
 
 import Button from 'components/ui/Button';
-import ContentContainer from 'components/ui/ContentContainer';
+import Container from 'components/ui/Container';
 import Heading from 'components/ui/Heading';
 import PageSpinner from 'components/ui/PageSpinner';
 import Progress from 'components/ui/Progress';
@@ -18,7 +18,7 @@ import {keyCodes} from 'enums';
 import useHotKeys from 'hooks/useHotKeys';
 
 function SurveyContent({
-  session,
+  currentQuestionIndex,
   progressItems,
   responseMaxQuestionIndex,
   onSetCurrentQuestionIndex,
@@ -49,13 +49,12 @@ function SurveyContent({
 
   if (progressItems.length === 0) {
     return (
-      <ContentContainer>
+      <Container>
         <Heading level={2}>:( No questions to display</Heading>
-      </ContentContainer>
+      </Container>
     );
   }
 
-  const {currentQuestionIndex, isCompleted} = session;
   const totalQuestionsCount = progressItems.length;
   const completedQuestionsCount = progressItems.filter(item => item.isCompleted)
     .length;
@@ -80,6 +79,10 @@ function SurveyContent({
     goToQuestionIndex(Math.max(0, currentQuestionIndex - 1));
   }
 
+  function continueSurvey() {
+    goToQuestionIndex(completedQuestionsCount);
+  }
+
   function submit() {
     setIsLoading(true);
     setMockSubmitTimeout(
@@ -93,25 +96,16 @@ function SurveyContent({
 
   let button;
   if (completedQuestionsCount === totalQuestionsCount) {
-    if (isCompleted) {
-      button = <Button label="Survey completed" />;
-    } else {
-      button = <Button label="Submit results" onClick={submit} />;
-    }
+    button = <Button label="Submit results" onClick={submit} />;
   } else if (currentQuestionIndex < completedQuestionsCount) {
-    button = (
-      <Button
-        label="Continue"
-        onClick={() => goToQuestionIndex(completedQuestionsCount)}
-      />
-    );
+    button = <Button label="Continue" onClick={continueSurvey} />;
   }
   return (
     <>
       {isLoading && <PageSpinner title="Submitting results" />}
-      <ContentContainer key={currentQuestionId}>
+      <Container key={currentQuestionId}>
         <SurveyQuestion questionId={currentQuestionId} />
-      </ContentContainer>
+      </Container>
       <Flex
         alignItems="center"
         bg="background"
@@ -138,7 +132,7 @@ function SurveyContent({
 
 export default connect(
   state => ({
-    session: getSession(state),
+    currentQuestionIndex: getSession(state).currentQuestionIndex,
     progressItems: getProgressItems(state),
     responseMaxQuestionIndex: getMaxRespondedQuestionIndex(state),
   }),

@@ -1,6 +1,9 @@
 import {Box} from 'rebass';
 import React from 'react';
 
+const ACTIVE_COLOR = '#FAC917';
+const INACTIVE_COLOR = '#fff8e5';
+
 function RatingStar({isActive, isHovered, onClick}) {
   return (
     <Box
@@ -9,7 +12,9 @@ function RatingStar({isActive, isHovered, onClick}) {
         transform: isHovered ? 'scale(1.2)' : undefined,
         transition: '0.1s ease-in-out',
         svg: {
-          fill: isActive ? '#FAC917' : '#fff4d1',
+          fill: isActive ? ACTIVE_COLOR : INACTIVE_COLOR,
+          strokeWidth: '32px',
+          stroke: ACTIVE_COLOR,
         },
       }}
       onClick={onClick}

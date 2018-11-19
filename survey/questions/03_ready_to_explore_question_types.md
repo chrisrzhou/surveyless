@@ -120,7 +120,7 @@ Local image resources works!
 Not usually a good idea, but you **can** embed youtube cat videos 😸
 
 <iframe
-  src="http://www.youtube.com/embed/SB-qEYVdvXA"
+  src="http://www.youtube.com/embed/SB-qEYVdvXA&origin=https://netlify.com""
   height="400px"
   width="100%"
   frameborder="0">

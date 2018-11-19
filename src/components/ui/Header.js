@@ -1,3 +1,4 @@
+import Container from './Container';
 import {Flex} from 'rebass';
 import Heading from './Heading';
 import Image from './Image';
@@ -7,11 +8,7 @@ import Text from './Text';
 
 function Header({src, subtitle, title}) {
   return (
-    <Flex
-      bg="background"
-      css={{flexShrink: 0, zIndex: 1}}
-      flexDirection="column"
-      p={3}>
+    <Container>
       <Link style={{textDecoration: 'none'}} to="/">
         <Flex alignItems="center">
           <Image mr={2} src={src} height={30} />
@@ -21,7 +18,7 @@ function Header({src, subtitle, title}) {
         </Flex>
       </Link>
       <Text color="secondaryText">{subtitle}</Text>
-    </Flex>
+    </Container>
   );
 }
 

@@ -9,7 +9,7 @@ module.exports = {
         short_name: 'surveyless',
         start_url: '/',
         background_color: '#FFFFFF',
-        theme_color: '#519EF7',
+        theme_color: '#4b98e5',
         display: 'minimal-ui',
         icon: 'static/images/logo.png',
       },

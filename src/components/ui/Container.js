@@ -1,10 +1,9 @@
 import {Spring, animated, config} from 'react-spring';
 
 import {Flex} from 'rebass';
-import {RESPONSIVE_CONTENT_WIDTH} from 'styles/constants';
 import React from 'react';
 
-function ContentContainer({children}) {
+function Container({children}) {
   return (
     <Spring native config={config.slow} from={{opacity: 0}} to={{opacity: 1}}>
       {style => (
@@ -12,12 +11,12 @@ function ContentContainer({children}) {
           <Flex
             css={{
               flexShrink: 0,
+              maxWidth: 800,
             }}
             flexDirection="column"
             m="auto"
-            px={3}
-            py={4}
-            width={RESPONSIVE_CONTENT_WIDTH}>
+            p={3}
+            width="100%">
             {children}
           </Flex>
         </animated.div>
@@ -26,4 +25,4 @@ function ContentContainer({children}) {
   );
 }
 
-export default ContentContainer;
+export default Container;

@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 
+import {Box} from 'rebass';
 import PageLayout from 'components/ui/PageLayout';
 import SurveyHeader from 'components/SurveyHeader';
 import {connect} from 'react-redux';
@@ -20,7 +21,11 @@ function SurveyPageLayout({children, isCompleted}) {
     },
     [isCompleted],
   );
-  return <PageLayout header={<SurveyHeader />}>{children}</PageLayout>;
+  return (
+    <PageLayout header={<SurveyHeader />}>
+      <Box mb="140px">{children}</Box>
+    </PageLayout>
+  );
 }
 
 export default connect(state => ({isCompleted: getSession(state).isCompleted}))(

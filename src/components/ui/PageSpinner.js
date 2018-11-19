@@ -5,9 +5,7 @@ import Heading from './Heading';
 import React from 'react';
 import {SURVEYLESS_BRAND_COLOR} from 'styles/constants';
 
-//import { TimingAnimation, Easing } from '../../../src/addons'
-
-const Container = Keyframes.Spring(async next => {
+const IconsContainer = Keyframes.Spring(async next => {
   while (true) {
     await next({
       from: {radians: 0},
@@ -22,7 +20,11 @@ const loadingIcons = [0, 1, 2];
 function LoadingIcons() {
   return (
     <Flex alignItems="center" my={3}>
-      <Container reset native keys={loadingIcons} config={{duration: 2000}}>
+      <IconsContainer
+        reset
+        native
+        keys={loadingIcons}
+        config={{duration: 2000}}>
         {({radians}) =>
           loadingIcons.map(i => (
             <Box key={i} mx={1} width={ICON_SIZE}>
@@ -43,7 +45,7 @@ function LoadingIcons() {
             </Box>
           ))
         }
-      </Container>
+      </IconsContainer>
     </Flex>
   );
 }

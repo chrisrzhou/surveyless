@@ -6,6 +6,7 @@
     "secondaryText": "#a3b8cc",
     "disabled": "#A2A9AF",
     "wash": "#F0F0F0",
+    "cardBackground": "#FFFFFF",
     "background": "#FFFFFF",
     "dark": "#3a4856"
   },

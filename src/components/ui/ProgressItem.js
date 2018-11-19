@@ -1,5 +1,10 @@
-import {Button, Flex} from 'rebass';
+import {
+  DISABLED_OPACITY,
+  FOCUS_HOVER_OPACITY,
+  SURVEYLESS_GRAY,
+} from 'styles/constants';
 
+import {Box} from 'rebass';
 import React from 'react';
 import Tooltip from './Tooltip';
 
@@ -19,34 +24,28 @@ function ProgressItem({
   }
   return (
     <Tooltip position="top" content={tooltip}>
-      <Flex
-        alignItems="center"
+      <Box
+        as="button"
         bg={color}
         css={{
+          appearance: 'none',
+          backgroundClip: 'padding-box',
+          border: '4px solid transparent',
           borderRadius: '9999px',
+          boxShadow: isActive ? `0 0 0 1px ${SURVEYLESS_GRAY}` : undefined,
           cursor: disabled ? 'not-allowed' : 'pointer',
-          height: '16px',
-          opacity: disabled ? 0.3 : 1,
-          width: '16px',
+          padding: 6,
+          ':focus': {
+            opacity: FOCUS_HOVER_OPACITY,
+            outline: 'none',
+          },
+          ':disabled': {
+            opacity: DISABLED_OPACITY,
+          },
         }}
-        justifyContent="center"
-        m={1}
-        onClick={() => !disabled && onClick()}>
-        <Button
-          bg={isActive ? color : 'background'}
-          css={{
-            appearance: 'none',
-            borderRadius: '9999px',
-            cursor: 'inherit',
-            padding: '4px',
-            ':focus': {
-              opacity: 0.5,
-              outlineWidth: 0,
-            },
-          }}
-          disabled={disabled}
-        />
-      </Flex>
+        disabled={disabled}
+        onClick={onClick}
+      />
     </Tooltip>
   );
 }

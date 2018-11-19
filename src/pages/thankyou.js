@@ -1,5 +1,5 @@
 import Card from 'components/ui/Card';
-import ContentContainer from 'components/ui/ContentContainer';
+import Container from 'components/ui/Container';
 import Markdown from 'components/ui/Markdown';
 import React from 'react';
 import SurveyPageLayout from 'components/survey/SurveyPageLayout';
@@ -9,11 +9,11 @@ function ThankyouPage({data}) {
   const {rawMarkdownBody} = data.allMarkdownRemark.edges[0].node;
   return (
     <SurveyPageLayout>
-      <ContentContainer alignItems="center">
+      <Container>
         <Card>
           <Markdown source={rawMarkdownBody} />
         </Card>
-      </ContentContainer>
+      </Container>
     </SurveyPageLayout>
   );
 }

@@ -1,3 +1,5 @@
+import {DISABLED_OPACITY, FOCUS_HOVER_OPACITY} from 'styles/constants';
+
 import {Card} from 'rebass';
 import React from 'react';
 import Text from './Text';
@@ -14,16 +16,13 @@ function Button({disabled, label, onClick, variant, ...otherProps}) {
         borderStyle: 'solid',
         borderWidth: '2px',
         cursor: 'pointer',
+        outline: 'none',
         ':hover': {
-          opacity: 0.6,
-        },
-        ':focus': {
-          opacity: 0.6,
-          outline: 'none',
+          opacity: FOCUS_HOVER_OPACITY,
         },
         ':disabled': {
           cursor: 'not-allowed',
-          opacity: 0.3,
+          opacity: DISABLED_OPACITY,
         },
       }}
       disabled={disabled}

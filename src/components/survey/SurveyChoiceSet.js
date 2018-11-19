@@ -7,7 +7,7 @@ import RatingChoiceSet from 'components/choice_set/RatingChoiceSet';
 import React from 'react';
 import SliderChoiceSet from 'components/choice_set/SliderChoiceSet';
 
-// This component controls the combination of valid questionTypes and choiceTypes and provides a common wrapper to set responses
+// This component controls the valid combinations of question types and choices
 function SurveyChoiceSet({
   answerValue,
   choiceType,
