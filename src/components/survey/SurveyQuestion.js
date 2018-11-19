@@ -1,17 +1,23 @@
 import {Box, Flex} from 'rebass';
-import {getAnswer, getQuestion} from 'store/surveySelectors';
+import {
+  getAnswer,
+  getCurrentQuestionId,
+  getQuestion,
+  getSession,
+} from 'store/surveySelectors';
 
 import Card from 'components/ui/Card';
+import Container from 'components/ui/Container';
 import Heading from 'components/ui/Heading';
 import Markdown from 'components/ui/Markdown';
 import React from 'react';
-import SurveyChoiceSet from './SurveyChoiceSet';
+import SurveyAnswer from './SurveyAnswer';
 import Text from 'components/ui/Text';
 import TextArea from 'components/ui/TextArea';
 import {actions} from 'store/survey/responses';
 import {connect} from 'react-redux';
 
-function SurveyQuestion({answer, onSetResponse, question}) {
+function SurveyQuestion({answer, onSetResponse, question, isCompleted}) {
   const {
     id,
     text,
@@ -21,48 +27,59 @@ function SurveyQuestion({answer, onSetResponse, question}) {
     description,
     additionalComments,
   } = question;
+  if (id == null) {
+    return null;
+  }
   return (
-    <Card>
-      <Box py={3}>
-        <Markdown source={description} />
-      </Box>
-      <Heading level={2}>{text}</Heading>
-      {choiceType !== null && choices.length && (
-        <SurveyChoiceSet
-          answerValue={answer.answerValue}
-          choices={choices}
-          choiceType={choiceType}
-          questionId={id}
-          questionType={questionType}
-          onChoiceChange={answerValue => {
-            onSetResponse({questionId: id, answerValue});
-          }}
-        />
-      )}
-      {additionalComments && (
-        <Flex flexDirection="column" pt={5}>
-          <Text color="secondaryText">Additional Comments</Text>
-          <TextArea
-            onChange={value => {
-              onSetResponse({
-                questionId: id,
-                additionalComments: value,
-              });
+    <Container key={id}>
+      <Card>
+        <Box py={3}>
+          <Markdown source={description} />
+        </Box>
+        <Heading level={2}>{text}</Heading>
+        {choiceType !== null && choices.length && (
+          <SurveyAnswer
+            answerValue={answer.answerValue}
+            choices={choices}
+            choiceType={choiceType}
+            disabled={isCompleted}
+            questionId={id}
+            questionType={questionType}
+            onAnswerChange={answerValue => {
+              onSetResponse({questionId: id, answerValue});
             }}
-            placeholder="Please provide any additional comments here"
-            value={answer.additionalComments}
           />
-        </Flex>
-      )}
-    </Card>
+        )}
+        {additionalComments && (
+          <Flex flexDirection="column" pt={5}>
+            <Text color="secondaryText">Additional Comments</Text>
+            <TextArea
+              disabled={isCompleted}
+              onChange={value => {
+                onSetResponse({
+                  questionId: id,
+                  additionalComments: value,
+                });
+              }}
+              placeholder="Please provide any additional comments here"
+              value={answer.additionalComments}
+            />
+          </Flex>
+        )}
+      </Card>
+    </Container>
   );
 }
 
 export default connect(
-  (state, {questionId}) => ({
-    answer: getAnswer(state, questionId),
-    question: getQuestion(state, questionId),
-  }),
+  state => {
+    const questionId = getCurrentQuestionId(state);
+    return {
+      isCompleted: getSession(state).isCompleted,
+      answer: getAnswer(state, questionId),
+      question: getQuestion(state, questionId),
+    };
+  },
   {
     onSetResponse: actions.setResponse,
   },

@@ -11,7 +11,7 @@
     "dark": "#3a4856"
   },
   "typography": {
-    "baseFontSize": "14px",
+    "baseFontSize": "16px",
     "baseLineHeight": 1.5,
     "scaleRatio": 2,
     "headerFontFamily": [

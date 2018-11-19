@@ -8,35 +8,34 @@ import React from 'react';
 import SliderChoiceSet from 'components/choice_set/SliderChoiceSet';
 
 // This component controls the valid combinations of question types and choices
-function SurveyChoiceSet({
+function SurveyAnswer({
   answerValue,
   choiceType,
   choices,
-  onChoiceChange,
+  disabled,
+  onAnswerChange,
   questionType,
 }) {
+  const sharedChoiceSetProps = {
+    answerValue,
+    disabled,
+    choices,
+    onChange: onAnswerChange,
+  };
   switch (questionType) {
     case questionTypes.LIKERT:
     case questionTypes.SINGLE_CHOICE:
     case questionTypes.MATRIX:
       switch (choiceType) {
         case choiceTypes.RATING:
-          return (
-            <RatingChoiceSet
-              answerValue={answerValue}
-              choices={choices}
-              onChange={onChoiceChange}
-            />
-          );
+          return <RatingChoiceSet {...sharedChoiceSetProps} />;
         case choiceTypes.HORIZONTAL_BUTTON:
         case choiceTypes.VERTICAL_BUTTON:
           return (
             <ButtonChoiceSet
-              answerValue={answerValue}
-              choices={choices}
               isMulti={false}
               isVertical={choiceType === choiceTypes.VERTICAL_BUTTON}
-              onChange={onChoiceChange}
+              {...sharedChoiceSetProps}
             />
           );
         case choiceTypes.HORIZONTAL_RADIO:
@@ -44,11 +43,9 @@ function SurveyChoiceSet({
         default:
           return (
             <RadioChoiceSet
-              answerValue={answerValue}
-              choices={choices}
               isMulti={false}
               isVertical={choiceType === choiceTypes.VERTICAL_RADIO}
-              onChange={onChoiceChange}
+              {...sharedChoiceSetProps}
             />
           );
       }
@@ -58,11 +55,9 @@ function SurveyChoiceSet({
         case choiceTypes.VERTICAL_BUTTON:
           return (
             <ButtonChoiceSet
-              answerValue={answerValue}
-              choices={choices}
               isMulti
               isVertical={choiceType === choiceTypes.VERTICAL_BUTTON}
-              onChange={onChoiceChange}
+              {...sharedChoiceSetProps}
             />
           );
         case choiceTypes.HORIZONTAL_CHECKBOX:
@@ -70,16 +65,14 @@ function SurveyChoiceSet({
         default:
           return (
             <CheckboxChoiceSet
-              answerValue={answerValue}
-              choices={choices}
               isVertical={choiceType === choiceTypes.VERTICAL_CHECKBOX}
-              onChange={onChoiceChange}
+              {...sharedChoiceSetProps}
             />
           );
       }
     }
     case questionTypes.SLIDER:
-      return <SliderChoiceSet onChange={onChoiceChange} />;
+      return <SliderChoiceSet onChange={onAnswerChange} />;
     case questionTypes.RANKING:
     case questionTypes.COMMENT:
     default:
@@ -87,4 +80,4 @@ function SurveyChoiceSet({
   }
 }
 
-export default SurveyChoiceSet;
+export default SurveyAnswer;

@@ -22,30 +22,35 @@ function ProgressItem({
   } else {
     color = 'disabled';
   }
-  return (
+  const item = (
+    <Box
+      as="button"
+      bg={color}
+      css={{
+        appearance: 'none',
+        backgroundClip: 'padding-box',
+        border: '4px solid transparent',
+        borderRadius: '9999px',
+        boxShadow: isActive ? `0 0 0 1px ${SURVEYLESS_GRAY}` : undefined,
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        padding: 6,
+        ':focus': {
+          opacity: FOCUS_HOVER_OPACITY,
+          outline: 'none',
+        },
+        ':disabled': {
+          opacity: DISABLED_OPACITY,
+        },
+      }}
+      disabled={disabled}
+      onClick={onClick}
+    />
+  );
+  return disabled ? (
+    item
+  ) : (
     <Tooltip position="top" content={tooltip}>
-      <Box
-        as="button"
-        bg={color}
-        css={{
-          appearance: 'none',
-          backgroundClip: 'padding-box',
-          border: '4px solid transparent',
-          borderRadius: '9999px',
-          boxShadow: isActive ? `0 0 0 1px ${SURVEYLESS_GRAY}` : undefined,
-          cursor: disabled ? 'not-allowed' : 'pointer',
-          padding: 6,
-          ':focus': {
-            opacity: FOCUS_HOVER_OPACITY,
-            outline: 'none',
-          },
-          ':disabled': {
-            opacity: DISABLED_OPACITY,
-          },
-        }}
-        disabled={disabled}
-        onClick={onClick}
-      />
+      {item}
     </Tooltip>
   );
 }

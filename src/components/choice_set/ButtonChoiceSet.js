@@ -5,6 +5,7 @@ import React from 'react';
 function ButtonChoiceSet({
   answerValue,
   choices,
+  disabled,
   isMulti,
   isVertical,
   onChange,
@@ -18,6 +19,7 @@ function ButtonChoiceSet({
           : answerValue === index;
         return (
           <Button
+            disabled={disabled}
             key={choice}
             label={choice}
             onClick={() => {

@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 
 import SurveyContent from 'components/survey/SurveyContent';
-import SurveyPageLayout from 'components/survey/SurveyPageLayout';
 import {actions} from 'store/survey/questions';
 import {connect} from 'react-redux';
 import {graphql} from 'gatsby';
@@ -31,11 +30,7 @@ function SurveyPage({data, isCompleted, onInitialize}) {
     });
     onInitialize({byId, allIds: Object.keys(byId)});
   }, []);
-  return (
-    <SurveyPageLayout>
-      <SurveyContent />
-    </SurveyPageLayout>
-  );
+  return <SurveyContent />;
 }
 
 export default connect(

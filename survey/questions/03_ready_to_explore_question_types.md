@@ -117,7 +117,7 @@ Local image resources works!
 
 ## Iframes
 
-Not usually a good idea, but you **can** embed youtube cat videos 😸
+Not usually a good idea, but you **can** embed youtube cat videos 😸. Make sure to set the iframe `src` to use `https` since `surveyless` instances are served over `https`.
 
 <iframe
   src="https://www.youtube.com/embed/SB-qEYVdvXA"

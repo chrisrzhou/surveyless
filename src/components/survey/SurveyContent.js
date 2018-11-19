@@ -1,143 +1,15 @@
-import {Box, Flex} from 'rebass';
-import React, {useEffect, useState} from 'react';
-import {
-  getMaxRespondedQuestionIndex,
-  getProgressItems,
-  getSession,
-} from 'store/surveySelectors';
-
-import Button from 'components/ui/Button';
-import Container from 'components/ui/Container';
-import Heading from 'components/ui/Heading';
-import PageSpinner from 'components/ui/PageSpinner';
-import Progress from 'components/ui/Progress';
+import React from 'react';
+import SurveyPageLayout from './SurveyPageLayout';
+import SurveyProgress from './SurveyProgress';
 import SurveyQuestion from './SurveyQuestion';
-import {actions} from 'store/survey/session';
-import {connect} from 'react-redux';
-import {keyCodes} from 'enums';
-import useHotKeys from 'hooks/useHotKeys';
 
-function SurveyContent({
-  currentQuestionIndex,
-  progressItems,
-  responseMaxQuestionIndex,
-  onSetCurrentQuestionIndex,
-  onSetIsCompleted,
-}) {
-  // TODO hookup to real API
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasSubmitted, setHasSubmitted] = useState(false);
-  const [mockSubmitTimeout, setMockSubmitTimeout] = useState();
-
-  useHotKeys({
-    [keyCodes.UP]: nextQuestion,
-    [keyCodes.RIGHT]: nextQuestion,
-    [keyCodes.DOWN]: previousQuestion,
-    [keyCodes.LEFT]: previousQuestion,
-  });
-
-  useEffect(
-    () => {
-      return () => {
-        if (mockSubmitTimeout) {
-          clearTimeout(mockSubmitTimeout);
-        }
-      };
-    },
-    [hasSubmitted],
-  );
-
-  if (progressItems.length === 0) {
-    return (
-      <Container>
-        <Heading level={2}>:( No questions to display</Heading>
-      </Container>
-    );
-  }
-
-  const totalQuestionsCount = progressItems.length;
-  const completedQuestionsCount = progressItems.filter(item => item.isCompleted)
-    .length;
-  const currentQuestionId =
-    progressItems[Math.min(currentQuestionIndex, totalQuestionsCount - 1)].id;
-
-  function goToQuestionIndex(questionIndex) {
-    onSetCurrentQuestionIndex(questionIndex);
-    window.scrollTo(0, 0);
-  }
-
-  function nextQuestion() {
-    if (currentQuestionIndex < totalQuestionsCount - 1) {
-      const nextQuestionIndex = currentQuestionIndex + 1;
-      if (!progressItems[nextQuestionIndex].disabled) {
-        goToQuestionIndex(nextQuestionIndex);
-      }
-    }
-  }
-
-  function previousQuestion() {
-    goToQuestionIndex(Math.max(0, currentQuestionIndex - 1));
-  }
-
-  function continueSurvey() {
-    goToQuestionIndex(completedQuestionsCount);
-  }
-
-  function submit() {
-    setIsLoading(true);
-    setMockSubmitTimeout(
-      setTimeout(() => {
-        setIsLoading(false);
-        onSetIsCompleted(true);
-      }, 2000),
-    );
-    setHasSubmitted(true);
-  }
-
-  let button;
-  if (completedQuestionsCount === totalQuestionsCount) {
-    button = <Button label="Submit results" onClick={submit} />;
-  } else if (currentQuestionIndex < completedQuestionsCount) {
-    button = <Button label="Continue" onClick={continueSurvey} />;
-  }
+function SurveyContent() {
   return (
-    <>
-      {isLoading && <PageSpinner title="Submitting results" />}
-      <Container key={currentQuestionId}>
-        <SurveyQuestion questionId={currentQuestionId} />
-      </Container>
-      <Flex
-        alignItems="center"
-        bg="background"
-        css={{
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          zIndex: 1,
-        }}
-        flexDirection="column"
-        justifyContent="center"
-        py={2}>
-        <Box pb={2}>{button}</Box>
-        <Progress
-          currentIndex={currentQuestionIndex}
-          items={progressItems}
-          onItemClick={onSetCurrentQuestionIndex}
-        />
-      </Flex>
-    </>
+    <SurveyPageLayout>
+      <SurveyQuestion />
+      <SurveyProgress />
+    </SurveyPageLayout>
   );
 }
 
-export default connect(
-  state => ({
-    currentQuestionIndex: getSession(state).currentQuestionIndex,
-    progressItems: getProgressItems(state),
-    responseMaxQuestionIndex: getMaxRespondedQuestionIndex(state),
-  }),
-  {
-    onSetCurrentQuestionIndex: actions.setCurrentQuestionIndex,
-    onSetIsCompleted: actions.setIsCompleted,
-  },
-)(SurveyContent);
+export default SurveyContent;

@@ -5,7 +5,7 @@ import List from 'components/ui/List';
 import RatingStar from 'components/ui/RatingStar';
 import Tooltip from 'components/ui/Tooltip';
 
-function RatingChoiceSet({answerValue, choices, onChange}) {
+function RatingChoiceSet({answerValue, choices, disabled, onChange}) {
   const [activeIndex, setActiveIndex] = useState(-1);
   return (
     <List>
@@ -13,10 +13,11 @@ function RatingChoiceSet({answerValue, choices, onChange}) {
         return (
           <Tooltip key={choice} content={choice}>
             <Box
-              onMouseOver={() => setActiveIndex(index)}
-              onMouseLeave={() => setActiveIndex(-1)}
+              onMouseOver={() => !disabled && setActiveIndex(index)}
+              onMouseLeave={() => !disabled && setActiveIndex(-1)}
               p={1}>
               <RatingStar
+                disabled={disabled}
                 isActive={
                   activeIndex === -1
                     ? index <= answerValue

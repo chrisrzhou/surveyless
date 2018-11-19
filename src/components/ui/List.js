@@ -8,7 +8,7 @@ function List({children, isCentered, isVertical, spacing}) {
     <Flex
       alignItems={isVertical ? 'flex-start' : 'center'}
       flexDirection={isVertical ? 'column' : 'row'}
-      justifyContent={isVertical ? 'center' : 'flex-start'}
+      justifyContent="center"
       flexWrap="wrap"
       mx={-spacing}
       my={-spacing}>

@@ -12,9 +12,7 @@ function SurveyPageLayout({children, isCompleted}) {
   useEffect(
     () => {
       if (window.location.pathname !== '/') {
-        if (isCompleted) {
-          navigate(routes.THANKYOU);
-        } else {
+        if (!isCompleted) {
           navigate(routes.SURVEY);
         }
       }

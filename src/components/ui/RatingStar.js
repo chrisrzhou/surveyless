@@ -1,14 +1,16 @@
 import {Box} from 'rebass';
+import {DISABLED_OPACITY} from 'styles/constants';
 import React from 'react';
 
 const ACTIVE_COLOR = '#FAC917';
 const INACTIVE_COLOR = '#fff8e5';
 
-function RatingStar({isActive, isHovered, onClick}) {
+function RatingStar({disabled, isActive, isHovered, onClick}) {
   return (
     <Box
       css={{
-        cursor: 'pointer',
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        opacity: disabled ? DISABLED_OPACITY : 1,
         transform: isHovered ? 'scale(1.2)' : undefined,
         transition: '0.1s ease-in-out',
         svg: {
@@ -17,7 +19,7 @@ function RatingStar({isActive, isHovered, onClick}) {
           stroke: ACTIVE_COLOR,
         },
       }}
-      onClick={onClick}
+      onClick={!disabled ? onClick : undefined}
       width={20}>
       <svg viewBox="0 0 426.667 426.667">
         <polygon

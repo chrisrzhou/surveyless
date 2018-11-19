@@ -1,16 +1,22 @@
 import {Box, Flex} from 'rebass';
+import {DISABLED_OPACITY, SURVEYLESS_LIGHT_GRAY} from 'styles/constants';
 
-import {SURVEYLESS_LIGHT_GRAY} from 'styles/constants';
 import React from 'react';
 import {keyCodes} from 'enums';
 
-function CheckboxRadioInput({checked, labelValue, role, onChange}) {
+function CheckboxRadioInput({checked, disabled, labelValue, role, onChange}) {
   const hoverBackground = checked ? undefined : SURVEYLESS_LIGHT_GRAY;
+  function handleCheck() {
+    !disabled && onChange(!checked);
+  }
   return (
     <Flex
       alignItems="center"
-      css={{cursor: 'pointer'}}
-      onClick={e => onChange(!checked)}>
+      css={{
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        opacity: disabled ? DISABLED_OPACITY : 1,
+      }}
+      onClick={handleCheck}>
       <Box
         ariaChecked={checked}
         bg={checked ? 'brand' : 'background'}
@@ -30,7 +36,7 @@ function CheckboxRadioInput({checked, labelValue, role, onChange}) {
         }}
         onKeyDown={e => {
           if ([keyCodes.SPACE, keyCodes.ENTER].includes(e.keyCode)) {
-            onChange(!checked);
+            handleCheck();
           }
         }}
         mr={1}

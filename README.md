@@ -115,12 +115,15 @@ TODO: will be updated
 
 ### Analyze
 
+## Inspirations
+
+`surveyless` is **heavily inspired** by [`mdx-deck`](https://github.com/jxnblk/mdx-deck), which is a simple but powerful library to build presentation slides in markdown.
+
+In addition, the `surveyless` mechanics would be non-functional without the great developer tools and experiences built by [Gatsby](https://gatsbyjs.org/) and [Netlify](https://www.netlify.com/).
+
 ## TODO
 
-- split `SurveyContent` component and move `SurveyProgress` (progressItems and button) into its own component.
-- work on slider, ranking and matrix questions
-- improve redux-persist flow (allow clearing storage)
-- mention credits in README or thankyou.md (mdx-deck, netlify, gatsby)
+- work on comment, slider, ranking and matrix questions
 - hotkey for continue + add hotkey helper icon/modal
 - go over questions content to make sure it reads/flows well
 - build out /docs folder showcasing examples and detailed guide on question types and other APIs
