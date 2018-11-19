@@ -7,7 +7,7 @@ We hope that this live survey demo has been helpful. Here are some recommended n
 - 😸 Watch some cat videos
 
 <iframe
-  src="http://www.youtube.com/embed/SB-qEYVdvXA?&origin=https://netlify.com"
+  src="https://www.youtube.com/embed/SB-qEYVdvXA"
   height="400px"
   width="100%"
   frameborder="0">
