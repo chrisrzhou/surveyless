@@ -17,6 +17,7 @@ function SurveyPage({data, isCompleted, onInitialize}) {
         choices,
         choiceType,
         additionalComments,
+        ...auxiliaryData // capture all other data in question into an object
       } = frontmatter;
       byId[id] = {
         id,
@@ -26,6 +27,7 @@ function SurveyPage({data, isCompleted, onInitialize}) {
         choiceType,
         description: rawMarkdownBody,
         additionalComments,
+        auxiliaryData,
       };
     });
     onInitialize({byId, allIds: Object.keys(byId)});
@@ -55,6 +57,10 @@ export const pageQuery = graphql`
             choices
             choiceType
             additionalComments
+            # auxiliary data fields for special question types
+            sliderMaxValue
+            sliderMinValue
+            sliderStepValue
           }
           rawMarkdownBody
         }

@@ -5,7 +5,7 @@ import List from 'components/ui/List';
 import RatingStar from 'components/ui/RatingStar';
 import Tooltip from 'components/ui/Tooltip';
 
-function RatingChoiceSet({answerValue, choices, disabled, onChange}) {
+function RatingAnswer({choices, disabled, onChange, value}) {
   const [activeIndex, setActiveIndex] = useState(-1);
   return (
     <List>
@@ -19,9 +19,7 @@ function RatingChoiceSet({answerValue, choices, disabled, onChange}) {
               <RatingStar
                 disabled={disabled}
                 isActive={
-                  activeIndex === -1
-                    ? index <= answerValue
-                    : index <= activeIndex
+                  activeIndex === -1 ? index <= value : index <= activeIndex
                 }
                 isHovered={activeIndex !== -1 && index <= activeIndex}
                 onClick={() => onChange(index)}
@@ -34,4 +32,4 @@ function RatingChoiceSet({answerValue, choices, disabled, onChange}) {
   );
 }
 
-export default RatingChoiceSet;
+export default RatingAnswer;

@@ -37,6 +37,7 @@
     "gatsby-transformer-remark": "^2.1.12",
     "keymirror": "^0.1.1",
     "prop-types": "^15.6.2",
+    "rc-slider": "^8.6.3",
     "react": "^16.7.0-alpha",
     "react-dom": "^16.7.0-alpha",
     "react-helmet": "^5.2.0",

@@ -1,22 +1,20 @@
 import Button from 'components/ui/Button';
-import ChoiceSetLayout from './ChoiceSetLayout';
+import AnswerLayout from './AnswerLayout';
 import React from 'react';
 
-function ButtonChoiceSet({
-  answerValue,
+function ButtonAnswer({
   choices,
   disabled,
   isMulti,
   isVertical,
   onChange,
+  value,
 }) {
-  const answerValues = answerValue == null ? [] : answerValue;
+  const values = value == null ? [] : value;
   return (
-    <ChoiceSetLayout isVertical={isVertical}>
+    <AnswerLayout isVertical={isVertical}>
       {choices.map((choice, index) => {
-        const isActive = isMulti
-          ? answerValues.includes(index)
-          : answerValue === index;
+        const isActive = isMulti ? values.includes(index) : value === index;
         return (
           <Button
             disabled={disabled}
@@ -24,10 +22,10 @@ function ButtonChoiceSet({
             label={choice}
             onClick={() => {
               if (isMulti) {
-                if (answerValues.includes(index)) {
-                  onChange(answerValues.filter(a => a !== index));
+                if (values.includes(index)) {
+                  onChange(values.filter(a => a !== index));
                 } else {
-                  onChange([...answerValues, index]);
+                  onChange([...values, index]);
                 }
               } else {
                 onChange(index);
@@ -37,8 +35,8 @@ function ButtonChoiceSet({
           />
         );
       })}
-    </ChoiceSetLayout>
+    </AnswerLayout>
   );
 }
 
-export default ButtonChoiceSet;
+export default ButtonAnswer;

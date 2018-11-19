@@ -14,7 +14,7 @@ choices:
 additionalComments: false
 ---
 
-## Likert Questions Overview
+## Likert Question Overview
 
 **[Likert questions](https://en.wikipedia.org/wiki/Likert_scale)** are the most widely used questions to study positive and negative scores in surveys.
 

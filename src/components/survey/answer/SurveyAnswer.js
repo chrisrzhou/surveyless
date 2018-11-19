@@ -1,23 +1,25 @@
 import {choiceTypes, questionTypes} from 'enums';
 
-import ButtonChoiceSet from 'components/choice_set/ButtonChoiceSet';
-import CheckboxChoiceSet from 'components/choice_set/CheckboxChoiceSet';
-import RadioChoiceSet from 'components/choice_set/RadioChoiceSet';
-import RatingChoiceSet from 'components/choice_set/RatingChoiceSet';
+import ButtonAnswer from './ButtonAnswer';
+import CheckboxAnswer from './CheckboxAnswer';
+import RadioAnswer from './RadioAnswer';
+import RatingAnswer from './RatingAnswer';
 import React from 'react';
-import SliderChoiceSet from 'components/choice_set/SliderChoiceSet';
+import SliderAnswer from './SliderAnswer';
+import TextArea from 'components/ui/TextArea';
 
 // This component controls the valid combinations of question types and choices
 function SurveyAnswer({
   answerValue,
+  auxiliaryData,
   choiceType,
   choices,
   disabled,
   onAnswerChange,
   questionType,
 }) {
-  const sharedChoiceSetProps = {
-    answerValue,
+  const sharedAnswerProps = {
+    value: answerValue,
     disabled,
     choices,
     onChange: onAnswerChange,
@@ -28,24 +30,24 @@ function SurveyAnswer({
     case questionTypes.MATRIX:
       switch (choiceType) {
         case choiceTypes.RATING:
-          return <RatingChoiceSet {...sharedChoiceSetProps} />;
+          return <RatingAnswer {...sharedAnswerProps} />;
         case choiceTypes.HORIZONTAL_BUTTON:
         case choiceTypes.VERTICAL_BUTTON:
           return (
-            <ButtonChoiceSet
+            <ButtonAnswer
               isMulti={false}
               isVertical={choiceType === choiceTypes.VERTICAL_BUTTON}
-              {...sharedChoiceSetProps}
+              {...sharedAnswerProps}
             />
           );
         case choiceTypes.HORIZONTAL_RADIO:
         case choiceTypes.VERTICAL_RADIO:
         default:
           return (
-            <RadioChoiceSet
+            <RadioAnswer
               isMulti={false}
               isVertical={choiceType === choiceTypes.VERTICAL_RADIO}
-              {...sharedChoiceSetProps}
+              {...sharedAnswerProps}
             />
           );
       }
@@ -54,27 +56,30 @@ function SurveyAnswer({
         case choiceTypes.HORIZONTAL_BUTTON:
         case choiceTypes.VERTICAL_BUTTON:
           return (
-            <ButtonChoiceSet
+            <ButtonAnswer
               isMulti
               isVertical={choiceType === choiceTypes.VERTICAL_BUTTON}
-              {...sharedChoiceSetProps}
+              {...sharedAnswerProps}
             />
           );
         case choiceTypes.HORIZONTAL_CHECKBOX:
         case choiceTypes.VERTICAL_CHECKBOX:
         default:
           return (
-            <CheckboxChoiceSet
+            <CheckboxAnswer
               isVertical={choiceType === choiceTypes.VERTICAL_CHECKBOX}
-              {...sharedChoiceSetProps}
+              {...sharedAnswerProps}
             />
           );
       }
     }
-    case questionTypes.SLIDER:
-      return <SliderChoiceSet onChange={onAnswerChange} />;
-    case questionTypes.RANKING:
     case questionTypes.COMMENT:
+      return <TextArea height={100} {...sharedAnswerProps} />;
+    case questionTypes.SLIDER:
+      return (
+        <SliderAnswer auxiliaryData={auxiliaryData} {...sharedAnswerProps} />
+      );
+    case questionTypes.RANKING:
     default:
       return null;
   }

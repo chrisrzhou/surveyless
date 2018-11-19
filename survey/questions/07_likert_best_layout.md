@@ -7,7 +7,7 @@ choices: [Radio, Buttons, Star Rating]
 additionalComments: false
 ---
 
-## Single-choice Questions Overview
+## Single-choice Question Overview
 
 Single-choice questions, as the name suggests, only accept a single answer choice to the question. They are different from likert questions because the answer choices cannot be scored or scaled.
 

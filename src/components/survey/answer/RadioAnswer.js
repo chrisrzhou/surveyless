@@ -1,21 +1,15 @@
 import CheckboxRadioInput from 'components/ui/CheckboxRadioInput';
-import ChoiceSetLayout from './ChoiceSetLayout';
+import AnswerLayout from './AnswerLayout';
 import React from 'react';
 
-function RadioChoiceSet({
-  answerValue,
-  choices,
-  disabled,
-  isVertical,
-  onChange,
-}) {
+function RadioAnswer({choices, disabled, isVertical, onChange, value}) {
   return (
-    <ChoiceSetLayout isVertical={isVertical}>
+    <AnswerLayout isVertical={isVertical}>
       {choices.map((choice, index) => {
         return (
           <CheckboxRadioInput
             disabled={disabled}
-            checked={answerValue === index}
+            checked={value === index}
             key={choice}
             labelValue={choice}
             onChange={() => {
@@ -25,8 +19,8 @@ function RadioChoiceSet({
           />
         );
       })}
-    </ChoiceSetLayout>
+    </AnswerLayout>
   );
 }
 
-export default RadioChoiceSet;
+export default RadioAnswer;

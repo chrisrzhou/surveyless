@@ -2,7 +2,7 @@
 id: 9
 text: Which of the following web frameworks are you actively using?
 questionType: MULTI_CHOICE
-choiceType: VERTICAL_BUTTON
+choiceType: HORIZONTAL_CHECKBOX
 choices:
   [
     React,
@@ -19,7 +19,7 @@ choices:
 additionalComments: false
 ---
 
-## Multi-choice Questions Overview
+## Multi-choice Question Overview
 
 [Multi-choice questions](https://en.wikipedia.org/wiki/Multiple_choice) provides a question format for people to select multiple answers for a given question. A common way to analyze multiple choice questions is to visualize all the distribution of selected answers in a bar chart.
 

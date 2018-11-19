@@ -11,7 +11,7 @@ import Container from 'components/ui/Container';
 import Heading from 'components/ui/Heading';
 import Markdown from 'components/ui/Markdown';
 import React from 'react';
-import SurveyAnswer from './SurveyAnswer';
+import SurveyAnswer from './answer/SurveyAnswer';
 import Text from 'components/ui/Text';
 import TextArea from 'components/ui/TextArea';
 import {actions} from 'store/survey/responses';
@@ -26,6 +26,7 @@ function SurveyQuestion({answer, onSetResponse, question, isCompleted}) {
     choices,
     description,
     additionalComments,
+    auxiliaryData,
   } = question;
   if (id == null) {
     return null;
@@ -37,19 +38,18 @@ function SurveyQuestion({answer, onSetResponse, question, isCompleted}) {
           <Markdown source={description} />
         </Box>
         <Heading level={2}>{text}</Heading>
-        {choiceType !== null && choices.length && (
-          <SurveyAnswer
-            answerValue={answer.answerValue}
-            choices={choices}
-            choiceType={choiceType}
-            disabled={isCompleted}
-            questionId={id}
-            questionType={questionType}
-            onAnswerChange={answerValue => {
-              onSetResponse({questionId: id, answerValue});
-            }}
-          />
-        )}
+        <SurveyAnswer
+          auxiliaryData={auxiliaryData}
+          answerValue={answer.answerValue}
+          choices={choices}
+          choiceType={choiceType}
+          disabled={isCompleted}
+          questionId={id}
+          questionType={questionType}
+          onAnswerChange={answerValue => {
+            onSetResponse({questionId: id, answerValue});
+          }}
+        />
         {additionalComments && (
           <Flex flexDirection="column" pt={5}>
             <Text color="secondaryText">Additional Comments</Text>
@@ -61,7 +61,6 @@ function SurveyQuestion({answer, onSetResponse, question, isCompleted}) {
                   additionalComments: value,
                 });
               }}
-              placeholder="Please provide any additional comments here"
               value={answer.additionalComments}
             />
           </Flex>

@@ -1,16 +1,18 @@
 ---
 id: 12
 text: How much fun are you having with the slider input?
-questionType: SINGLE_CHOICE
-choiceType: HORIZONTAL_RADIO
-choices: [Yes, No]
+questionType: SLIDER
+choiceType: null
+choices: [This is lame, It's okay, Pretty fun, Woohoo!]
+sliderMinValue: 0
+sliderMaxValue: 100
+sliderStepValue: 5
 additionalComments: true
 ---
 
-## TODO Slider Question Overview
+## Slider Question Overview
 
-A slider question provides a more open format for collecting numerical inputs. A slider input with min and max values is the most common way for users to provide their answers.
-
+A slider question provides a more open format for collecting numerical inputs.
 Here are some example slider questions:
 
 > What percentage of time do you spend coding? (percentage based, values: 0% to 100%)

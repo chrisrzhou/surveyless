@@ -1,7 +1,7 @@
 import List from 'components/ui/List';
 import React from 'react';
 
-function ChoiceSetLayout({children, isVertical}) {
+function AnswerLayout({children, isVertical}) {
   return (
     <List
       spacing={isVertical ? 2 : 3}
@@ -12,4 +12,4 @@ function ChoiceSetLayout({children, isVertical}) {
   );
 }
 
-export default ChoiceSetLayout;
+export default AnswerLayout;

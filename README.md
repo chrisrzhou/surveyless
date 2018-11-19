@@ -131,4 +131,4 @@ In addition, the `surveyless` mechanics would be non-functional without the grea
 - theme editor
 - results page
 - responses should work off the `/responses` github branch
-- STRETCH: tooling to detect malformed markdowns etc
+- STRETCH: tooling to detect malformed markdown/frontmatter, missing/duplicated question Ids. If the content of `/survey` folder has changed, reset the localstorage (or create a button that hard resets localstorage in DRAFT mode)

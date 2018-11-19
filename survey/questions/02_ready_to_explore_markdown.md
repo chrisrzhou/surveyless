@@ -7,10 +7,10 @@ choices: [Yes, No]
 additionalComments: false
 ---
 
-Before we proceed to answering more questions, let's take a quick tour on important navigationa features in `surveyless`.
+Welcome to `surveyless`! This is a guided survey demo that will showcase important features in `surveyless` Before we proceed with more questions, let's take a quick tour on navigational features when taking the survey:
 
 - Click on the logo/header to head back to the survey home page.
-- Use the arrow keys ⬅️➡️⬆️⬇️ to navigate through survey questions. You can only go to the next question if you have answered the current question.
+- Use the arrow keys ⬅️➡️ to navigate through survey questions. You can only go to the next question if you have answered the current question.
 - You can also navigate and track the progress of answered and unanswered questions using the progress bar component (located at the bottom of the screen).
 
 `surveyless` saves your progress locally, so you can continue where you left off.
