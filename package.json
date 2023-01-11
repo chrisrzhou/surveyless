@@ -34,7 +34,7 @@
     "gatsby-plugin-styled-components": "^3.0.0-rc.5",
     "gatsby-plugin-typography": "^2.2.1",
     "gatsby-source-filesystem": "^2.0.4",
-    "gatsby-transformer-remark": "^2.1.12",
+    "gatsby-transformer-remark": "^5.25.1",
     "keymirror": "^0.1.1",
     "prop-types": "^15.6.2",
     "rc-slider": "^8.6.3",
